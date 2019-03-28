@@ -13,7 +13,7 @@ License: GPLv2 or later
 * Wordpress 5.x
 
 = Support =
-*  [پشتیبان ووکامرس فارسی](https://elementorfa.ir/)
+*  [پشتیبان المنتور فارسی](https://elementorfa.ir/)
 
 = Fa =
 * بسته فارسی ساز افزونه صفحه ساز المنتور
