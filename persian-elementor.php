@@ -23,7 +23,7 @@ require_once(PERSIAN_ELEMENTOR.'includes/editor.php');
 
 add_action( 'init', 'myplugin_load_textdomain' );
 function myplugin_load_textdomain() {
-load_plugin_textdomain( 'elementor-pro', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+load_plugin_textdomain( 'elementor-pro', false, basename( dirname( __FILE__ ) ) . '/languages/elementor-pro' ); 
 load_plugin_textdomain( 'persian-elementor', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
 }
 
