@@ -1,8 +1,11 @@
 === Plugin Name ===
 
 Contributors: Persian Elementor
+
 Tested up to: 5.1.1
+
 Requires PHP: 5.6
+
 License: GPLv2 or later
 
 == Description ==
