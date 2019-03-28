@@ -36,5 +36,4 @@ License: GPLv2 or later
 * نسخه اولیه
 
 
-== Traducciones ==
 پشتیبانی در سایت [elementorfa.ir](http://elementorfa.ir) انجام میشود.
