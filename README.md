@@ -1,14 +1,9 @@
 === Plugin Name ===
 
 Contributors: Persian Elementor
-Donate link: https://example.com/
-Tags: elementor,persian elementor
-Requires at least: 4.6
 Tested up to: 5.1.1
-Stable tag: 5
 Requires PHP: 5.6
 License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 بسته فارسی ساز افزونه صفحه ساز المنتور به همراه اصلاح فونت های بخش میدیریت
 
