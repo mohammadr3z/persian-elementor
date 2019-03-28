@@ -1,12 +1,16 @@
 === Plugin Name ===
 
 Contributors: Persian Elementor
+
 Tested up to: 5.1.1
+
 Requires PHP: 5.6
+
 License: GPLv2 or later
 
 == Description ==
-این بسته به شما کمک میکند تا تمامی بخش های افزونه المنتور و المنتور پرو به صورت کاملا فارسی به باشد. همچنین فونت بخش ویرایشگر افزونه اصلاح شده است.
+
+این بسته به شما کمک میکند تا تمامی بخش های افزونه المنتور و المنتور پرو به صورت کاملا فارسی باشد. همچنین فونت بخش ویرایشگر افزونه اصلاح شده است.
 
 = Compatibility =
 * Elementor 2.4.x
@@ -32,5 +36,4 @@ License: GPLv2 or later
 * نسخه اولیه
 
 
-== Traducciones ==
 پشتیبانی در سایت [elementorfa.ir](http://elementorfa.ir) انجام میشود.
