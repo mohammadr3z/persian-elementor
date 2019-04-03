@@ -3,7 +3,7 @@
  * Plugin Name: المنتور فارسی
  * Plugin URI: http://elementorfa.ir/contact
  * Description: افزونه فارسی ساز صفحه ساز المنتور و بهبود ویرایشگر زنده
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: المنتور فارسی
  * Author URI: https://elementorfa.ir
  * Text Domain: persian-elementor
