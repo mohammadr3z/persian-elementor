@@ -29,10 +29,12 @@
 
 .elementor-panel,.elementor-button,body,
 .elementor-templates-modal .dialog-widget-content,.elementor-input-style,
- input, select, textarea,.tipsy-inner,.elementor-add-section-drag-title,.elementor-add-section-drag-title
+ input, select, textarea,.tipsy-inner,.elementor-add-section-drag-title,
+ .elementor-add-section-drag-title,.elementor-safe-mode-toast .elementor-toast-content,.elementor-safe-mode-toast header h2
  {font-family:IRANYekan!important}
  
 .elementor-loading-title{letter-spacing:0px!important;font-size:13px!important}
  #elementor-template-library-filter .select2-selection__rendered, 
  #select2-elementor-template-library-filter-subtype-results .select2-results__option{text-align: right;}
+ #elementor-try-safe-mode .elementor-safe-mode-button {font-family: iranyekan;font-size: 10px;}
  
