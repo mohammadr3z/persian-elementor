@@ -20,8 +20,8 @@ include( PERSIAN_ELEMENTOR . 'includes/editor.php');
 	require_once(PERSIAN_ELEMENTOR.'includes/editor.php');
 include( PERSIAN_ELEMENTOR . 'includes/fonts.php');
 	require_once(PERSIAN_ELEMENTOR.'includes/fonts.php');
-include( PERSIAN_ELEMENTOR . 'includes/core.php');
-	require_once(PERSIAN_ELEMENTOR.'includes/core.php');
+include( PERSIAN_ELEMENTOR . 'includes/class-translate.php');
+	require_once(PERSIAN_ELEMENTOR.'includes/class-translate.php');
 
 
 
