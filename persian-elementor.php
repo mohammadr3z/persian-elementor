@@ -28,7 +28,7 @@ add_action( 'init', 'load_persian_elementor_text_domain' );
 		load_plugin_textdomain( 'persian-elementor', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
 }
 		
-		
+
 
 function wp_admin_dashboard_add_new_widget() {
 	global $wp_meta_boxes;
