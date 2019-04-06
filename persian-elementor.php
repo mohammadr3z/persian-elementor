@@ -29,7 +29,7 @@ function wp_admin_dashboard_add_new_widget() {
 	global $wp_meta_boxes;
  
 	wp_add_dashboard_widget( 'dashboard_mw_widget', 'المنتور فارسی', 'dashboard_mw_widget_output' );
-}
+	}
 	add_action('wp_dashboard_setup', 'wp_admin_dashboard_add_new_widget');
  
 	function dashboard_mw_widget_output() {
@@ -42,5 +42,5 @@ function wp_admin_dashboard_add_new_widget() {
 		echo '<p> اگر سوالی دارید از بخش پرسش و پاسخ المنتور فارسی  <a target=_blank\" href="https://elementorfa.ir/faq/">سوال کنید</a>';
 		echo "</p>";
 		echo "</div>";
-}		
+	}		
 		

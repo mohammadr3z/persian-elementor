@@ -12,7 +12,7 @@ add_action( 'init', 'load_persian_elementor_text_domain' );
 	function load_persian_elementor_text_domain() {
 		load_plugin_textdomain( 'elementor-pro', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
 		load_plugin_textdomain( 'persian-elementor', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
-}
+	}
 
 
 $text_domain = 'elementor-pro';
