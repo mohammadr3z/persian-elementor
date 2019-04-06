@@ -24,7 +24,6 @@ include( PERSIAN_ELEMENTOR . 'includes/class-translate.php');
 	require_once(PERSIAN_ELEMENTOR.'includes/class-translate.php');
 
 
-
 function wp_admin_dashboard_add_new_widget() {
 	global $wp_meta_boxes;
  
