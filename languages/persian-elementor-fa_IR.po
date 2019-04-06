@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Persian Elementor\n"
-"POT-Creation-Date: 2019-03-27 17:52+0430\n"
-"PO-Revision-Date: 2019-03-27 17:55+0430\n"
+"POT-Creation-Date: 2019-04-06 19:23+0430\n"
+"PO-Revision-Date: 2019-04-06 19:25+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -21,23 +21,39 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#. Plugin Name of the plugin/theme
-#: includes/editor.php:8
+#: includes/editor.php:15
 msgid "Persian Elementor"
 msgstr "المنتور فارسی"
 
-#. Plugin URI of the plugin/theme
-msgid "http://elementorfa.ir"
-msgstr ""
+#: includes/fonts.php:67
+msgid "System"
+msgstr "فونت های فارسی"
 
-#. Description of the plugin/theme
-msgid "فارسی ساز نسخه پرو المنتور"
-msgstr ""
+#: includes/fonts.php:68
+msgid "Google"
+msgstr "فونت های گوگل"
 
+#: includes/fonts.php:69
+msgid "Google Early Access"
+msgstr "Google Early Access"
+
+#. Plugin Name of the plugin/theme
 #. Author of the plugin/theme
 msgid "المنتور فارسی"
 msgstr "المنتور فارسی"
 
-#. Author URI of the plugin/theme
-msgid "https://elementorfa.ir/contact/"
+#. Plugin URI of the plugin/theme
+msgid "http://elementorfa.ir"
+msgstr "http://elementorfa.ir"
+
+#. Description of the plugin/theme
+msgid ""
+"افزونه فارسی ساز صفحه ساز المنتور به همراه اضافه شدن فونت های فارسی در بخش "
+"تایپوگرافی و بهبود ظاهر ویرایشگر برای زبان فارسی"
 msgstr ""
+"افزونه فارسی ساز صفحه ساز المنتور به همراه اضافه شدن فونت های فارسی در بخش "
+"تایپوگرافی و بهبود ظاهر ویرایشگر برای زبان فارسی"
+
+#. Author URI of the plugin/theme
+msgid "https://elementorfa.ir"
+msgstr "http://elementorfa.ir"
