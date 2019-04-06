@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: المنتور فارسی
- * Plugin URI: https://elementorfa.ir
+ * Plugin URI: http://elementorfa.ir
  * Description: افزونه فارسی ساز صفحه ساز المنتور به همراه اضافه شدن فونت های فارسی در بخش تایپوگرافی و بهبود ظاهر ویرایشگر برای زبان فارسی
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: المنتور فارسی
  * Author URI: https://elementorfa.ir
  * Text Domain: persian-elementor
@@ -27,7 +27,16 @@ add_action( 'init', 'load_persian_elementor_text_domain' );
 		load_plugin_textdomain( 'elementor-pro', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
 		load_plugin_textdomain( 'persian-elementor', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
 }
-		
+
+
+$text_domain = 'elementor-pro';
+$override_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'persian-elementor' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'elementor-pro-fa_IR.mo';
+$original_language_file_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'elementor-pro-fa_IR.mo';
+
+
+unload_textdomain($text_domain);
+load_textdomain($text_domain, $override_language_file );
+load_textdomain($text_domain, $original_language_file );
 
 
 function wp_admin_dashboard_add_new_widget() {
