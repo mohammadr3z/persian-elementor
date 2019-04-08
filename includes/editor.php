@@ -7,7 +7,7 @@
 
 //Add font to frontend
 	add_action('elementor/frontend/after_enqueue_styles', function() {
-		wp_enqueue_style( 'persian-elementor',plugins_url( 'css/front-font.css', __FILE__ ) );
+		wp_enqueue_style( 'persian-elementor',plugins_url( 'css/frontend-rtl.min.css', __FILE__ ) );
 });
 
 
