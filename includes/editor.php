@@ -1,7 +1,7 @@
 <?php
 //Add font to editor
 	add_action('elementor/editor/before_enqueue_scripts', function() {
-		wp_enqueue_style( 'persian-elementor',plugins_url( 'css/admin-font.css', __FILE__ ) );
+		wp_enqueue_style( 'persian-elementor',plugins_url( 'css/editor-rtl.min.css', __FILE__ ) );
 });
 
 
