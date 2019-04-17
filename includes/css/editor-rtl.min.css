@@ -27,9 +27,8 @@
 }
 
 
-.elementor-panel,.elementor-button,body,
-.elementor-templates-modal .dialog-widget-content,.elementor-input-style,
- input, select, textarea,.tipsy-inner,.elementor-add-section-drag-title,
+.elementor-panel,.elementor-button,body,input#elementor-template-library-save-template-name,input#elementor-panel-elements-search-input,
+.wp-picker-clear.button,.elementor-templates-modal .dialog-widget-content, select, textarea,.tipsy-inner,.elementor-add-section-drag-title,
  .elementor-add-section-drag-title,.elementor-safe-mode-toast .elementor-toast-content,.elementor-safe-mode-toast header h2
  {font-family:IRANYekan!important}
  
