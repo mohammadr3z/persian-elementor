@@ -114,6 +114,3 @@ function plugin_api_call($def, $action, $args) {
 	return $res;
 }
 ?>
-=======
-	
->>>>>>> f66c872e4e79dd65f2eeb07d7f1125282014bbda
