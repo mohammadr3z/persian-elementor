@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: المنتور فارسی
- * Plugin URI: https://elementorfa.ir
+ * Plugin URI: http://elementorfa.ir
  * Description: افزونه فارسی ساز صفحه ساز المنتور به همراه اضافه شدن فونت های فارسی در بخش تایپوگرافی و بهبود ظاهر ویرایشگر برای زبان فارسی
  * Version: 1.3
  * Author: المنتور فارسی
@@ -79,7 +79,6 @@ function check_for_plugin_update($checked_data) {
 // Take over the Plugin info screen
 add_filter('plugins_api', 'plugin_api_call', 10, 3);
 
-<<<<<<< HEAD
 function plugin_api_call($def, $action, $args) {
 	global $plugin_slug, $api_url, $wp_version;
 	
