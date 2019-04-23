@@ -132,13 +132,14 @@ class Fonts {
 	private static function get_native_fonts() {
 		return [
 			// System fonts.
-			'iranyekan' => self::SYSTEM,
-			'iransans' => self::SYSTEM,
-			'iransansdn' => self::SYSTEM,
-			'daal' => self::SYSTEM,
-			'aviny' => self::SYSTEM,
-			'anjoman' => self::SYSTEM,
-			'yekanbakh' => self::SYSTEM,
+			'IRANYekan' => self::SYSTEM,
+			'IRANSans' => self::SYSTEM,
+			'IRANSansFN' => self::SYSTEM,
+			'IRANSansDN' => self::SYSTEM,
+			'Daal' => self::SYSTEM,
+			'Aviny' => self::SYSTEM,
+			'Anjoman' => self::SYSTEM,
+			'Yekanbakh' => self::SYSTEM,
 			'Tahoma' => self::SYSTEM,
 			'Verdana' => self::SYSTEM,
 			'Helvetica' => self::SYSTEM,
