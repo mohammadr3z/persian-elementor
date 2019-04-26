@@ -18,10 +18,10 @@
 function dashboard_custom_feed_output() {
 	
 		
-		echo '<a target=_blank\" href="https://elementorfa.ir/"><img src="https://elementorfa.ir/wp-content/uploads/2019/03/elementor-farsi-logo.png" style=height:100px; /></a>';
+		echo '<a target=_blank\" href="https://elementorfa.ir/"><img src="https://elementorfa.ir/wp-content/uploads/2019/04/PersianElementor.png" style=height:100px; /></a>';
 		echo '<p>پشتیبانی فارسی افزونه صفحه ساز المنتور</p>';
-		echo '<li><a target=_blank\" href="https://elementorfa.ir/%d8%ae%d8%b1%db%8c%d8%af-%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1-%d9%be%d8%b1%d9%88/">خرید افزونه المنتور فارسی</a></li>';
-		echo '<li><a target=_blank\" href="https://elementorfa.ir/%D9%81%D8%B1%D9%88%D8%B4%DA%AF%D8%A7%D9%87/">فروشگاه محصولات المنتور</a></li>';
+		echo '<li><a target=_blank\" href="http://bit.ly/wp-dashboad-buy">خرید افزونه المنتور فارسی</a></li>';
+		echo '<li><a target=_blank\" href="http://bit.ly/elementorfa-shop">فروشگاه محصولات المنتور</a></li>';
 		echo '</br>';
 		echo '<p>آخرین محصولات المنتور فارسی :</p>';
 
