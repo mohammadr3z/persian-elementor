@@ -53,19 +53,24 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 1. Upload `persian-elementor` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 == Changelog ==
+
 = 1.4 =
 
 اضافه شدن بروزرسانی خودکار افزونه
+
 = 1.3 =
 
 بروزرسانی فونت های مدیریت
+
 = 1.2 =
 
 اضافه شدن فونت های فارسی در بخش تایپوگرافی
 فرخوانی فونت از سرویس شبکه‌ی توزیع محتوا گیت هاب
+
 = 1.1 =
 
 اضافه شدن ویجت المنتور فارسی در پیشخوان
+
 = 1.0 =
 
 نسخه اولیه
