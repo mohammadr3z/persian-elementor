@@ -1,13 +1,21 @@
 ﻿=== Persian Elementor ===
 author: المنتور فارسی
 Contributors: mohammadr3z,elementorir
+
 Donate link: https://elementorfa.ir
+
 Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsian,persians,farsi,iran,iranian,rtl,fa_IR
+
 Requires at least: 5.0
+
 Tested up to: 5.1.1
+
 Requires PHP: 5.6
-Stable tag: 1.4.3.2
+
+Stable tag: 1.4.4
+
 License: GPLv2 or later
+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 بسته فارسی ساز افزونه المنتور که تمامی بخش های المنتور پرو را فارسی میکند. اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی المنتور. بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان
