@@ -4,17 +4,17 @@ Contributors: mohammadr3z,elementorir
 Donate link: https://elementorfa.ir
 Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsian,persians,farsi,iran,iranian,rtl,fa_IR
 Requires at least: 5.0
-Tested up to: 5.1.1
+Tested up to: 5.2
 Requires PHP: 5.6
 Stable tag: 1.4.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-بسته فارسی ساز افزونه المنتور که تمامی بخش های المنتور پرو را فارسی میکند. اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی المنتور. بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان
+بسته فارسی ساز افزونه المنتور به همراه اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی تمامی ویجت های المنتور و همچنین بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان برای زبان فارسی
 
 == Description ==
 
-بسته فارسی ساز افزونه المنتور که تمامی بخش های المنتور پرو را فارسی میکند. اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی المنتور. بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان
+بسته فارسی ساز افزونه المنتور به همراه اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی تمامی ویجت های المنتور و همچنین بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان برای زبان فارسی
 
 = Support =
 
@@ -43,6 +43,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 1. Upload `persian-elementor` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 == Changelog ==
+= 1.4.4 =
+
+تغییر سرویس توزیع محتوا فونت ها
+بهبود نمایش فونت های مدیریت
+
+
 = 1.4 =
 
 اضافه شدن بروزرسانی خودکار افزونه
