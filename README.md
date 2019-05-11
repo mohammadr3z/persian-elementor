@@ -1,38 +1,35 @@
-<<<<<<< HEAD
 === Persian Elementor ===
+
+
+
 author: المنتور فارسی
+
 Contributors: mohammadr3z,elementorir
+
 Donate link: https://elementorfa.ir
+
 Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsian,persians,farsi,iran,iranian,rtl,fa_IR
+
 Requires at least: 5.0
+
 Tested up to: 5.2
+
 Requires PHP: 5.6
+
 Stable tag: 1.4.3.2
+
 License: GPLv2 or later
+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 بسته فارسی ساز افزونه المنتور به همراه اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی تمامی ویجت های المنتور و همچنین بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان برای زبان فارسی
 
 == Description ==
-=======
-﻿=== Persian Elementor ===
-
-author: المنتور فارسی
-
-Contributors: mohammadr3z,elementorir
-
-Donate link: https://elementorfa.ir
-
-Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsian,persians,farsi,iran,iranian,rtl,fa_IR
-
-Requires at least: 5.0
->>>>>>> 1f619398badaf4e96f0201e172c321c37045c412
 
 بسته فارسی ساز افزونه المنتور به همراه اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی تمامی ویجت های المنتور و همچنین بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان برای زبان فارسی
 
 = Support =
 
-<<<<<<< HEAD
 * پشتیبانی [افزونه المنتور فارسی](https://elementorfa.ir/)
 
 
@@ -56,28 +53,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 
 بسته فارسی ساز افزونه المنتور که تمامی بخش های المنتور پرو را فارسی میکند. اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی المنتور. بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان
-
-= Support =
-
-* پشتیبانی [افزونه المنتور فارسی](https://elementorfa.ir/)
->>>>>>> 1f619398badaf4e96f0201e172c321c37045c412
-
-
-= سازگاری ها=
-* Elementor 2.5.x
-
-== Screenshots ==
-
-<<<<<<< HEAD
-1. اضافه شدن فونت های های محبوب `/assets/screenshot-1.png` 
-
-
-=======
-= ویژگی ها =
-* تنها با نصب بسته فارسی ساز المنتور تمامی بخش های المنتور پرو را فارسی کنید
-* بهینه شدن ظاهر افزونه برای زبان فارسی در بخش ویرایشگر
-* فراخوانی فونت های فارسی از سرویس شبکه توزیع محتوا اختصاصی المنتور فارسی
-* انتخاب از بین فونت های فارسی محبوب و متنوع
 
 
 = سازگاری ها=
