@@ -1,16 +1,4 @@
 === Persian Elementor ===
-author: المنتور فارسی
-Contributors: mohammadr3z,elementorir
-Donate link: https://elementorfa.ir
-Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsian,persians,farsi,iran,iranian,rtl,fa_IR
-Requires at least: 5.0
-Tested up to: 5.2
-Requires PHP: 5.6
-Stable tag: 1.4.5.1
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-=======
 
 
 author: المنتور فارسی
