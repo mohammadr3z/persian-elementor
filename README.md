@@ -15,7 +15,7 @@ Tested up to: 5.2
 
 Requires PHP: 5.6
 
-Stable tag: 1.4.3.2
+Stable tag: 1.4.5.1
 
 License: GPLv2 or later
 
