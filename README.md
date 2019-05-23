@@ -1,5 +1,4 @@
 === Persian Elementor ===
-<<<<<<< HEAD
 author: المنتور فارسی
 Contributors: mohammadr3z,elementorir
 Donate link: https://elementorfa.ir
@@ -11,8 +10,6 @@ Stable tag: 1.4.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 =======
->>>>>>> 9500bab90d3c17c5a547fdc65684291392f5623f
-
 
 
 author: المنتور فارسی
