@@ -14,6 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 class Fonts {
+	
+	/**
+	 * The farsi font name.
+	 */
+	const FARSI = 'farsifont';
 
 	/**
 	 * The system font name.
@@ -29,7 +34,7 @@ class Fonts {
 	 * The google early access font name.
 	 */
 	const EARLYACCESS = 'earlyaccess';
-
+	
 	/**
 	 * The local font name.
 	 */
@@ -64,6 +69,7 @@ class Fonts {
 	public static function get_font_groups() {
 		if ( null === self::$font_groups ) {
 			$font_groups = [
+				self::FARSI => __( 'فونت فارسی', 'elementor' ),
 				self::SYSTEM => __( 'System', 'elementor' ),
 				self::GOOGLE => __( 'Google', 'elementor' ),
 				self::EARLYACCESS => __( 'Google Early Access', 'elementor' ),
@@ -131,15 +137,17 @@ class Fonts {
 	 */
 	private static function get_native_fonts() {
 		return [
+			// Farsi fonts.
+			'IRANYekan' => self::FARSI,
+			'IRANSans' => self::FARSI,
+			'IRANSansFN' => self::FARSI,
+			'IRANSansDN' => self::FARSI,
+			'Daal' => self::FARSI,
+			'Aviny' => self::FARSI,
+			'Anjoman' => self::FARSI,
+			'Yekanbakh' => self::FARSI,
+			
 			// System fonts.
-			'IRANYekan' => self::SYSTEM,
-			'IRANSans' => self::SYSTEM,
-			'IRANSansFN' => self::SYSTEM,
-			'IRANSansDN' => self::SYSTEM,
-			'Daal' => self::SYSTEM,
-			'Aviny' => self::SYSTEM,
-			'Anjoman' => self::SYSTEM,
-			'Yekanbakh' => self::SYSTEM,
 			'Tahoma' => self::SYSTEM,
 			'Verdana' => self::SYSTEM,
 			'Helvetica' => self::SYSTEM,
