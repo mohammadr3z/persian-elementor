@@ -1,15 +1,20 @@
 <?php
-//Add font to editor
+/**
+ * ElementorFa fonts.
+ *
+ *
+ * @since 1.0.0
+ */
+ 
+// enqueue css file into editor
 	add_action('elementor/editor/before_enqueue_scripts', function() {
 		wp_enqueue_style( 'persian-elementor',plugins_url( 'css/editor-rtl.min.css', __FILE__ ) );
 });
 
 
-//Add font to frontend
+//enqueue css file for front-end
 	add_action('elementor/frontend/after_enqueue_styles', function() {
 		wp_enqueue_style( 'persian-elementor',plugins_url( 'css/frontend-rtl.min.css', __FILE__ ) );
 });
 
 
-
-	__( 'Persian Elementor', 'persian-elementor' );

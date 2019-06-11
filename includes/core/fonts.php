@@ -146,6 +146,8 @@ class Fonts {
 			'Aviny' => self::FARSI,
 			'Anjoman' => self::FARSI,
 			'Yekanbakh' => self::FARSI,
+			'Dana' => self::FARSI,
+			'Maneli' => self::FARSI,
 			
 			// System fonts.
 			'Tahoma' => self::SYSTEM,
