@@ -15,7 +15,7 @@ Tested up to: 5.2
 
 Requires PHP: 5.6
 
-Stable tag: 1.5.5
+Stable tag: 1.6.1
 
 License: GPLv2 or later
 
@@ -39,4 +39,3 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * فراخوانی فونت های فارسی از سرویس شبکه توزیع محتوا اختصاصی المنتور فارسی
 * انتخاب از بین فونت های فارسی محبوب و متنوع
 * دارای 10 فونت فارسی محبوب
-* اضافه شدن بیش از 150 فونت آیکون جدید

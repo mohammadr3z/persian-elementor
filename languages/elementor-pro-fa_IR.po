@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elementor Pro\n"
 "POT-Creation-Date: 2019-04-17 21:54+0430\n"
-"PO-Revision-Date: 2019-06-02 19:35+0430\n"
+"PO-Revision-Date: 2019-06-29 12:30+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -2232,7 +2232,7 @@ msgstr "پایین"
 
 #: modules/call-to-action/widgets/call-to-action.php:472
 msgid "Min. Width"
-msgstr "حداقل ارتفاع"
+msgstr "حداقل عرض"
 
 #: modules/call-to-action/widgets/call-to-action.php:536
 #: modules/call-to-action/widgets/call-to-action.php:611
@@ -7954,7 +7954,7 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Elementor.com"
-msgstr "ترجمه المنتور فارسی"
+msgstr "ترجمه: المنتور فارسی"
 
 #~ msgid "Custom ID"
 #~ msgstr "ID سفارشی"
