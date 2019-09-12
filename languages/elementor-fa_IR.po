@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Elementor Page Builder - Stable (latest "
 "release)\n"
 "POT-Creation-Date: 2019-06-29 12:13+0430\n"
-"PO-Revision-Date: 2019-07-10 22:41+0430\n"
+"PO-Revision-Date: 2019-07-24 10:47+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: core/admin/admin.php:151 core/admin/admin.php:796
 msgid "Back to WordPress Editor"
@@ -3023,6 +3023,9 @@ msgid ""
 "previously selected Font Awesome 4 icons are displayed correctly while using "
 "Font Awesome 5 library."
 msgstr ""
+"اسکریپت پشتیبانی (shim.js) Font Awesome 4 یک اسکریپت است که اطمینان می دهد که "
+"تمام آیکون های فونت فوق العاده 4 که قبلا انتخاب شده اند، هنگام استفاده از "
+"کتابخانه Font Awesome 5 به درستی نمایش داده می شوند."
 
 #: includes/managers/icons.php:229 includes/managers/icons.php:233
 #: includes/managers/icons.php:245
@@ -3373,6 +3376,8 @@ msgid ""
 "Elementor will try to sanitize the SVG files, removing potential malicious "
 "code and scripts."
 msgstr ""
+"المنتور سعی میکند فایل های SVG را پاکسازی کند، کد های مخرب و اسکریپت های "
+"احتمالی را حذف کند."
 
 #: includes/settings/settings.php:613
 msgid ""

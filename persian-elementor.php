@@ -3,7 +3,7 @@
  * Plugin Name: المنتور فارسی
  * Plugin URI: http://elementorfa.ir
  * Description: بسته فارسی ساز افزونه المنتور پرو به همراه اضافه شدن 10 فونت فارسی محبوب در بخش تایپوگرافی و بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان برای زبان فارسی
- * Version: 1.6.1
+ * Version: 1.6.5.1
  * Author: المنتور فارسی
  * Author URI: https://elementorfa.ir
  * Text Domain: persian-elementor

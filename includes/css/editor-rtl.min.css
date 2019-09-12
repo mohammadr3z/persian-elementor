@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
     font-family: 'IRANYekan';
     src: url('font/IRANYekan/iranyekanwebbold(fanum).eot');
     src: url('font/IRANYekan/iranyekanwebbold(fanum).eot?#iefix') format('eot'), /* IE6–8 */
@@ -30,8 +30,9 @@
 .elementor-panel,.elementor-button,body,input#elementor-template-library-save-template-name,input#elementor-panel-elements-search-input,
 .wp-picker-clear.button,.elementor-templates-modal .dialog-widget-content, select, textarea,.tipsy-inner,.elementor-add-section-drag-title,
 .elementor-add-section-drag-title,.elementor-safe-mode-toast .elementor-toast-content,.elementor-safe-mode-toast header h2,
-#elementor-finder__search__input,#elementor-template-library-filter-text
- {font-family:IRANYekan!important}
+#elementor-finder__search__input,#elementor-template-library-filter-text,.elementor-element-title-wrapper .title,.elementor-add-section-drag-title,
+.elementor-select-preset-title,.elementor-control-tag-area
+{font-family:IRANYekan!important}
  
 .elementor-loading-title{letter-spacing:0px!important;font-size:13px!important}
 #elementor-template-library-filter .select2-selection__rendered, 
@@ -40,5 +41,10 @@
 button.dialog-button.dialog-cancel.dialog-confirm-cancel, button.dialog-button.dialog-ok.dialog-confirm-ok {
     font-family: iranyekan;
     font-size: 13px;
+}
+
+textarea {
+    direction: ltr;
+    font-family: monospace!important;
 }
  

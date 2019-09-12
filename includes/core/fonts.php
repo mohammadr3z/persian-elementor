@@ -139,15 +139,17 @@ class Fonts {
 		return [
 			// Farsi fonts.
 			'IRANYekan' => self::FARSI,
-			'IRANSans' => self::FARSI,
-			'IRANSansFN' => self::FARSI,
-			'IRANSansDN' => self::FARSI,
-			'Daal' => self::FARSI,
-			'Aviny' => self::FARSI,
-			'Anjoman' => self::FARSI,
-			'Yekanbakh' => self::FARSI,
-			'Dana' => self::FARSI,
-			'Maneli' => self::FARSI,
+			'Vazir' => self::FARSI,
+			'Shabnam' => self::FARSI,
+			// 'IRANSans' => self::FARSI,
+			// 'IRANSansFN' => self::FARSI,
+			// 'IRANSansDN' => self::FARSI,
+			// 'Daal' => self::FARSI,
+			// 'Aviny' => self::FARSI,
+			// 'Anjoman' => self::FARSI,
+			// 'Yekanbakh' => self::FARSI,
+			// 'Dana' => self::FARSI,
+			// 'Maneli' => self::FARSI,
 			
 			// System fonts.
 			'Tahoma' => self::SYSTEM,
