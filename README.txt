@@ -6,7 +6,7 @@ Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsia
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.6.5
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,15 +29,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * بهینه شدن ظاهر افزونه برای زبان فارسی در بخش ویرایشگر
 * فراخوانی فونت های فارسی از سرویس شبکه توزیع محتوا اختصاصی المنتور فارسی
 * انتخاب از بین فونت فارسی محبوب ایران یکان و وزیر و شنبم
-
+* اضافه شدن 48 آیکون از بانک ها و کسب و کار های ایرانی
 
 = سازگاری ها=
-* Elementor 2.6.x
+* Elementor 2.7.x
 
 == Screenshots ==
 
 1. اضافه شدن فونت های های محبوب `/assets/screenshot-1.png`
 2. ظاهر المنتور بعد از بسته فارسی ساز `/assets/screenshot-2.png`
+3. آیکون بانک های ایرانی `/assets/screenshot-3.png`
 
 
 
@@ -45,6 +46,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 1. Upload `persian-elementor` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 == Changelog ==
+
+= 1.7 =
+
+سازگاری با المنتور نسخه 2.7
+اضافه شدن 48 فونت آیکون های ایرانی در بخش کتابخانه آیکون
+بهبود ترجمه
 
 = 1.6.X =
 

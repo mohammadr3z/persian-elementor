@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'efaicons';
+  src:  url('fonts/efaicons.eot?14xaeo');
+  src:  url('fonts/efaicons.eot?14xaeo#iefix') format('embedded-opentype'),
+    url('fonts/efaicons.ttf?14xaeo') format('truetype'),
+    url('fonts/efaicons.woff?14xaeo') format('woff'),
+    url('fonts/efaicons.svg?14xaeo#efaicons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="efa-"], [class*=" efa-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'efaicons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.efa-aparat:before {
+  content: "\e908";
+}
+.efa-cloob:before {
+  content: "\e90b";
+}
+.efa-dey:before {
+  content: "\e90c";
+}
+.efa-gardeshgari:before {
+  content: "\e90d";
+}
+.efa-ghavamin:before {
+  content: "\e910";
+}
+.efa-markazi:before {
+  content: "\e911";
+}
+.efa-mehr:before {
+  content: "\e912";
+}
+.efa-mellat:before {
+  content: "\e913";
+}
+.efa-melli:before {
+  content: "\e914";
+}
+.efa-parsian:before {
+  content: "\e915";
+}
+.efa-refah:before {
+  content: "\e916";
+}
+.efa-saderat:before {
+  content: "\e917";
+}
+.efa-salehin:before {
+  content: "\e918";
+}
+.efa-saman:before {
+  content: "\e919";
+}
+.efa-sarmayeh:before {
+  content: "\e91a";
+}
+.efa-tejarat:before {
+  content: "\e97d";
+}
+.efa-EFA:before {
+  content: "\e900";
+  color: #eb345e;
+}
+.efa-Enbank:before {
+  content: "\e905";
+}
+.efa-Gaz:before {
+  content: "\e90a";
+}
+.efa-Hekmat:before {
+  content: "\e90e";
+}
+.efa-iranzamin:before {
+  content: "\e90f";
+}
+.efa-Kish:before {
+  content: "\e939";
+}
+.efa-Mahak:before {
+  content: "\e93e";
+}
+.efa-Mahan:before {
+  content: "\e93f";
+}
+.efa-Maskan:before {
+  content: "\e940";
+}
+.efa-MEBank:before {
+  content: "\e941";
+}
+.efa-Mehreghtesad:before {
+  content: "\e942";
+}
+.efa-Mehriran:before {
+  content: "\e947";
+}
+.efa-Mokhaberat:before {
+  content: "\e98e";
+}
+.efa-NezamMohandesi:before {
+  content: "\e98f";
+}
+.efa-Pasargad:before {
+  content: "\e99b";
+}
+.efa-PayamNoor:before {
+  content: "\e99d";
+}
+.efa-SanatMadan:before {
+  content: "\e9c7";
+}
+.efa-SazmanAb:before {
+  content: "\e9cc";
+}
+.efa-Shahr:before {
+  content: "\e9d1";
+}
+.efa-Shaparak:before {
+  content: "\e9d2";
+}
+.efa-Shetab:before {
+  content: "\e9d3";
+}
+.efa-Sina:before {
+  content: "\e9d4";
+}
+.efa-Tosse:before {
+  content: "\ea09";
+}
+.efa-Zagros:before {
+  content: "\ea0a";
+}
+.efa-ZarinPal:before {
+  content: "\ea12";
+}
+.efa-Afzal-toos:before {
+  content: "\ea13";
+}
+.efa-Aseman:before {
+  content: "\ea19";
+}
+.efa-Ata:before {
+  content: "\ea1a";
+}
+.efa-AzadUni:before {
+  content: "\ea1e";
+}
+.efa-BimeArman:before {
+  content: "\ea20";
+}
+.efa-BimePasargad:before {
+  content: "\ea51";
+}
+.efa-BimeRazi:before {
+  content: "\e901";
+}
