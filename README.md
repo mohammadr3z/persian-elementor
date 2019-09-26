@@ -32,6 +32,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ![font-intro](https://user-images.githubusercontent.com/7595716/55623844-62394f00-57b9-11e9-8c83-5aa070718520.png)
 
+![Iranian-Icon](https://user-images.githubusercontent.com/7595716/65666157-f3430180-e049-11e9-8f47-caec10886e32.png)
+
 
 = ویژگی ها =
 * تنها با نصب بسته فارسی ساز المنتور تمامی بخش های المنتور پرو را فارسی کنید
@@ -39,3 +41,4 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * فراخوانی فونت های فارسی از سرویس شبکه توزیع محتوا اختصاصی المنتور فارسی
 * انتخاب از بین فونت های فارسی محبوب و متنوع
 * دارای 10 فونت فارسی محبوب
+* اضافه شدن 48 آیکون از بانک ها و کسب و کار های ایرانی
