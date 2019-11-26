@@ -17,7 +17,7 @@ add_action( 'init', 'load_persian_elementor_text_domain' );
 
 $text_domain = 'elementor-pro';
 	$override_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'persian-elementor' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'elementor-pro-fa_IR.mo';
-	$original_language_file_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'elementor-pro-fa_IR.mo';
+	$original_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'elementor-pro-fa_IR.mo';
 
 
 	unload_textdomain($text_domain);
@@ -27,7 +27,7 @@ $text_domain = 'elementor-pro';
 	
 $text_domain = 'elementor';
 	$override_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'persian-elementor' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'elementor-fa_IR.mo';
-	$original_language_file_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'elementor-fa_IR.mo';
+	$original_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'elementor-fa_IR.mo';
 
 
 	unload_textdomain($text_domain);

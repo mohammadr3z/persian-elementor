@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elementor Pro\n"
 "POT-Creation-Date: 2019-09-24 22:38+0330\n"
-"PO-Revision-Date: 2019-09-24 22:46+0330\n"
+"PO-Revision-Date: 2019-11-10 19:15+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -1808,7 +1808,7 @@ msgstr "روشن"
 #: modules/theme-elements/widgets/post-info.php:440
 #: modules/woocommerce/widgets/product-meta.php:91
 msgid "Off"
-msgstr "غیر فعال"
+msgstr "خاموش"
 
 #: modules/blockquote/widgets/blockquote.php:140
 #: modules/call-to-action/widgets/call-to-action.php:197
@@ -5303,7 +5303,7 @@ msgstr "ریدایرکت بعد از خروج"
 #: modules/forms/widgets/login.php:195 modules/forms/widgets/login.php:857
 #: modules/forms/widgets/login.php:917
 msgid "Lost your password?"
-msgstr "کله عبور خود را فراموش کرده اید؟"
+msgstr "کلمه عبور خود را فراموش کرده اید؟"
 
 #: modules/forms/widgets/login.php:207 modules/forms/widgets/login.php:866
 #: modules/forms/widgets/login.php:927

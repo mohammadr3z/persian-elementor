@@ -1,5 +1,10 @@
 {
 	"icons": [
+		"bisphone",
+		"gap",
+		"bale",
+		"soroush",
+		"eitaa",
 		"aparat",
 		"cloob",
 		"dey",
@@ -17,35 +22,22 @@
 		"sarmayeh",
 		"tejarat",
 		"Enbank",
-		"Gaz",
 		"Hekmat",
 		"iranzamin",
-		"Kish",
 		"Mahak",
-		"Mahan",
 		"Maskan",
 		"MEBank",
 		"Mehreghtesad",
 		"Mehriran",
-		"Mokhaberat",
-		"NezamMohandesi",
 		"Pasargad",
 		"PayamNoor",
 		"SanatMadan",
-		"SazmanAb",
 		"Shahr",
 		"Shaparak",
 		"Shetab",
 		"Sina",
 		"Tosse",
-		"Zagros",
 		"ZarinPal",
-		"Afzal-toos",
-		"Aseman",
-		"Ata",
-		"AzadUni",
-		"BimeArman",
-		"BimePasargad",
-		"BimeRazi"
-	]
+		"Afzal-toos"
+		]
 }

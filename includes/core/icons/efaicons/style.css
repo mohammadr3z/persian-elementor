@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'efaicons';
-  src:  url('fonts/efaicons.eot?14xaeo');
-  src:  url('fonts/efaicons.eot?14xaeo#iefix') format('embedded-opentype'),
-    url('fonts/efaicons.ttf?14xaeo') format('truetype'),
-    url('fonts/efaicons.woff?14xaeo') format('woff'),
-    url('fonts/efaicons.svg?14xaeo#efaicons') format('svg');
+  src:  url('fonts/efaicons.eot?7k954q');
+  src:  url('fonts/efaicons.eot?7k954q#iefix') format('embedded-opentype'),
+    url('fonts/efaicons.ttf?7k954q') format('truetype'),
+    url('fonts/efaicons.woff?7k954q') format('woff'),
+    url('fonts/efaicons.svg?7k954q#efaicons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,78 +25,81 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.efa-aparat:before {
-  content: "\e908";
+.efa-eitaa:before {
+  content: "\e97c";
 }
-.efa-cloob:before {
-  content: "\e90b";
-}
-.efa-dey:before {
-  content: "\e90c";
-}
-.efa-gardeshgari:before {
-  content: "\e90d";
-}
-.efa-ghavamin:before {
-  content: "\e910";
-}
-.efa-markazi:before {
-  content: "\e911";
-}
-.efa-mehr:before {
-  content: "\e912";
-}
-.efa-mellat:before {
-  content: "\e913";
-}
-.efa-melli:before {
-  content: "\e914";
-}
-.efa-parsian:before {
-  content: "\e915";
-}
-.efa-refah:before {
-  content: "\e916";
-}
-.efa-saderat:before {
-  content: "\e917";
-}
-.efa-salehin:before {
-  content: "\e918";
-}
-.efa-saman:before {
-  content: "\e919";
-}
-.efa-sarmayeh:before {
-  content: "\e91a";
-}
-.efa-tejarat:before {
+.efa-soroush:before {
   content: "\e97d";
 }
-.efa-EFA:before {
+.efa-bale:before {
+  content: "\e97e";
+}
+.efa-gap:before {
   content: "\e900";
+}
+.efa-bisphone:before {
+  content: "\e916";
+}
+.efa-EFA:before {
+  content: "\e917";
   color: #eb345e;
 }
 .efa-Enbank:before {
-  content: "\e905";
+  content: "\e918";
 }
-.efa-Gaz:before {
-  content: "\e90a";
+.efa-aparat:before {
+  content: "\e919";
+}
+.efa-cloob:before {
+  content: "\e91a";
+}
+.efa-dey:before {
+  content: "\e91b";
+}
+.efa-gardeshgari:before {
+  content: "\e91c";
 }
 .efa-Hekmat:before {
-  content: "\e90e";
+  content: "\e91d";
 }
 .efa-iranzamin:before {
-  content: "\e90f";
+  content: "\e91e";
 }
-.efa-Kish:before {
-  content: "\e939";
+.efa-ghavamin:before {
+  content: "\e91f";
+}
+.efa-markazi:before {
+  content: "\e920";
+}
+.efa-mehr:before {
+  content: "\e921";
+}
+.efa-mellat:before {
+  content: "\e922";
+}
+.efa-melli:before {
+  content: "\e923";
+}
+.efa-parsian:before {
+  content: "\e924";
+}
+.efa-refah:before {
+  content: "\e925";
+}
+.efa-saderat:before {
+  content: "\e926";
+}
+.efa-salehin:before {
+  content: "\e927";
+}
+.efa-saman:before {
+  content: "\e928";
+}
+.efa-sarmayeh:before {
+  content: "\e929";
 }
 .efa-Mahak:before {
   content: "\e93e";
-}
-.efa-Mahan:before {
-  content: "\e93f";
 }
 .efa-Maskan:before {
   content: "\e940";
@@ -110,11 +113,8 @@
 .efa-Mehriran:before {
   content: "\e947";
 }
-.efa-Mokhaberat:before {
-  content: "\e98e";
-}
-.efa-NezamMohandesi:before {
-  content: "\e98f";
+.efa-tejarat:before {
+  content: "\e97f";
 }
 .efa-Pasargad:before {
   content: "\e99b";
@@ -124,9 +124,6 @@
 }
 .efa-SanatMadan:before {
   content: "\e9c7";
-}
-.efa-SazmanAb:before {
-  content: "\e9cc";
 }
 .efa-Shahr:before {
   content: "\e9d1";
@@ -143,30 +140,9 @@
 .efa-Tosse:before {
   content: "\ea09";
 }
-.efa-Zagros:before {
-  content: "\ea0a";
-}
 .efa-ZarinPal:before {
   content: "\ea12";
 }
 .efa-Afzal-toos:before {
   content: "\ea13";
-}
-.efa-Aseman:before {
-  content: "\ea19";
-}
-.efa-Ata:before {
-  content: "\ea1a";
-}
-.efa-AzadUni:before {
-  content: "\ea1e";
-}
-.efa-BimeArman:before {
-  content: "\ea20";
-}
-.efa-BimePasargad:before {
-  content: "\ea51";
-}
-.efa-BimeRazi:before {
-  content: "\e901";
 }
