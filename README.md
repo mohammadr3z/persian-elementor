@@ -30,8 +30,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * پشتیبانی [افزونه المنتور فارسی](https://elementorfa.ir/)
 
 
-![font-intro](https://user-images.githubusercontent.com/7595716/55623844-62394f00-57b9-11e9-8c83-5aa070718520.png)
-
 ![Iranian-Icon](https://user-images.githubusercontent.com/7595716/65666157-f3430180-e049-11e9-8f47-caec10886e32.png)
 
 
