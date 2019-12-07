@@ -29,7 +29,7 @@ function dashboard_custom_feed_output() {
      wp_widget_rss_output(array(
           'url' => 'https://elementorfa.ir/feed',
           'title' => 'المنتور فارسی',
-          'items' => 2,
+          'items' => 3,
           'show_summary' => 1,
           'show_author' => 0,
           'show_date' => 0 
