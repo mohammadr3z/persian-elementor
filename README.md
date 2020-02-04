@@ -21,6 +21,8 @@ License: GPLv2 or later
 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+Wordprses URI: https://wordpress.org/plugins/persian-elementor/
+
 == Description ==
 
 بسته فارسی ساز افزونه المنتور به همراه اضافه شدن فونت های فارسی محبوب در بخش تایپوگرافی تمامی ویجت های المنتور و همچنین بهبود ظاهر ویرایشگر با اضافه شدن فونت یکان برای زبان فارسی
