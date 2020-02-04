@@ -3,7 +3,7 @@
  * Snippet Name: Add custom RSS Feed to dashboard
 
  */
- function wpc_dashboard_widgets() {
+ function wpc_dashboard_widgets_elementor() {
      global $wp_meta_boxes;
      // remove unnecessary widgets  
      // var_dump( $wp_meta_boxes['dashboard'] ); // use to get all the widget IDs  
@@ -13,9 +13,9 @@
           $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']  
      );  
      // add a custom dashboard widget  
-     wp_add_dashboard_widget( 'dashboard_custom_feed', 'المنتور فارسی', 'dashboard_custom_feed_output' ); //add new RSS feed output
+     wp_add_dashboard_widget( 'dashboard_custom_feed', 'المنتور فارسی', 'dashboard_custom_feed_output_elementor' ); //add new RSS feed output
 }
-function dashboard_custom_feed_output() {
+function dashboard_custom_feed_output_elementor() {
 	
 		
 		echo '<a target=_blank\" href="http://bit.ly/Elementorfa"><img src="https://elementorfa.ir/wp-content/uploads/2019/04/PersianElementor2.png" style=height:75px; /></a>';
@@ -47,5 +47,5 @@ function dashboard_custom_feed_output() {
 		
 		
 }
-add_action('wp_dashboard_setup', 'wpc_dashboard_widgets');
+add_action('wp_dashboard_setup', 'wpc_dashboard_widgets_elementor');
 

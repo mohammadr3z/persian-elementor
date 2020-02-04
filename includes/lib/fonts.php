@@ -23,6 +23,7 @@ add_filter( 'elementor/fonts/additional_fonts', function( $additional_fonts ) {
 	// $additional_fonts['Yekanbakh'] = 'FARSI';
 	// $additional_fonts['Dana'] = 'FARSI';
 	// $additional_fonts['Maneli'] = 'FARSI';
+	// $additional_fonts['Kalameh'] = 'FARSI';
 	// $additional_fonts['Irancell'] = 'FARSI';
 	$additional_fonts['Vazir'] = 'FARSI';
 	$additional_fonts['Shabnam'] = 'FARSI';
