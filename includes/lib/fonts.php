@@ -13,19 +13,14 @@ add_filter( 'elementor/fonts/groups', function( $font_groups ) {
 add_filter( 'elementor/fonts/additional_fonts', function( $additional_fonts ) {
 	// Key/value
 	//Font name/font group
+	$additional_fonts['Gandom'] = 'FARSI';
 	$additional_fonts['IRANYekan'] = 'FARSI';
-	// $additional_fonts['IRANSans'] = 'FARSI';
-	// $additional_fonts['IRANSansFN'] = 'FARSI';
-	// $additional_fonts['IRANSansDN'] = 'FARSI';
-	// $additional_fonts['Daal'] = 'FARSI';
-	// $additional_fonts['Aviny'] = 'FARSI';
-	// $additional_fonts['Anjoman'] = 'FARSI';
-	// $additional_fonts['Yekanbakh'] = 'FARSI';
-	// $additional_fonts['Dana'] = 'FARSI';
-	// $additional_fonts['Maneli'] = 'FARSI';
-	// $additional_fonts['Kalameh'] = 'FARSI';
-	// $additional_fonts['Irancell'] = 'FARSI';
-	$additional_fonts['Vazir'] = 'FARSI';
+	$additional_fonts['Nahid'] = 'FARSI';
+	$additional_fonts['Parastoo'] = 'FARSI';
+	$additional_fonts['Sahel'] = 'FARSI';
+	$additional_fonts['Samim'] = 'FARSI';
 	$additional_fonts['Shabnam'] = 'FARSI';
+	$additional_fonts['Tanha'] = 'FARSI';
+	$additional_fonts['Vazir'] = 'FARSI';
 	return $additional_fonts;
 } );
