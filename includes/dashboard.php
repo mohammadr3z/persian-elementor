@@ -17,11 +17,11 @@
 }
 function dashboard_custom_feed_output_elementor() {
 	
-		
-		echo '<a target=_blank\" href="http://bit.ly/Elementorfa"><img src="https://elementorfa.ir/wp-content/uploads/2019/04/PersianElementor2.png" style=height:75px; /></a>';
+        echo ( 'المنتور فارسی' ); ?> نسخه <?php echo PERSIAN_ELEMENTOR_VERSION;
+		echo '<div><img src="https://elementorfa.ir/wp-content/uploads/2019/04/PersianElementor2.png" style=height:75px; /></div>';
 		echo '<p style="font-weight: 700; border-bottom: 1px solid #eee; margin: 0 -12px; padding: 6px 12px;	">پشتیبانی فارسی افزونه صفحه ساز المنتور</p>';
-		echo '<a style="color:#555;margin-top: 20px;margin-bottom: 20px;margin-left: 5px" target=_blank\" href="http://bit.ly/wp-dashboad-buy" class="button">افزونه المنتور پرو</a>';
-		echo '<a style="color:#555;margin-top: 20px;margin-bottom: 20px;" target=_blank\" href="http://bit.ly/elementorfa-shop" class="button">افزونه های جانبی المنتور</a>';
+        echo '<a style="margin-top: 20px;margin-bottom: 20px;margin-left: 5px" target=_blank\" href="http://bit.ly/wp-dashboad-buy" class="button button-primary">نسخه اورجینال المنتور پرو</a>';
+		echo '<a style="margin-top: 20px;margin-bottom: 20px;" target=_blank\" href="http://bit.ly/elementorfa-shop" class="button">افزونه های جانبی المنتور</a>';
 		echo '</br>';
 		echo '<p style ="font-weight: 700; border-bottom: 1px solid #eee; margin: 0 -12px; padding: 6px 12px;">اخبار و بروزرسانی ها</p>';
 
