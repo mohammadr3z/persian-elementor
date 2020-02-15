@@ -53,7 +53,7 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 = 1.8.3 =
 
 سازگاری ترجمه با نسخه 2.9 المنتور
-اضافه شدن 5 فونا فارسی جدید
+اضافه شدن 5 فونت فارسی جدید
 * صمیم
 * گندم
 * تنها
