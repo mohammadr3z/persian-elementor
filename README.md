@@ -46,6 +46,7 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 == Changelog ==
 
 = 1.9.0 =
+
 سازگاری ترجمه با نسخه 2.9.1 المنتور
 اضافه شدن گزینه المنتور فارسی در تب المنتور پیشخوان وردپرس
 
