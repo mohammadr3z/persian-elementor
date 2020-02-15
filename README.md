@@ -11,7 +11,7 @@ Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsia
 
 Requires at least: 5.0
 
-Tested up to: 5.3.1
+Tested up to: 5.3.2
 
 Requires PHP: 5.6
 
