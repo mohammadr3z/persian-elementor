@@ -15,7 +15,7 @@ Tested up to: 5.3.2
 
 Requires PHP: 7.0
 
-Stable tag: 1.9.0
+Stable tag: 1.9.1
 
 License: GPLv2 or later
 
@@ -44,6 +44,13 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 * اضافه شدن 48 آیکون از بانک ها و کسب و کار های ایرانی
 
 == Changelog ==
+
+= 1.9.1 =
+
+* تغییر روش فراخوانی فونت ها (کاهش درخواست ها)
+* رفع خطای Avoid CSS @import در سایت gtmetrix
+* بهینه سازی سرعت بارگذاری افزونه
+
 
 = 1.9.0 =
 
