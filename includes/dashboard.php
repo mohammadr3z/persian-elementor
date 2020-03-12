@@ -1,6 +1,6 @@
 <?php
 /**
- * Snippet Name: Add custom RSS Feed to dashboard
+ * Add RSS Feed to dashboard
 
  */
  function wpc_dashboard_widgets_elementor() {
@@ -12,10 +12,10 @@
           $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'],  
           $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']  
      );  
-     // add a custom dashboard widget  
-     wp_add_dashboard_widget( 'dashboard_custom_feed', 'المنتور فارسی', 'dashboard_custom_feed_output_elementor' ); //add new RSS feed output
+     // add dashboard widget  
+     wp_add_dashboard_widget( 'dashboard_custom_feed', 'المنتور فارسی', 'dashboard_persian_elementor_feed_output' ); //add new RSS feed output
 }
-function dashboard_custom_feed_output_elementor() {
+function dashboard_persian_elementor_feed_output() {
 	
         echo ( 'المنتور فارسی' ); ?> نسخه <?php echo PERSIAN_ELEMENTOR_VERSION;
 		echo '<div><img src="https://elementorfa.ir/wp-content/uploads/2019/04/PersianElementor2.png" style=height:75px; /></div>';
