@@ -50,28 +50,32 @@ function persian_elementor_page()
             <div>
 
                 <h4>فونت های فارسی</h4>
-                <p>با فعال سازی افزونه فارسی ساز المنتور، فونت ایران یکان و 9 فونت رایگان دیگر را به المنتور اضافه کنید.</p>
+                <p>با فعال سازی افزونه فارسی ساز المنتور، فونت ایران یکان و 11 فونت رایگان دیگر را به المنتور اضافه کنید.</p>
 				<p>لیست فونت های نسخه رایگان:</p>
+				<li>Estedad</li>
+				<li>Gandom</li>
 				<li>IRANYekan</li>
-				<li>Vazir</li>
-				<li>Shabnam</li>
-				<li>Parastoo</li>
-				<li>Tanha</li>
-				<li>Samim</li>
+				<li>Mikhak</li>
 				<li>Nahid</li>
+				<li>Parastoo</li>
 				<li>Sahel</li>
+				<li>Samim</li>
+				<li>Shabnam</li>
+				<li>Tanha</li>
+				<li>Vazir</li>
             </div>
 			
 			<div>
 
                 <h4>فونت های فارسی نسخه پرو</h4>
-                <p>با تهیه نسخه پرو بسته <a href="https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/"> فارسی ساز المنتور </a>، 19 فونت فارسی را به این افزونه اضافه کنید.</p>
+                <p>با تهیه نسخه پرو بسته <a href="https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/"> فارسی ساز المنتور </a>، 22 فونت فارسی را به این افزونه اضافه کنید.</p>
 				<p>لیست فونت های نسخه پولی:</p>
 				<li>Anjoman</li>
 				<li>Aviny</li>
 				<li>Daal</li>
 				<li>Damavand</li>
 				<li>Dana</li>
+				<li>Estedad</li>
 				<li>Gandom</li>
 				<li>Irancell</li>
 				<li>IRANSans</li>
@@ -80,6 +84,7 @@ function persian_elementor_page()
 				<li>IRANYekan</li>
 				<li>Kalameh</li>
 				<li>Maneli</li>
+				<li>Mikhak</li>
 				<li>Nahid</li>
 				<li>Parastoo</li>
 				<li>Sahel</li>
@@ -87,7 +92,7 @@ function persian_elementor_page()
 				<li>Shabnam</li>
 				<li>Tanha</li>
 				<li>Vazir</li>
-				<li>YekanBakh</li>
+
             </div>
 			
 			<div>
