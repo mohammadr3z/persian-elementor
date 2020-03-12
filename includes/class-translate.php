@@ -4,32 +4,28 @@
 /**
  * Load gettext translate for our text domain.
  *
- * @since 1.0.0
+ * @since 1.9.3
  *
  * @return void
  */
-add_action( 'init', 'load_persian_elementor_text_domain' );
-	function load_persian_elementor_text_domain() {
-		load_plugin_textdomain( 'elementor-pro', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
-		load_plugin_textdomain( 'elementor', false, dirname( plugin_basename(__FILE__) ) . '/languages' );
-	}
-
-
+ 
+// Elementor Pro
 $text_domain = 'elementor-pro';
-	$override_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'persian-elementor' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'elementor-pro-fa_IR.mo';
-	$original_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'elementor-pro-fa_IR.mo';
-
-
+	$override_language_file = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$original_language_file = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
 	unload_textdomain($text_domain);
 	load_textdomain($text_domain, $override_language_file );
-	load_textdomain($text_domain, $original_language_file );
-	
-	
+
+// Elementor 
 $text_domain = 'elementor';
-	$override_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'persian-elementor' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'elementor-fa_IR.mo';
-	$original_language_file = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'elementor-fa_IR.mo';
-
-
+	$override_language_file = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$original_language_file = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
 	unload_textdomain($text_domain);
 	load_textdomain($text_domain, $override_language_file );
-	load_textdomain($text_domain, $original_language_file );
+	
+// Ele Custom Skin 
+$text_domain = 'ele-custom-skin';
+	$override_language_file = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$original_language_file = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
+	unload_textdomain($text_domain);
+	load_textdomain($text_domain, $override_language_file );
