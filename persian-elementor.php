@@ -24,7 +24,7 @@ define( 'PERSIAN_ELEMENTOR_VERSION', '1.9.3' );
 define( 'PERSIAN_ELEMENTOR', plugin_dir_path(__FILE__));
 
 
-require_once(PERSIAN_ELEMENTOR.'includes/editor.php');
+require_once(PERSIAN_ELEMENTOR.'includes/class-elementor.php');
 	
 
 require_once(PERSIAN_ELEMENTOR.'includes/class-translate.php');
