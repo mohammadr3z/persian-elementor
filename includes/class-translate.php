@@ -11,21 +11,28 @@
  
 // Elementor Pro
 $text_domain = 'elementor-pro';
-	$override_language_file = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
-	$original_language_file = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
+	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
 	unload_textdomain($text_domain);
-	load_textdomain($text_domain, $override_language_file );
+	load_textdomain($text_domain, $persian_elementor_lang );
 
 // Elementor 
 $text_domain = 'elementor';
-	$override_language_file = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
-	$original_language_file = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
+	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
 	unload_textdomain($text_domain);
-	load_textdomain($text_domain, $override_language_file );
+	load_textdomain($text_domain, $persian_elementor_lang );
 	
 // Ele Custom Skin 
 $text_domain = 'ele-custom-skin';
-	$override_language_file = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
-	$original_language_file = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
+	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
 	unload_textdomain($text_domain);
-	load_textdomain($text_domain, $override_language_file );
+	load_textdomain($text_domain, $persian_elementor_lang );
+	
+// Essential Addons Lite
+$text_domain = 'essential-addons-for-elementor-lite';
+	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
+	unload_textdomain($text_domain);
+	load_textdomain($text_domain, $persian_elementor_lang );
