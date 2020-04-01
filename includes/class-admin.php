@@ -68,14 +68,16 @@ function persian_elementor_page()
 			<div>
 
                 <h4>فونت های فارسی نسخه پرو</h4>
-                <p>با تهیه نسخه پرو بسته <a href="https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/"> فارسی ساز المنتور </a>، 22 فونت فارسی را به این افزونه اضافه کنید.</p>
+                <p>با تهیه نسخه پرو بسته <a href="https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/"> فارسی ساز المنتور </a>، 25 فونت فارسی را به این افزونه اضافه کنید.</p>
 				<p>لیست فونت های نسخه پولی:</p>
 				<li>Anjoman</li>
 				<li>Aviny</li>
 				<li>Daal</li>
 				<li>Damavand</li>
 				<li>Dana</li>
+				<li>Emkan</li>
 				<li>Estedad</li>
+				<li>Farhang</li>
 				<li>Gandom</li>
 				<li>Irancell</li>
 				<li>IRANSans</li>
@@ -83,6 +85,7 @@ function persian_elementor_page()
 				<li>IRANSans Farsi Number</li>
 				<li>IRANYekan</li>
 				<li>Kalameh</li>
+				<li>Katibeh</li>
 				<li>Maneli</li>
 				<li>Mikhak</li>
 				<li>Nahid</li>
