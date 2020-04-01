@@ -4,7 +4,7 @@
 /**
  * Load gettext translate for our text domain.
  *
- * @since 1.9.3
+ * @since 1.9.4
  *
  * @return void
  */
@@ -32,6 +32,13 @@ $text_domain = 'ele-custom-skin';
 	
 // Essential Addons Lite
 $text_domain = 'essential-addons-for-elementor-lite';
+	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
+	unload_textdomain($text_domain);
+	load_textdomain($text_domain, $persian_elementor_lang );
+	
+// Dynamic Conditions
+$text_domain = 'dynamicconditions';
 	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
 	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
 	unload_textdomain($text_domain);
