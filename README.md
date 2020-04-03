@@ -47,7 +47,7 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 = 1.9.5 =
 
-* بروزرسانی ترجمه المنتور و المنتور پرو (#2)
+* بروزرسانی ترجمه المنتور و المنتور پرو ([#2](https://github.com/mohammadr3z/persian-elementor/issues/2))
 * بروزرسانی ترجمه افرونه Dynamic Conditions
 
 
