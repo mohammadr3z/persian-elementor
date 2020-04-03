@@ -45,6 +45,13 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 == Changelog ==
 
+= 1.9.5 =
+
+* بروزرسانی ترجمه المنتور و المنتور پرو (#2)
+* بروزرسانی ترجمه افرونه Dynamic Conditions
+
+
+
 = 1.9.4 =
 
 * سازگار با وردپرس 5.4
