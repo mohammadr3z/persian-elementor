@@ -45,6 +45,12 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 == Changelog ==
 
+= 1.9.12 =
+
+* اضافه شدن تقویم فارسی در فرم ساز المنتور
+* اضافه شدن فونت عای فارسی با اعداد فارسی و انگلیسی با تفکیک
+
+
 = 1.9.5 =
 
 * بروزرسانی ترجمه المنتور و المنتور پرو ([#2](https://github.com/mohammadr3z/persian-elementor/issues/2))

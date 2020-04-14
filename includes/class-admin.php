@@ -1,18 +1,12 @@
 <?php
 // set priority to lower i.e. greater than 10
-add_action( 'admin_menu', 'persian_elementor_admin_menu', 900 );
-
-function persian_elementor_admin_menu() {
-    add_submenu_page( 
-        'elementor',
-        'المنتور فارسی',
-        'المنتور فارسی',
-        'manage_options',
-        'persian_elementor',
-        'persian_elementor_page' );
+function persian_elementor_panel(){
+	add_menu_page('المنتور فارسی', 'المنتور فارسی', 'manage_options', 'persian_elementor', 'persian_elementor_func', plugins_url( 'persian-elementor/includes/assets/images/icon.png' ),58.5);
+    // add_submenu_page( 'persian_elementor', 'لایسنس', 'لایسنس', 'manage_options', 'persian_elementor_license', 'persian_elementor_func_license');
 }
+add_action( 'admin_menu', 'persian_elementor_panel', 900 );
 
-function persian_elementor_page()
+function persian_elementor_func()
 {
     // check user capabilities
     if (!current_user_can('manage_options')) {
@@ -67,7 +61,7 @@ function persian_elementor_page()
 			
 			<div>
 
-                <h4>فونت های فارسی نسخه پرو</h4>
+               <h4>فونت های فارسی نسخه پرو</h4>
                 <p>با تهیه نسخه پرو بسته <a href="https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/"> فارسی ساز المنتور </a>، 25 فونت فارسی را به این افزونه اضافه کنید.</p>
 				<p>لیست فونت های نسخه پولی:</p>
 				<li>Anjoman</li>
