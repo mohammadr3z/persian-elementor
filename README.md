@@ -97,6 +97,12 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 == Changelog ==
 
+= 2.0.0 =
+
+* اضافه شدن کتابخانه قالب های فارسی به المنتور
+* بهبود ترجمه افزونه Ele Custom Skin
+* اضافه شدن اعداد فارسی به 5 فونت دیگ
+
 = 1.9.12 =
 
 * اضافه شدن تقویم فارسی در فرم ساز المنتور
