@@ -24,6 +24,6 @@
 // Enqueue Front End
 	add_action('elementor/frontend/before_enqueue_styles', function() {
 		wp_enqueue_style( 'persian-elementor-font', 
-'https://rawcdn.githack.com/mohammadr3z/CDN_Font/9117012537a9c706e4628504917225a92edec155/font.css' );
+'https://rawcdn.githack.com/mohammadr3z/CDN_Font/8eb9fb52324d1af6d6571ef7600037dfe95ae5dd/font.css' );
 		wp_enqueue_style( 'persian-elementor-flatpickr',plugins_url( 'assets/css/flatpickr-rtl.css', __FILE__ ) );
 });
