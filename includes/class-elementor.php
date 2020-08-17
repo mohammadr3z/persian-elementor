@@ -10,6 +10,7 @@
 	add_action('elementor/editor/before_enqueue_scripts', function() {
 		wp_enqueue_style( 'persian-elementor',plugins_url( 'assets/css/editor-rtl.min.css', __FILE__ ) );
 });
+
 // Enqueue Preview
 	add_action('elementor/preview/enqueue_styles', function() {
 		wp_enqueue_style( 'persian-elementor-preview',plugins_url( 'assets/css/preview-rtl.css', __FILE__ ) );
@@ -23,6 +24,6 @@
 // Enqueue Front End
 	add_action('elementor/frontend/before_enqueue_styles', function() {
 		wp_enqueue_style( 'persian-elementor-font', 
-'https://rawcdn.githack.com/mohammadr3z/CDN_Font/b8347738ba5688cdf6d99367ddc129a64aeb7af8/font.css' );
+'https://rawcdn.githack.com/mohammadr3z/CDN_Font/a3ee1ea9096759a2174dc8b7d0dc1d26706c7d60/font.css' );
 		wp_enqueue_style( 'persian-elementor-flatpickr',plugins_url( 'assets/css/flatpickr-rtl.css', __FILE__ ) );
 });

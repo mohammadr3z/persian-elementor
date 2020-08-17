@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: المنتور فارسی
- * Plugin URI: http://elementorfa.ir
+ * Plugin URI: http://persianefa.ir/
  * Description: بسته فارسی ساز افزونه المنتور پرو به همراه اضافه شدن 11 فونت فارسی، تقویم شمسی برای المنتور، قالب های آماده فارسی در کتابخانه المنتور و آیکون های ایرانی
- * Version: 2.0.3
+ * Version: 2.1.0
  * Author: المنتور فارسی
- * Author URI: https://elementorfa.ir
+ * Author URI: http://persianefa.ir/
  * Text Domain: persian-elementor
  * License: GPL2
  */
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PERSIAN_ELEMENTOR_VERSION', '2.0.3' );
+define( 'PERSIAN_ELEMENTOR_VERSION', '2.1.0' );
 
 
 define( 'PERSIAN_ELEMENTOR', plugin_dir_path(__FILE__));

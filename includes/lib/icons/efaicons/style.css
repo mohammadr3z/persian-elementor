@@ -1,10 +1,11 @@
 @font-face {
   font-family: 'efaicons';
-  src:  url('fonts/efaicons.eot?7k954q');
-  src:  url('fonts/efaicons.eot?7k954q#iefix') format('embedded-opentype'),
-    url('fonts/efaicons.ttf?7k954q') format('truetype'),
-    url('fonts/efaicons.woff?7k954q') format('woff'),
-    url('fonts/efaicons.svg?7k954q#efaicons') format('svg');
+  src:  url('fonts/efaicons.eot');
+  src:  url('fonts/efaicons.eot?#iefix') format('embedded-opentype'),
+    url('fonts/efaicons.woff2') format('woff2'),
+    url('fonts/efaicons.ttf') format('truetype'),
+    url('fonts/efaicons.woff') format('woff'),
+    url('fonts/efaicons.svg?#efaicons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;

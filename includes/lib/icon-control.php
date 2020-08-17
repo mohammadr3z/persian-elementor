@@ -1,20 +1,19 @@
 <?php
 
 /**
- * ElementorFa icons.
+ * Elementorfa icons.
  *
  *
- * @since 1.0.0
+ * @since 2.0.8
  */
 
-// enqueue css file into editor
-function elementorfa_new_icon(){
-    wp_enqueue_style( 'new-icon', plugins_url( 'icons\efaicons\style.css',  __FILE__ )  );
-}
-add_action( 'elementor/editor/after_enqueue_styles', 'elementorfa_new_icon' );
-//enqueue css file for front-end
-function elementorfa_core_assets() {
-    wp_enqueue_style( 'new-icon', plugins_url( 'icons\efaicons\style.css',  __FILE__ )  );
-}
-add_action( 'wp_enqueue_scripts', 'elementorfa_core_assets' );
 
+// Enqueue Editor
+	add_action('elementor/editor/before_enqueue_scripts', function() {
+		wp_enqueue_style( 'persian-elementor-icon',plugins_url( 'icons\efaicons\style.css',  __FILE__ ) );
+});
+
+// Enqueue Front End
+	add_action('elementor/frontend/before_enqueue_styles', function() {
+		wp_enqueue_style( 'persian-elementor-icon',plugins_url( 'icons\efaicons\style.css',  __FILE__ ) );
+});

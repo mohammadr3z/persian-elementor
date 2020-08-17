@@ -19,7 +19,7 @@ function persian_elementor_func()
     </div>
 
     <a class="wp-badge" href="https://elementorfa.ir/" target="_blank"
-         style="background-color:#ee305c !important;background-image:url(<?php echo plugin_dir_url( __FILE__ ) . 'assets/images/about.png'; ?>) !important;background-position: center center;background-size: 167px auto !important;"></a>
+         style="background-color:#93033C !important;background-image:url(<?php echo plugin_dir_url( __FILE__ ) . 'assets/images/about.png'; ?>) !important;background-position: center center;background-size: 167px auto !important;"></a>
 
     <h2 class="nav-tab-wrapper">
         <a class="nav-tab nav-tab-active" href="https://elementorfa.ir/" target="_blank">پشتیبانی المنتور فارسی</a>
@@ -62,7 +62,7 @@ function persian_elementor_func()
 			<div>
 
                <h4>فونت های فارسی نسخه پرو</h4>
-                <p>با تهیه نسخه پرو بسته <a href="https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/"> فارسی ساز المنتور </a>، 25 فونت فارسی را به این افزونه اضافه کنید.</p>
+                <p>با تهیه نسخه پرو بسته <a href="https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/"> فارسی ساز المنتور </a>، 26 فونت فارسی را به این افزونه اضافه کنید.</p>
 				<p>لیست فونت های نسخه پولی:</p>
 				<li>Anjoman</li>
 				<li>Aviny</li>
@@ -82,6 +82,7 @@ function persian_elementor_func()
 				<li>Katibeh</li>
 				<li>Maneli</li>
 				<li>Mikhak</li>
+				<li>Noora</li>
 				<li>Nahid</li>
 				<li>Parastoo</li>
 				<li>Sahel</li>
@@ -96,6 +97,12 @@ function persian_elementor_func()
 
                 <h4>آیکون های ایرانی</h4>
                 <p>با نصب افزونه فارسی ساز، 48 فونت آیکون از برند های ایرانی به کتابخانه آیکون المنتور اضافه می شود. این آیکون ها برند های بانک ها، پیام رسان های داخلی و بیشتر می باشد.</p>
+            </div>	
+			
+			<div>
+
+					<h4>قالب های ایرانی در کتابخانه المنتور</h4>
+               <p>بعد از نصب افزونه فارسی ساز المنتور، کتابخانه قالب های ایرانی، فارسی شده و راستچین را به کتابخانه قالب های المنتور اضافه کنید.</p>
             </div>
 
         </div>
@@ -107,3 +114,32 @@ function persian_elementor_func()
 
     <?php
 }
+function efa_persian_li() {
+	?>
+	<style>
+	.wrap-license-efa .pluginname {
+    background: #f9f9f9;
+    padding: 14px;
+    border-bottom: 1px solid #ccc;
+    margin: -14px -14px 20px;
+    width: 100%;
+}
+.wrap-license-efa{
+	margin: 25px 0px 10px 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    max-width: 535px;
+    padding: 15px;
+    min-height: 220px;
+    position: relative;
+    box-sizing: border-box;
+}
+label.description {
+    font-size: 13px;
+    top: 9px;
+    position: relative;
+}
+	</style>
+	<?php
+}
+add_action( 'admin_head', 'efa_persian_li' );

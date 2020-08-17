@@ -95,7 +95,13 @@ if ( ! class_exists( 'Persian_Elementor_Templates_Manager' ) ) {
 		 */
 		public function prepend_categories( $library_data ) {
 
-			$categories = $this->get_categories();
+					$categories = [
+			'login',
+			'register',
+			'profile',
+			'loop',
+			'comment'
+		];
 
 			if ( ! empty( $categories ) ) {
 
