@@ -4,10 +4,11 @@
 /**
  * Load gettext translate for our text domain.
  *
- * @since 2.0.4
+ * @since 2.1.2
  *
  * @return void
  */
+ 
  
 // Elementor Pro
 $text_domain = 'elementor-pro';
@@ -46,6 +47,13 @@ $text_domain = 'dynamicconditions';
 	
 // Woolentor
 $text_domain = 'woolentor';
+	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
+	unload_textdomain($text_domain);
+	load_textdomain($text_domain, $persian_elementor_lang );
+	
+// MetForm
+$text_domain = 'metform';
 	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
 	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
 	unload_textdomain($text_domain);

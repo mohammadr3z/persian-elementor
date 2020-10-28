@@ -11,11 +11,11 @@ Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsia
 
 Requires at least: 5.0
 
-Tested up to: 5.3.2
+Tested up to: 5.5.1
 
 Requires PHP: 7.0
 
-Stable tag: 2.1 .1
+Stable tag: 2.2.0
 
 License: GPLv2 or later
 
@@ -78,10 +78,14 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 - **Sahel**
 - **Estedad**
 - **Mikhak**
+- **Kara**
+
+برای غیر فعال سازی و عدم بارگذاری فونت ها می توانید از پیشخوان وردپرس، تب المنتور فارسی گزینه غیر فعال کردن فونت ها را روشن کنید.
+
 
 
 = Pro =
-برای مشاهده لیست 22 فونت محبوب فارسی به سایت زیر مراجعه کنید.
+برای مشاهده لیست 26 فونت محبوب فارسی به سایت زیر مراجعه کنید.
 * نسخه پرو فارسی ساز [افزونه المنتور](https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/)
 
 - **آیکون های ایرانی**
@@ -96,6 +100,26 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 
 == Changelog ==
+
+
+= 2.2.0 =
+
+اضافه شدن تنظیمات برای غیر فعال کردن فونت های فارسی
+
+
+= 2.1.4 =
+
+اضافه شدن فونت جدید کارا در نسخه رایگان
+بروزرسانی فونت ایران یکان به آخرین نسخه
+
+= 2.1.3 =
+
+اضافه شدن ترجمه افزونه METFORM
+
+
+= 2.1.2 =
+
+بروزرسانی ترجمه المنتور در نسخه 3
 
 = 2.1.0 =
 

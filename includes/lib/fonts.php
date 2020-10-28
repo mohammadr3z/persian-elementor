@@ -1,5 +1,8 @@
 <?php
 
+$options = get_option( 'efa_settings' );
+if ( !$options['efa_checkbox_field_0'] == '1' ) {
+
 /**
  * Add Font Group
  */
@@ -18,6 +21,7 @@ add_filter( 'elementor/fonts/additional_fonts', function( $additional_fonts ) {
 	$additional_fonts['Gandom'] = 'FARSI';
 	$additional_fonts['IRANYekan'] = 'FARSI';
 	$additional_fonts['IRANYekanFN'] = 'FARSI';
+	$additional_fonts['Kara'] = 'FARSI';
 	$additional_fonts['Mikhak'] = 'FARSI';
 	$additional_fonts['Nahid'] = 'FARSI';
 	$additional_fonts['Parastoo'] = 'FARSI';
@@ -31,3 +35,5 @@ add_filter( 'elementor/fonts/additional_fonts', function( $additional_fonts ) {
 	$additional_fonts['VazirFN'] = 'FARSI';
 	return $additional_fonts;
 } );
+
+}

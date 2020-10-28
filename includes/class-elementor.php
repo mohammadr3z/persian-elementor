@@ -3,7 +3,7 @@
  * ElementorFa font.
  *
  *
- * @since 2.0.1
+ * @since 2.2.0
  */
  
 // Enqueue Editor
@@ -21,9 +21,21 @@
 		wp_enqueue_style( 'persian-elementor-common',plugins_url( 'assets/css/common-rtl.css', __FILE__ ) );
 	});
 
-// Enqueue Front End
-	add_action('elementor/frontend/before_enqueue_styles', function() {
-		wp_enqueue_style( 'persian-elementor-font', 
-'https://rawcdn.githack.com/mohammadr3z/CDN_Font/a3ee1ea9096759a2174dc8b7d0dc1d26706c7d60/font.css' );
-		wp_enqueue_style( 'persian-elementor-flatpickr',plugins_url( 'assets/css/flatpickr-rtl.css', __FILE__ ) );
-});
+/**
+ * Enqueue Persian Fonr Front End
+ */
+$options = get_option( 'efa_settings' );
+	if ( !$options['efa_checkbox_field_0'] == '1' ) {
+		function efa_persian_font() {
+			wp_enqueue_style( 'persian-elementor-font', 'https://rawcdn.githack.com/mohammadr3z/CDN_Font/884a6df66545c0f982fef877d193d47ab3dc4079/font.css' );
+	}
+	add_action( 'elementor/frontend/before_enqueue_styles', 'efa_persian_font' );
+}
+
+/**
+ * Enqueue RTL Flatpickr Front End
+ */
+function efa_persian_flatpickr() {
+	wp_enqueue_style( 'persian-elementor-flatpickr',plugins_url( 'assets/css/flatpickr-rtl.css', __FILE__ ) );
+}
+add_action( 'elementor/frontend/before_enqueue_styles', 'efa_persian_flatpickr' );
