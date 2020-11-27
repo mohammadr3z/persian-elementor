@@ -1,4 +1,8 @@
 <?php
+
+$options = get_option('persian_elementor');
+if ( $options['efa-templates-kits'] != 'no') {
+    
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -210,3 +214,4 @@ function efa_templates_for_elementor_manager_init() {
 	return Persian_Elementor_Templates_Manager::get_instance();
 }
 efa_templates_for_elementor_manager_init()->init();
+}

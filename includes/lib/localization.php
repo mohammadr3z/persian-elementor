@@ -1,4 +1,6 @@
 <?php
+$options = get_option('persian_elementor');
+if ( $options['efa-flatpickr'] != 'no') {
 class PersianElementorLocalization {
 
 	private $locale;
@@ -72,3 +74,5 @@ class PersianElementorLocalization {
 }
 
 $persian_elementor_localization = new PersianElementorLocalization();
+
+}

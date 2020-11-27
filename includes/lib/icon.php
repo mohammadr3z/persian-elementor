@@ -1,5 +1,8 @@
 <?php
 
+$options = get_option('persian_elementor');
+if ( $options['efa-iranian-icon'] != 'no') {
+    
 add_filter( 'elementor/icons_manager/native', 'add_eicons_to_icon_manager');
 
 function add_eicons_to_icon_manager( $settings ) {
@@ -20,3 +23,4 @@ function add_eicons_to_icon_manager( $settings ) {
 
 		return $settings;
 	}
+}

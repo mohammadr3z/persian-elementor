@@ -1,6 +1,5 @@
 <?php
 add_action( 'admin_menu', 'persian_elementor_panel' );
-add_action( 'admin_init', 'efa_settings_init' );
 
 function persian_elementor_panel() {
 	add_menu_page(
@@ -8,17 +7,11 @@ function persian_elementor_panel() {
 	'المنتور فارسی',
 	'manage_options',
 	'persian_elementor',
-	'checking_options_page',
+	'efa_settings_section_callback',
 	plugins_url( 'persian-elementor/includes/assets/images/icon.png' ),
 	58);
-}
+	//add_submenu_page( 'persian_elementor', 'لایسنس', 'لایسنس', 'manage_options', 'persian_elementor_license', 'persian_elementor_func_license');
 
-function efa_checkbox_field_0_render(  ) { 
-
-	$options = get_option( 'efa_settings' );
-?>
-		<input type='checkbox' name='efa_settings[efa_checkbox_field_0]' <?php checked( $options['efa_checkbox_field_0'], 1 ); ?> value='1'>
-<?php
 }
 
 function efa_settings_section_callback(  ) { 
@@ -35,49 +28,16 @@ function efa_settings_section_callback(  ) {
 			<a href="https://elementorfa.ir/shop/" class="nav-tab" target="_blank">فروشگاه</a>
 			<a href="https://elementorfa.ir/faq" class="nav-tab" target="_blank">انجمن پرسش و پاسخ</a>
 		</h2>
- <h3>تنظیمات نمایش فونت های فارسی</h3>
- <p>با روشن کردن این گزینه تمامی فونت های فارسی از المنتور حذف شده و فونت ها دیگر بارگذاری نخواهند شد.</p>
 <?php
 
-}
-
-function efa_settings_init(  ) { 
-
-register_setting( 'my_option', 'efa_settings' );
-
-add_settings_section(
-    'efa_setting_section', 
-    (''), 
-    'efa_settings_section_callback', 
-    'disable_font'
-);
-
-add_settings_field( 
-    'efa_checkbox_field_0', 
-    __( 'غير فعال کردن فونت ها', 'wp' ), 
-    'efa_checkbox_field_0_render', 
-    'disable_font', 
-    'efa_setting_section' 
-);
-}
-
-function checking_options_page(  ) {
-?>
-<form action='options.php' method='post'>
-    <?php
-    settings_fields( 'my_option' );
-    do_settings_sections( 'disable_font' );
-    submit_button();
-    ?>
-</form>
-</div>
-
-<?php
 }
 
 function efa_persian_li() {
 	?>
 	<style>
+.exopite-sof-wrapper-menu {
+    margin-left: 0!important;
+}
 	.wrap-license-efa .pluginname {
     background: #f9f9f9;
     padding: 14px;
@@ -100,6 +60,61 @@ label.description {
     top: 9px;
     position: relative;
 }
+p.exopite-sof-description {
+    font-size: 13px;
+    text-align: right;
+	font-family: 'Vazir';
+}
+.exopite-sof-content-nav {
+    background-color: #fff0!important;
+}
+.exopite-sof-nav {
+    background-color: #fff!important;
+}
+.exopite-sof-nav-list-item, .exopite-sof-nav-list-parent-item>span {
+    color: #23282d!important;
+    border-bottom: 1px solid #eee!important;
+}
+.exopite-sof-nav-list-item:hover, .exopite-sof-nav-list-parent-item>span:hover {
+    color: #5f5f5f;
+}
+.exopite-sof-nav-list-item.active {
+    border-right: 3px solid #0073aa!important;
+    color: #5f5f5f!important;
+    background-color: #fff0!important;
+}
+.exopite-sof-header {
+    background-color: #93033c!important;
+    background-image: none!important;
+}
+.checkbox__switch:after,.checkbox__input:checked+.checkbox__switch,.checkbox__switch {
+    border-radius: 100px!important;
+}
+.checkbox__input:checked+.checkbox__switch {
+    border-color: #01d28e26!important;
+    background-color: #01d28e26!important;
+}
+.checkbox__switch {
+    background-color: #fa163f26!important;
+}
+.exopite-sof-content .info {
+    color: #062748!important;
+    background-color: #1089ff26!important;
+    border-color: #1089ff26!important;
+}
+.exopite-sof-sections,.exopite-sof-nav {
+    box-shadow: 1px 1px 10px 0 rgba(0,0,0,0.05);
+}
+span.exopite-sof-search-wrapper {
+    display: none;
+}
+h4.exopite-sof-title,.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6 {
+    font-family: 'Vazir'!important;
+}
+@media (min-width:768px) {
+.exopite-sof-sections {
+    margin-right: 25px;
+}}
 	</style>
 	<?php
 }

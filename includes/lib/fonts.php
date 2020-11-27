@@ -1,8 +1,7 @@
 <?php
 
-$options = get_option( 'efa_settings' );
-if ( !$options['efa_checkbox_field_0'] == '1' ) {
-
+$options = get_option('persian_elementor');
+if ( $options['efa-all-font'] != 'no') {
 /**
  * Add Font Group
  */
