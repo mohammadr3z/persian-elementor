@@ -108,9 +108,6 @@ p.exopite-sof-description {
 span.exopite-sof-search-wrapper {
     display: none;
 }
-h4.exopite-sof-title,.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6 {
-    font-family: 'Vazir'!important;
-}
 @media (min-width:768px) {
 .exopite-sof-sections {
     margin-right: 25px;

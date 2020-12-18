@@ -58,6 +58,11 @@ if ( $options['efa-panel-font'] != 'no') {
 		wp_enqueue_style( 'persian-elementor-common',plugins_url( 'assets/css/common-rtl.css', __FILE__ ) );
 	});
 	
+// Enqueue Common app
+	add_action('elementor/app/init', function() {
+		wp_enqueue_style( 'persian-elementor-common',plugins_url( 'assets/css/common-rtl.css', __FILE__ ) );
+	});
+	
 }
 
 if ( $options['efa-all-font'] != 'no') {

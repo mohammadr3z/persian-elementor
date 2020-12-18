@@ -30,7 +30,7 @@ class Persian_Elementor_Templates_Source extends Elementor\TemplateLibrary\Sourc
 
 	public function get_items( $args = array() ) {
 
-		$url            ='https://raw.githubusercontent.com/mohammadr3z/persian-elementor-library-fa/master/info.json';
+		$url            ='https://raw.githack.com/mohammadr3z/persian-elementor-library-fa/master/info.json';
 		$response       = wp_remote_get( $url, array( 'timeout' => 60 ) );
 		$body           = wp_remote_retrieve_body( $response );
 		$body           = json_decode( $body, true );
@@ -89,7 +89,7 @@ class Persian_Elementor_Templates_Source extends Elementor\TemplateLibrary\Sourc
 	public function get_data( array $args, $context = 'display' ) {
 
 		$filename   = str_replace( $this->template_prefix, '', $args['template_id'] );
-		$url        = 'https://raw.githubusercontent.com/mohammadr3z/persian-elementor-library-fa/master/templates/' . $filename . '.json';
+		$url        = 'https://raw.githack.com/mohammadr3z/persian-elementor-library-fa/master/templates/' . $filename . '.json';
 		$response   = wp_remote_get( $url, array( 'timeout' => 60 ) );
 		$body       = wp_remote_retrieve_body( $response );
 		$body       = json_decode( $body, true );
