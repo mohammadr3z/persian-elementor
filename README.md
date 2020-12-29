@@ -15,7 +15,7 @@ Tested up to: 5.5.1
 
 Requires PHP: 7.0
 
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 
 License: GPLv2 or later
 
@@ -100,6 +100,10 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 
 == Changelog ==
+
+= 2.3.4 =
+*  حذف داشبورد
+*  بروزرسانی سرور فونت ها
 
 = 2.3.2 =
 

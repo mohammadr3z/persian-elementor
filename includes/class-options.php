@@ -50,6 +50,12 @@ class PersianElementorOptions extends PersianElementorCore
             'title' => __('المنتور فارسی', 'persian-elementor') ,
             'icon' => 'dashicons-admin-generic',
             'fields' => array(
+				array(
+                    'type' => 'content',
+                    'wrap_class' => 'no-border-bottom',
+                    'title' => __('نسخه افزونه', 'persian-elementor') ,
+                    'before' => '<strong>' . PERSIAN_ELEMENTOR_VERSION . '</strong>',
+                ) ,
                 array(
                     'type' => 'notice',
                     'class' => 'info',
@@ -226,7 +232,7 @@ class PersianElementorOptions extends PersianElementorCore
 		            'type' => 'content',
 		            'wrap_class' => 'no-border-bottom',
 		            'title' => __('پشتیبانی', 'persian-elementor') ,
-		            'content' => __('برای دریافت پشتیبانی می توانید به سایت <a href="https://elementorfa.ir/" target="_blank">elementorfa.ir</a> مراجعه کنید', 'persian-elementor') 
+		            'content' => __('برای دریافت پشتیبانی می توانید به سایت <a href="#" target="_blank">المنتور فارسی</a> مراجعه کنید', 'persian-elementor') 
 	            ) ,
             )
         );

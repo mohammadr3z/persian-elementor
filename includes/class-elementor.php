@@ -70,7 +70,7 @@ if ( $options['efa-all-font'] != 'no') {
  * Enqueue Persian Font Front End
  */
     function efa_persian_font() {
-			wp_enqueue_style( 'persian-elementor-font', 'https://rawcdn.githack.com/mohammadr3z/CDN_Font/884a6df66545c0f982fef877d193d47ab3dc4079/font.css' );
+			wp_enqueue_style( 'persian-elementor-font', 'https://cdn.statically.io/gh/mohammadr3z/CDN_Font/884a6df66545c0f982fef877d193d47ab3dc4079/font.css' );
 	}
 	add_action( 'elementor/frontend/before_enqueue_styles', 'efa_persian_font' );
 

@@ -21,12 +21,12 @@ function efa_settings_section_callback(  ) {
 		<h1>به المنتور فارسی خوش آمديد</h1>
 			<div class="about-text">لذت طراحی با زبان فارسی و ظاهر زيبا</div>
 
-		<a class="wp-badge" href="https://elementorfa.ir/" target="_blank"	style="background-color:#93033C !important;background-image:url(<?php echo plugin_dir_url( __FILE__ ) . 'assets/images/about.png'; ?>) !important;background-position: center center;background-size: 167px auto !important;"></a>
+		<a class="wp-badge" href="#" target="_blank"	style="background-color:#93033C !important;background-image:url(<?php echo plugin_dir_url( __FILE__ ) . 'assets/images/about.png'; ?>) !important;background-position: center center;background-size: 167px auto !important;"></a>
 
 		<h2 class="nav-tab-wrapper">
-			<a class="nav-tab nav-tab-active" href="https://elementorfa.ir/" target="_blank">تنظيمات</a>
-			<a href="https://elementorfa.ir/shop/" class="nav-tab" target="_blank">فروشگاه</a>
-			<a href="https://elementorfa.ir/faq" class="nav-tab" target="_blank">انجمن پرسش و پاسخ</a>
+			<a class="nav-tab nav-tab-active" href="#" target="_blank">تنظيمات</a>
+			<a href="#" class="nav-tab" target="_blank">فروشگاه</a>
+			<a href="#" class="nav-tab" target="_blank">انجمن پرسش و پاسخ</a>
 		</h2>
 <?php
 
