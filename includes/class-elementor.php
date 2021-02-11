@@ -85,4 +85,12 @@ function efa_persian_flatpickr() {
 }
 add_action( 'elementor/frontend/before_enqueue_styles', 'efa_persian_flatpickr' );
 
+/**
+ * Enqueue Flatpickr Mobile
+ */
+function efa_persian_flatpickr_Mobile() {
+	wp_enqueue_script( 'persian-elementor-flatpickr',plugins_url( 'assets/js/flatpickr-mobile.js', __FILE__ ) );
+}
+add_action( 'elementor/frontend/before_enqueue_styles', 'efa_persian_flatpickr_Mobile' );
+
 }

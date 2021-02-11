@@ -15,7 +15,7 @@ Tested up to: 5.5.1
 
 Requires PHP: 7.0
 
-Stable tag: 2.3.4
+Stable tag: 2.3.6
 
 License: GPLv2 or later
 
@@ -100,6 +100,15 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 
 == Changelog ==
+
+= 2.3.6 =
+
+* اضافه شدن تاریخ شمسی فرم المنتور در دستگاه های موبایل
+
+= 2.3.5 =
+
+* بهبود ترجمه برای نسخه 3.1 المنتور
+
 
 = 2.3.4 =
 *  حذف داشبورد
