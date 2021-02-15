@@ -25,8 +25,6 @@ function efa_settings_section_callback(  ) {
 
 		<h2 class="nav-tab-wrapper">
 			<a class="nav-tab nav-tab-active" href="#" target="_blank">تنظيمات</a>
-			<a href="#" class="nav-tab" target="_blank">فروشگاه</a>
-			<a href="#" class="nav-tab" target="_blank">انجمن پرسش و پاسخ</a>
 		</h2>
 <?php
 
