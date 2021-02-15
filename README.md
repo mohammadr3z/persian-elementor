@@ -11,11 +11,11 @@ Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsia
 
 Requires at least: 5.0
 
-Tested up to: 5.5.1
+Tested up to: 5.6.1
 
 Requires PHP: 7.0
 
-Stable tag: 2.3.6
+Stable tag: 2.3.7
 
 License: GPLv2 or later
 
@@ -48,6 +48,8 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 * Dynamic Conditions
 * Ele Skin
 * Essential Addons Lite
+* MetForm
+* ElementsKit Lite
 
 - **قالب های آماده فارسی**
 
@@ -100,6 +102,12 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 
 == Changelog ==
+
+= 2.3.7 =
+
+* سازگار با نسخه 3.1 المنتور پرو
+* اضافه شدن ترجمه افزونه elementskit lite
+* بهینه سازی ویجت جدید کد هایلایت برای زبان فارسی
 
 = 2.3.6 =
 
