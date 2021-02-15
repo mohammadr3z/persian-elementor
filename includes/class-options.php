@@ -142,6 +142,13 @@ class PersianElementorOptions extends PersianElementorCore
                     'description' => __('فعال/غیر فعال کردن ترجمه فارسی افزونه Metform', 'persian-elementor') ,
                     'default' => 'no',
                 ) ,
+				array(
+                    'id' => 'efa-elementskit-lite',
+                    'type' => 'switcher',
+                    'title' => __('Elementskit Lite', 'persian-elementor') ,
+                    'description' => __('فعال/غیر فعال کردن ترجمه فارسی افزونه Elementskit Lite', 'persian-elementor') ,
+                    'default' => 'no',
+                ) ,
             ) ,
         );
         
