@@ -68,3 +68,11 @@ $text_domain = 'metform';
 	unload_textdomain($text_domain);
 	load_textdomain($text_domain, $persian_elementor_lang );
 }
+if ( $options['efa-elementskit-lite'] != 'no') {
+// Elementskit Lite
+$text_domain = 'elementskit-lite';
+	$persian_elementor_lang = PERSIAN_ELEMENTOR . "/languages/$text_domain/$text_domain-fa_IR.mo";
+	$wordpress_lang = "wp-content/languages/plugins/$text_domain-fa_IR.mo";
+	unload_textdomain($text_domain);
+	load_textdomain($text_domain, $persian_elementor_lang );
+}
