@@ -49,7 +49,6 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 * Ele Skin
 * Essential Addons Lite
 * MetForm
-* ElementsKit Lite
 
 - **قالب های آماده فارسی**
 
