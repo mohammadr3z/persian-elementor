@@ -1,0 +1,19 @@
+.flatpickr-month {
+    height: 34px!important;
+}
+.flatpickr-calendar.animate.open.arrowTop,.flatpickr-calendar.animate.open.arrowBottom {
+    width: 280px;
+	direction: rtl;
+	font-family: VazirFN;
+}
+.flatpickr-current-month input.cur-year {
+    padding: 0 .5ch 0 0!important;
+	direction: ltr;
+}
+.flatpickr-current-month span.cur-month {
+    margin-right: .5ch;
+    margin-left: 0;
+}
+pre.highlight-height {
+    direction: ltr;
+}
