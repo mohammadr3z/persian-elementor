@@ -66,7 +66,7 @@ class PersianElementorCore {
 	    // Enqueue Persian Font
 		public function persian_elementor_cdn_font()
 	{
-		wp_enqueue_style( 'persian-elementor-font','https://storage.marketifa.ir/persian-elementor/font.css' );
+		wp_enqueue_style( 'persian-elementor-font','https://c204025.parspack.net/c204025/persian-elementor/font.css' );
 	}
 	
 		// Enqueue Front RTL
