@@ -42,7 +42,7 @@ class PersianElementorCore {
 	/**
 	 * Editor scripts
 	 *
-	 * Enqueue plugin javascripts and css integrations for Elementor editor.
+	 * Enqueue plugin javascripts and css integrations for Persian Elementor.
 	 *
 	 * @since 2.3.10
 	 * @access public
@@ -58,11 +58,13 @@ class PersianElementorCore {
 	{
 		wp_enqueue_style( 'persian-elementor-preview',plugins_url( 'assets/css/preview-rtl.css',  __FILE__ ) );
 	}
+	
 	    // Enqueue App RTL
 	    public function app_rtl_css()
 	{
 		wp_enqueue_style( 'persian-elementor-app',plugins_url( 'assets/css/common-rtl.css',  __FILE__ ) );
 	}
+	
 	    // Enqueue Persian Font
 		public function persian_elementor_cdn_font()
 	{
@@ -94,7 +96,7 @@ class PersianElementorCore {
 	}
 
 	/**
-	 *  Plugin class constructor
+	 * Plugin class constructor
 	 *
 	 * Register plugin action hooks and filters
 	 *

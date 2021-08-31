@@ -82,3 +82,4 @@ $text_domain = 'metform';
 	load_textdomain($text_domain, $persian_elementor_lang );
 }
 }
+
