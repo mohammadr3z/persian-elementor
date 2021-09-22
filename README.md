@@ -102,6 +102,11 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 == Changelog ==
 
+= 2.4.9 =
+
+* نمایش تاریخ شمسی فرم المنتور در ویرایشگر
+
+
 = 2.4.8 =
 
 * بهبود ترجمه نسخه 3.4.0 المنتور پرو
