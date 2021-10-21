@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_color_group' ) ) {
-  class CSF_Field_color_group extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_color_group' ) ) {
+  class EFS_Field_color_group extends EFS_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );

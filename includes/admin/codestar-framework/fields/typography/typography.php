@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_typography' ) ) {
-  class CSF_Field_typography extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_typography' ) ) {
+  class EFS_Field_typography extends EFS_Fields {
 
     public $chosen = false;
 
@@ -349,7 +349,7 @@ if ( ! class_exists( 'CSF_Field_typography' ) ) {
 
       if ( ! wp_script_is( 'csf-webfontloader' ) ) {
 
-        CSF::include_plugin_file( 'fields/typography/google-fonts.php' );
+        EFS::include_plugin_file( 'fields/typography/google-fonts.php' );
 
         wp_enqueue_script( 'csf-webfontloader', 'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js', array( 'csf' ), '1.6.28', true );
 
@@ -431,7 +431,7 @@ if ( ! class_exists( 'CSF_Field_typography' ) ) {
       if ( ! empty( $this->value['type'] ) ) {
         $is_google = ( $this->value['type'] === 'google' ) ? true : false;
       } else {
-        CSF::include_plugin_file( 'fields/typography/google-fonts.php' );
+        EFS::include_plugin_file( 'fields/typography/google-fonts.php' );
         $is_google = ( array_key_exists( $this->value['font-family'], csf_get_google_fonts() ) ) ? true : false;
       }
 
@@ -446,10 +446,10 @@ if ( ! class_exists( 'CSF_Field_typography' ) ) {
           $style = $font_weight . $font_style;
           if ( ! empty( $style ) ) {
             $style = ( $style === 'normal' ) ? '400' : $style;
-            CSF::$webfonts[$method][$font_family][$style] = $style;
+            EFS::$webfonts[$method][$font_family][$style] = $style;
           }
         } else {
-          CSF::$webfonts[$method][$font_family] = array();
+          EFS::$webfonts[$method][$font_family] = array();
         }
 
         // set extra styles
@@ -457,7 +457,7 @@ if ( ! class_exists( 'CSF_Field_typography' ) ) {
           foreach ( $this->value['extra-styles'] as $extra_style ) {
             if ( ! empty( $extra_style ) ) {
               $extra_style = ( $extra_style === 'normal' ) ? '400' : $extra_style;
-              CSF::$webfonts[$method][$font_family][$extra_style] = $extra_style;
+              EFS::$webfonts[$method][$font_family][$extra_style] = $extra_style;
             }
           }
         }
@@ -467,7 +467,7 @@ if ( ! class_exists( 'CSF_Field_typography' ) ) {
           $this->value['subset'] = ( is_array( $this->value['subset'] ) ) ? $this->value['subset'] : array_filter( (array) $this->value['subset'] );
           foreach ( $this->value['subset'] as $subset ) {
             if( ! empty( $subset ) ) {
-              CSF::$subsets[$subset] = $subset;
+              EFS::$subsets[$subset] = $subset;
             }
           }
         }

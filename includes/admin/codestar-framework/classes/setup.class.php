@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF' ) ) {
-  class CSF {
+if ( ! class_exists( 'EFS' ) ) {
+  class EFS {
 
     // Default constants
     public static $premium  = false;
@@ -67,13 +67,13 @@ if ( ! class_exists( 'CSF' ) ) {
       // Setup textdomain
       self::textdomain();
 
-      add_action( 'after_setup_theme', array( 'CSF', 'setup' ) );
-      add_action( 'init', array( 'CSF', 'setup' ) );
-      add_action( 'switch_theme', array( 'CSF', 'setup' ) );
-      add_action( 'admin_enqueue_scripts', array( 'CSF', 'add_admin_enqueue_scripts' ) );
-      add_action( 'wp_enqueue_scripts', array( 'CSF', 'add_typography_enqueue_styles' ), 80 );
-      add_action( 'wp_head', array( 'CSF', 'add_custom_css' ), 80 );
-      add_filter( 'admin_body_class', array( 'CSF', 'add_admin_body_class' ) );
+      add_action( 'after_setup_theme', array( 'EFS', 'setup' ) );
+      add_action( 'init', array( 'EFS', 'setup' ) );
+      add_action( 'switch_theme', array( 'EFS', 'setup' ) );
+      add_action( 'admin_enqueue_scripts', array( 'EFS', 'add_admin_enqueue_scripts' ) );
+      add_action( 'wp_enqueue_scripts', array( 'EFS', 'add_typography_enqueue_styles' ), 80 );
+      add_action( 'wp_head', array( 'EFS', 'add_custom_css' ), 80 );
+      add_filter( 'admin_body_class', array( 'EFS', 'add_admin_body_class' ) );
 
     }
 
@@ -85,7 +85,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       // Setup admin option framework
       $params = array();
-      if ( class_exists( 'CSF_Options' ) && ! empty( self::$args['admin_options'] ) ) {
+      if ( class_exists( 'EFS_Options' ) && ! empty( self::$args['admin_options'] ) ) {
         foreach ( self::$args['admin_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -93,7 +93,7 @@ if ( ! class_exists( 'CSF' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            CSF_Options::instance( $key, $params );
+            EFS_Options::instance( $key, $params );
 
             if ( ! empty( $value['show_in_customizer'] ) ) {
               $value['output_css'] = false;
@@ -108,7 +108,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       // Setup customize option framework
       $params = array();
-      if ( class_exists( 'CSF_Customize_Options' ) && ! empty( self::$args['customize_options'] ) ) {
+      if ( class_exists( 'EFS_Customize_Options' ) && ! empty( self::$args['customize_options'] ) ) {
         foreach ( self::$args['customize_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -116,7 +116,7 @@ if ( ! class_exists( 'CSF' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            CSF_Customize_Options::instance( $key, $params );
+            EFS_Customize_Options::instance( $key, $params );
 
           }
         }
@@ -124,7 +124,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       // Setup metabox option framework
       $params = array();
-      if ( class_exists( 'CSF_Metabox' ) && ! empty( self::$args['metabox_options'] ) ) {
+      if ( class_exists( 'EFS_Metabox' ) && ! empty( self::$args['metabox_options'] ) ) {
         foreach ( self::$args['metabox_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -132,7 +132,7 @@ if ( ! class_exists( 'CSF' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            CSF_Metabox::instance( $key, $params );
+            EFS_Metabox::instance( $key, $params );
 
           }
         }
@@ -140,7 +140,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       // Setup nav menu option framework
       $params = array();
-      if ( class_exists( 'CSF_Nav_Menu_Options' ) && ! empty( self::$args['nav_menu_options'] ) ) {
+      if ( class_exists( 'EFS_Nav_Menu_Options' ) && ! empty( self::$args['nav_menu_options'] ) ) {
         foreach ( self::$args['nav_menu_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -148,7 +148,7 @@ if ( ! class_exists( 'CSF' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            CSF_Nav_Menu_Options::instance( $key, $params );
+            EFS_Nav_Menu_Options::instance( $key, $params );
 
           }
         }
@@ -156,7 +156,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       // Setup profile option framework
       $params = array();
-      if ( class_exists( 'CSF_Profile_Options' ) && ! empty( self::$args['profile_options'] ) ) {
+      if ( class_exists( 'EFS_Profile_Options' ) && ! empty( self::$args['profile_options'] ) ) {
         foreach ( self::$args['profile_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -164,7 +164,7 @@ if ( ! class_exists( 'CSF' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            CSF_Profile_Options::instance( $key, $params );
+            EFS_Profile_Options::instance( $key, $params );
 
           }
         }
@@ -172,7 +172,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       // Setup taxonomy option framework
       $params = array();
-      if ( class_exists( 'CSF_Taxonomy_Options' ) && ! empty( self::$args['taxonomy_options'] ) ) {
+      if ( class_exists( 'EFS_Taxonomy_Options' ) && ! empty( self::$args['taxonomy_options'] ) ) {
         $taxonomy = ( isset( $_GET['taxonomy'] ) ) ? sanitize_text_field( wp_unslash( $_GET['taxonomy'] ) ) : '';
         foreach ( self::$args['taxonomy_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
@@ -181,20 +181,20 @@ if ( ! class_exists( 'CSF' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            CSF_Taxonomy_Options::instance( $key, $params );
+            EFS_Taxonomy_Options::instance( $key, $params );
 
           }
         }
       }
 
       // Setup widget option framework
-      if ( class_exists( 'CSF_Widget' ) && class_exists( 'WP_Widget_Factory' ) && ! empty( self::$args['widget_options'] ) ) {
+      if ( class_exists( 'EFS_Widget' ) && class_exists( 'WP_Widget_Factory' ) && ! empty( self::$args['widget_options'] ) ) {
         $wp_widget_factory = new WP_Widget_Factory();
         foreach ( self::$args['widget_options'] as $key => $value ) {
           if ( ! isset( self::$inited[$key] ) ) {
 
             self::$inited[$key] = true;
-            $wp_widget_factory->register( CSF_Widget::instance( $key, $value ) );
+            $wp_widget_factory->register( EFS_Widget::instance( $key, $value ) );
 
           }
         }
@@ -202,7 +202,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       // Setup comment option framework
       $params = array();
-      if ( class_exists( 'CSF_Comment_Metabox' ) && ! empty( self::$args['comment_options'] ) ) {
+      if ( class_exists( 'EFS_Comment_Metabox' ) && ! empty( self::$args['comment_options'] ) ) {
         foreach ( self::$args['comment_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -210,7 +210,7 @@ if ( ! class_exists( 'CSF' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            CSF_Comment_Metabox::instance( $key, $params );
+            EFS_Comment_Metabox::instance( $key, $params );
 
           }
         }
@@ -218,7 +218,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       // Setup shortcode option framework
       $params = array();
-      if ( class_exists( 'CSF_Shortcoder' ) && ! empty( self::$args['shortcode_options'] ) ) {
+      if ( class_exists( 'EFS_Shortcoder' ) && ! empty( self::$args['shortcode_options'] ) ) {
         foreach ( self::$args['shortcode_options'] as $key => $value ) {
           if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
 
@@ -226,16 +226,16 @@ if ( ! class_exists( 'CSF' ) ) {
             $params['sections'] = self::$args['sections'][$key];
             self::$inited[$key] = true;
 
-            CSF_Shortcoder::instance( $key, $params );
+            EFS_Shortcoder::instance( $key, $params );
 
           }
         }
 
         // Once editor setup for gutenberg and media buttons
-        if ( class_exists( 'CSF_Shortcoder' ) && ! empty( self::$shortcode_instances ) ) {
+        if ( class_exists( 'EFS_Shortcoder' ) && ! empty( self::$shortcode_instances ) ) {
           foreach ( self::$shortcode_instances as $instance ) {
             if ( ! empty( $instance['show_in_editor'] ) ) {
-              CSF_Shortcoder::once_editor_setup();
+              EFS_Shortcoder::once_editor_setup();
               break;
             }
           }
@@ -447,7 +447,7 @@ if ( ! class_exists( 'CSF' ) ) {
 
       if ( ! empty( $fields ) ) {
         foreach ( $fields as $field ) {
-          if ( ! class_exists( 'CSF_Field_'. $field ) && class_exists( 'CSF_Fields' ) ) {
+          if ( ! class_exists( 'EFS_Field_'. $field ) && class_exists( 'EFS_Fields' ) ) {
             self::include_plugin_file( 'fields/'. $field .'/'. $field .'.php' );
           }
         }
@@ -602,7 +602,7 @@ if ( ! class_exists( 'CSF' ) ) {
       if ( ! empty( self::$fields ) ) {
         foreach ( self::$fields as $field ) {
           if ( ! empty( $field['type'] ) ) {
-            $classname = 'CSF_Field_' . $field['type'];
+            $classname = 'EFS_Field_' . $field['type'];
             if ( class_exists( $classname ) && method_exists( $classname, 'enqueue' ) ) {
               $instance = new $classname( $field );
               if ( method_exists( $classname, 'enqueue' ) ) {
@@ -759,7 +759,7 @@ if ( ! class_exists( 'CSF' ) ) {
         $value = ( ! isset( $value ) && isset( $field['default'] ) ) ? $field['default'] : $value;
         $value = ( isset( $field['value'] ) ) ? $field['value'] : $value;
 
-        $classname = 'CSF_Field_'. $field_type;
+        $classname = 'EFS_Field_'. $field_type;
 
         if ( class_exists( $classname ) ) {
           $instance = new $classname( $field, $value, $unique, $where, $parent );
@@ -782,4 +782,4 @@ if ( ! class_exists( 'CSF' ) ) {
 
 }
 
-CSF::init( __FILE__ );
+EFS::init( __FILE__ );

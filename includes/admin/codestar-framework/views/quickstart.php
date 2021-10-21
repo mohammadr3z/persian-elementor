@@ -6,7 +6,7 @@
 <div class="csf-code-block">
 <pre>
 <span>// Control core classes for avoid errors</span>
-if ( class_exists( 'CSF' ) ) {
+if ( class_exists( 'EFS' ) ) {
 
   <span>//</span>
   <span>// Set a unique slug-like ID</span>
@@ -14,14 +14,14 @@ if ( class_exists( 'CSF' ) ) {
 
   <span>//</span>
   <span>// Create options</span>
-  CSF::createOptions( $prefix, array(
+  EFS::createOptions( $prefix, array(
     'menu_title' => 'My Framework',
     'menu_slug'  => 'my-framework',
   ) );
 
   <span>//</span>
   <span>// Create a section</span>
-  CSF::createSection( $prefix, array(
+  EFS::createSection( $prefix, array(
     'title'  => 'Tab Title 1',
     'fields' => array(
 
@@ -36,7 +36,7 @@ if ( class_exists( 'CSF' ) ) {
     )
   ) );
 
-  CSF::createSection( $prefix, array(
+  EFS::createSection( $prefix, array(
     'title'  => 'Tab Title 2',
     'fields' => array(
 

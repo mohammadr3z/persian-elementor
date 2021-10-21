@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_textarea' ) ) {
-  class CSF_Field_textarea extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_textarea' ) ) {
+  class EFS_Field_textarea extends EFS_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );
@@ -31,9 +31,9 @@ if ( ! class_exists( 'CSF_Field_textarea' ) ) {
 
         foreach ( $instances as $instance_key ) {
 
-          if ( isset( CSF::$shortcode_instances[$instance_key] ) ) {
+          if ( isset( EFS::$shortcode_instances[$instance_key] ) ) {
 
-            $button_title = CSF::$shortcode_instances[$instance_key]['button_title'];
+            $button_title = EFS::$shortcode_instances[$instance_key]['button_title'];
 
             echo '<a href="#" class="button button-primary csf-shortcode-button" data-modal-id="'. esc_attr( $instance_key ) .'">'. $button_title .'</a>';
 

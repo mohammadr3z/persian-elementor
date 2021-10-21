@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_repeater' ) ) {
-  class CSF_Field_repeater extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_repeater' ) ) {
+  class EFS_Field_repeater extends EFS_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );
@@ -37,7 +37,7 @@ if ( ! class_exists( 'CSF_Field_repeater' ) ) {
           $field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
           $field_unique  = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .'][0]' : $this->field['id'] .'[0]';
 
-          CSF::field( $field, $field_default, '___'. $field_unique, 'field/repeater' );
+          EFS::field( $field, $field_default, '___'. $field_unique, 'field/repeater' );
 
         }
         echo '</div>';
@@ -65,7 +65,7 @@ if ( ! class_exists( 'CSF_Field_repeater' ) ) {
               $field_unique = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .']['. $num .']' : $this->field['id'] .'['. $num .']';
               $field_value  = ( isset( $field['id'] ) && isset( $this->value[$key][$field['id']] ) ) ? $this->value[$key][$field['id']] : '';
 
-              CSF::field( $field, $field_value, $field_unique, 'field/repeater' );
+              EFS::field( $field, $field_value, $field_unique, 'field/repeater' );
 
             }
             echo '</div>';

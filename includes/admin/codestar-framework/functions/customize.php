@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'WP_Customize_Panel_CSF' ) && class_exists( 'WP_Customize_Panel' ) ) {
-  class WP_Customize_Panel_CSF extends WP_Customize_Panel {
+if ( ! class_exists( 'WP_Customize_Panel_EFS' ) && class_exists( 'WP_Customize_Panel' ) ) {
+  class WP_Customize_Panel_EFS extends WP_Customize_Panel {
     public $type = 'csf';
   }
 }
@@ -21,8 +21,8 @@ if ( ! class_exists( 'WP_Customize_Panel_CSF' ) && class_exists( 'WP_Customize_P
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'WP_Customize_Section_CSF' ) && class_exists( 'WP_Customize_Section' ) ) {
-  class WP_Customize_Section_CSF extends WP_Customize_Section {
+if ( ! class_exists( 'WP_Customize_Section_EFS' ) && class_exists( 'WP_Customize_Section' ) ) {
+  class WP_Customize_Section_EFS extends WP_Customize_Section {
     public $type = 'csf';
   }
 }
@@ -35,8 +35,8 @@ if ( ! class_exists( 'WP_Customize_Section_CSF' ) && class_exists( 'WP_Customize
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'WP_Customize_Control_CSF' ) && class_exists( 'WP_Customize_Control' ) ) {
-  class WP_Customize_Control_CSF extends WP_Customize_Control {
+if ( ! class_exists( 'WP_Customize_Control_EFS' ) && class_exists( 'WP_Customize_Control' ) ) {
+  class WP_Customize_Control_EFS extends WP_Customize_Control {
 
     public $type   = 'csf';
     public $field  = '';
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WP_Customize_Control_CSF' ) && class_exists( 'WP_Customize
 
       echo '<div class="csf-customize-field'. esc_attr( $class ) .'"'. $atts .'>';
 
-      CSF::field( $this->field, $this->value(), $this->unique, 'customize' );
+      EFS::field( $this->field, $this->value(), $this->unique, 'customize' );
 
       echo '</div>';
 

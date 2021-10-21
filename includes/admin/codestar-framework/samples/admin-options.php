@@ -8,15 +8,15 @@ $prefix = '_prefix_my_options';
 //
 // Create options
 //
-CSF::createOptions( $prefix, array(
-  'menu_title' => 'CSF Demo',
+EFS::createOptions( $prefix, array(
+  'menu_title' => 'EFS Demo',
   'menu_slug'  => 'csf-demo',
 ) );
 
 //
 // Create a section
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'title'  => 'Overview',
   'icon'   => 'fas fa-rocket',
   'fields' => array(
@@ -139,7 +139,7 @@ CSF::createSection( $prefix, array(
 //
 // Basic Fields
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'id'    => 'basic_fields',
   'title' => 'Basic Fields',
   'icon'  => 'fas fa-plus-circle',
@@ -148,7 +148,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: text
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'basic_fields',
   'title'       => 'Text',
   'icon'        => 'far fa-square',
@@ -226,7 +226,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: textarea
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'basic_fields',
   'title'       => 'Textarea',
   'icon'        => 'far fa-square',
@@ -282,7 +282,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: select
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'basic_fields',
   'title'       => 'Select',
   'icon'        => 'fas fa-list',
@@ -555,7 +555,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: checkbox
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'basic_fields',
   'title'       => 'Checkbox',
   'icon'        => 'fas fa-check-square',
@@ -673,7 +673,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: radio
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'basic_fields',
   'title'       => 'Radio',
   'icon'        => 'fas fa-dot-circle',
@@ -776,7 +776,7 @@ CSF::createSection( $prefix, array(
 //
 // Repeater Fields
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'id'    => 'repeater_fields',
   'title' => 'Repeater Fields',
   'icon'  => 'far fa-clone',
@@ -785,7 +785,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: repeater
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'repeater_fields',
   'title'       => 'Repeater',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=repeater" target="_blank">Field: repeater</a>',
@@ -925,7 +925,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: group
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'repeater_fields',
   'title'       => 'Group',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=group" target="_blank">Field: group</a>',
@@ -1277,7 +1277,7 @@ CSF::createSection( $prefix, array(
 //
 // Combine Fields
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'id'    => 'combine_fields',
   'title' => 'Combine Fields',
   'icon'  => 'fas fa-bars',
@@ -1286,7 +1286,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: accordion
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'combine_fields',
   'title'       => 'Accordion',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=accordion" target="_blank">Field: accordion</a>',
@@ -1442,7 +1442,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: tabbed
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'combine_fields',
   'title'       => 'Tabbed',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=tabbed" target="_blank">Field: tabbed</a>',
@@ -1559,7 +1559,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: fieldset
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent' => 'combine_fields',
   'title'  => 'Fieldset',
   'fields' => array(
@@ -1625,7 +1625,7 @@ CSF::createSection( $prefix, array(
 //
 // Media and Upload Fields
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'id'    => 'media_fields',
   'title' => 'Media and Upload Fields',
   'icon'  => 'fas fa-upload',
@@ -1634,7 +1634,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: media
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'media_fields',
   'title'       => 'Media',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=media" target="_blank">Field: media</a>',
@@ -1687,7 +1687,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: upload
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'media_fields',
   'title'       => 'Upload',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=upload" target="_blank">Field: upload</a>',
@@ -1736,7 +1736,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: gallery
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'media_fields',
   'title'       => 'Gallery',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=gallery" target="_blank">Field: gallery</a>',
@@ -1763,7 +1763,7 @@ CSF::createSection( $prefix, array(
 //
 // Editor Fields
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'id'    => 'editor_fields',
   'title' => 'Editor Fields',
   'icon'  => 'fas fa-code',
@@ -1772,7 +1772,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: code_editor
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'editor_fields',
   'title'       => 'Code Editor',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=code-editor" target="_blank">Field: code_editor</a>',
@@ -1845,7 +1845,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: wp_editor
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'editor_fields',
   'title'       => 'WP Editor',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=wp-editor" target="_blank">Field: wp_editor</a>',
@@ -1892,7 +1892,7 @@ CSF::createSection( $prefix, array(
 //
 // Color Fields
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'id'    => 'color_fields',
   'title' => 'Color Fields',
   'icon'  => 'fas fa-tint',
@@ -1901,7 +1901,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: color
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'color_fields',
   'title'       => 'Color',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=color" target="_blank">Field: color</a>',
@@ -1940,7 +1940,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: link_color
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'color_fields',
   'title'       => 'Link Color',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=link-color" target="_blank">Field: link_color</a>',
@@ -1979,7 +1979,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: color_group
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'color_fields',
   'title'       => 'Color Group',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=color-group" target="_blank">Field: color_group</a>',
@@ -2033,7 +2033,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: palette
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'color_fields',
   'title'       => 'Color Palette',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=palette" target="_blank">Field: palette</a>',
@@ -2087,7 +2087,7 @@ CSF::createSection( $prefix, array(
 //
 // Design Fields
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'id'    => 'design_fields',
   'title' => 'Design Fields',
   'icon'  => 'fas fa-adjust',
@@ -2096,7 +2096,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: background
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'design_fields',
   'title'       => 'Background',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=background" target="_blank">Field: background</a>',
@@ -2155,7 +2155,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: typography
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'design_fields',
   'title'       => 'Typography',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=typography" target="_blank">Field: typography</a>',
@@ -2235,7 +2235,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: dimensions
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'design_fields',
   'title'       => 'Dimensions',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=dimensions" target="_blank">Field: dimensions</a>',
@@ -2307,7 +2307,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: spacing
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'design_fields',
   'title'       => 'Spacing',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=spacing" target="_blank">Field: spacing</a>',
@@ -2375,7 +2375,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: border
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'design_fields',
   'title'       => 'Border',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=border" target="_blank">Field: border</a>',
@@ -2430,7 +2430,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: spinner
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'design_fields',
   'title'       => 'Spinner',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=spinner" target="_blank">Field: spinner</a>',
@@ -2476,7 +2476,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: number
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'design_fields',
   'title'       => 'Number',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=number" target="_blank">Field: number</a>',
@@ -2507,7 +2507,7 @@ CSF::createSection( $prefix, array(
 //
 // Additional Fields
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'id'    => 'additional_fields',
   'title' => 'Additional Fields',
   'icon'  => 'fas fa-asterisk',
@@ -2516,7 +2516,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: slider
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Slider',
   'icon'        => 'fas fa-sliders-h',
@@ -2562,7 +2562,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: sorter
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Sorter',
   'icon'        => 'fas fa-sort-numeric-down',
@@ -2626,7 +2626,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: sortable
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Sortable',
   'icon'        => 'fas fa-arrows-alt',
@@ -2690,7 +2690,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: switcher
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Switcher',
   'icon'        => 'fas fa-toggle-on',
@@ -2740,7 +2740,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: icons
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Icons',
   'icon'        => 'fas fa-star',
@@ -2766,7 +2766,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: map
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Map',
   'icon'        => 'fas fa-map-marker',
@@ -2817,7 +2817,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: link
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Link',
   'icon'        => 'fas fa-link',
@@ -2847,7 +2847,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: date
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Date',
   'icon'        => 'fas fa-calendar',
@@ -2898,7 +2898,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: image_select
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Image Select',
   'icon'        => 'fas fa-th',
@@ -2984,7 +2984,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: button_set
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'parent'      => 'additional_fields',
   'title'       => 'Button Set',
   'icon'        => 'fas fa-ellipsis-h',
@@ -3083,7 +3083,7 @@ CSF::createSection( $prefix, array(
 //
 // Dependencies
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'title'       => 'Dependencies',
   'icon'        => 'fas fa-code-branch',
   'description' => 'Visit documentation for more details: <a href="http://codestarframework.com/documentation/#/faq?id=how-to-use-dependency" target="_blank">How to use dependencies</a>',
@@ -3367,7 +3367,7 @@ CSF::createSection( $prefix, array(
 //
 // Validate
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'title'       => 'Validate',
   'icon'        => 'fas fa-check-circle',
   'description' => 'Visit documentation for more details: <a href="http://codestarframework.com/documentation/#/faq?id=how-to-use-validate" target="_blank">How to use validate</a>',
@@ -3415,7 +3415,7 @@ CSF::createSection( $prefix, array(
 //
 // Sanitize
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'title'       => 'Sanitize',
   'icon'        => 'fas fa-redo',
   'description' => 'Visit documentation for more details: <a href="http://codestarframework.com/documentation/#/faq?id=how-to-use-sanitize" target="_blank">How to use sanitize</a>',
@@ -3443,7 +3443,7 @@ CSF::createSection( $prefix, array(
 //
 // Field: backup
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'title'       => 'Backup',
   'icon'        => 'fas fa-shield-alt',
   'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=backup" target="_blank">Field: backup</a>',
@@ -3459,7 +3459,7 @@ CSF::createSection( $prefix, array(
 //
 // Others
 //
-CSF::createSection( $prefix, array(
+EFS::createSection( $prefix, array(
   'title'       => 'Others',
   'icon'        => 'fas fa-bolt',
   'description' => 'Visit documentation for more details: <a href="http://codestarframework.com/documentation/#/fields?id=others" target="_blank">Others</a>',

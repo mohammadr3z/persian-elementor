@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Fields' ) ) {
-  abstract class CSF_Fields extends CSF_Abstract {
+if ( ! class_exists( 'EFS_Fields' ) ) {
+  abstract class EFS_Fields extends EFS_Abstract {
 
     public function __construct( $field = array(), $value = '', $unique = '', $where = '', $parent = '' ) {
       $this->field  = $field;

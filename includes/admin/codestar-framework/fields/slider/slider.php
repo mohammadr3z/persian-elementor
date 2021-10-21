@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_slider' ) ) {
-  class CSF_Field_slider extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_slider' ) ) {
+  class EFS_Field_slider extends EFS_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );

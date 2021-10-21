@@ -7,14 +7,14 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Welcome' ) ) {
-  class CSF_Welcome{
+if ( ! class_exists( 'EFS_Welcome' ) ) {
+  class EFS_Welcome{
 
     private static $instance = null;
 
     public function __construct() {
 
-      if ( CSF::$premium && ( ! CSF::is_active_plugin( 'codestar-framework/codestar-framework.php' ) || apply_filters( 'csf_welcome_page', true ) === false ) ) { return; }
+      if ( EFS::$premium && ( ! EFS::is_active_plugin( 'codestar-framework/codestar-framework.php' ) || apply_filters( 'csf_welcome_page', true ) === false ) ) { return; }
 
       add_action( 'admin_menu', array( &$this, 'add_about_menu' ), 0 );
       add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 5 );
@@ -40,38 +40,38 @@ if ( ! class_exists( 'CSF_Welcome' ) ) {
 
       $section = ( ! empty( $_GET['section'] ) ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : '';
 
-      CSF::include_plugin_file( 'views/header.php' );
+      EFS::include_plugin_file( 'views/header.php' );
 
       // safely include pages
       switch ( $section ) {
 
         case 'quickstart':
-          CSF::include_plugin_file( 'views/quickstart.php' );
+          EFS::include_plugin_file( 'views/quickstart.php' );
         break;
 
         case 'documentation':
-          CSF::include_plugin_file( 'views/documentation.php' );
+          EFS::include_plugin_file( 'views/documentation.php' );
         break;
 
         case 'relnotes':
-          CSF::include_plugin_file( 'views/relnotes.php' );
+          EFS::include_plugin_file( 'views/relnotes.php' );
         break;
 
         case 'support':
-          CSF::include_plugin_file( 'views/support.php' );
+          EFS::include_plugin_file( 'views/support.php' );
         break;
 
         case 'free-vs-premium':
-          CSF::include_plugin_file( 'views/free-vs-premium.php' );
+          EFS::include_plugin_file( 'views/free-vs-premium.php' );
         break;
 
         default:
-          CSF::include_plugin_file( 'views/about.php' );
+          EFS::include_plugin_file( 'views/about.php' );
         break;
 
       }
 
-      CSF::include_plugin_file( 'views/footer.php' );
+      EFS::include_plugin_file( 'views/footer.php' );
 
     }
 
@@ -79,7 +79,7 @@ if ( ! class_exists( 'CSF_Welcome' ) ) {
 
       if ( $plugin_file === 'codestar-framework/codestar-framework.php' && ! empty( $links ) ) {
         $links['csf--welcome'] = '<a href="'. esc_url( admin_url( 'tools.php?page=csf-welcome' ) ) .'">Settings</a>';
-        if ( ! CSF::$premium ) {
+        if ( ! EFS::$premium ) {
           $links['csf--upgrade'] = '<a href="http://codestarframework.com/">Upgrade</a>';
         }
       }
@@ -114,18 +114,18 @@ if ( ! class_exists( 'CSF_Welcome' ) ) {
 
       if ( ! empty( $demo_mode ) ) {
 
-        CSF::include_plugin_file( 'samples/admin-options.php' );
+        EFS::include_plugin_file( 'samples/admin-options.php' );
 
-        if ( CSF::$premium ) {
+        if ( EFS::$premium ) {
 
-          CSF::include_plugin_file( 'samples/customize-options.php' );
-          CSF::include_plugin_file( 'samples/metabox-options.php'   );
-          CSF::include_plugin_file( 'samples/nav-menu-options.php'  );
-          CSF::include_plugin_file( 'samples/profile-options.php'   );
-          CSF::include_plugin_file( 'samples/shortcode-options.php' );
-          CSF::include_plugin_file( 'samples/taxonomy-options.php'  );
-          CSF::include_plugin_file( 'samples/widget-options.php'    );
-          CSF::include_plugin_file( 'samples/comment-options.php'   );
+          EFS::include_plugin_file( 'samples/customize-options.php' );
+          EFS::include_plugin_file( 'samples/metabox-options.php'   );
+          EFS::include_plugin_file( 'samples/nav-menu-options.php'  );
+          EFS::include_plugin_file( 'samples/profile-options.php'   );
+          EFS::include_plugin_file( 'samples/shortcode-options.php' );
+          EFS::include_plugin_file( 'samples/taxonomy-options.php'  );
+          EFS::include_plugin_file( 'samples/widget-options.php'    );
+          EFS::include_plugin_file( 'samples/comment-options.php'   );
 
         }
 
@@ -135,5 +135,5 @@ if ( ! class_exists( 'CSF_Welcome' ) ) {
 
   }
 
-  CSF_Welcome::instance();
+  EFS_Welcome::instance();
 }

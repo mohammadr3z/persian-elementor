@@ -14,7 +14,7 @@ defined('ABSPATH') or die();
 require_once plugin_dir_path(__FILE__) . '/codestar-framework/codestar-framework.php';
 
 // Control core classes for avoid errors
-if( class_exists( 'CSF' ) ) {
+if( class_exists( 'EFS' ) ) {
 
     //
     // Set a unique slug-like ID
@@ -22,7 +22,7 @@ if( class_exists( 'CSF' ) ) {
   
     //
     // Create options
-    CSF::createOptions( $prefix, array(
+    EFS::createOptions( $prefix, array(
   
       // framework title
       'framework_title'         => 'المنتور فارسی',
@@ -90,7 +90,7 @@ if( class_exists( 'CSF' ) ) {
   
     //
     // Create a section
-    CSF::createSection( $prefix, array(
+    EFS::createSection( $prefix, array(
       'title'  => 'المنتور فارسی',
       'icon'   => 'far fa-smile-wink',
       'fields' => array(
@@ -135,7 +135,7 @@ if( class_exists( 'CSF' ) ) {
   
     //
     // Create a section
-    CSF::createSection( $prefix, array(
+    EFS::createSection( $prefix, array(
       'title'  => 'ترجمه افزونه ها',
       'icon'   => 'fa fa-language',
       'fields' => array(
@@ -217,7 +217,7 @@ if( class_exists( 'CSF' ) ) {
       )
     ) );
 
-    CSF::createSection( $prefix, array(
+    EFS::createSection( $prefix, array(
       'title'  => 'فونت های فارسی',
       'icon'   => 'fas fa-font',
       'fields' => array(
@@ -244,7 +244,7 @@ if( class_exists( 'CSF' ) ) {
       )
     ) );
 
-    CSF::createSection( $prefix, array(
+    EFS::createSection( $prefix, array(
       'title'  => 'قالب های آماده ایرانی',
       'icon'   => 'far fa-object-group',
       'fields' => array(
@@ -266,7 +266,7 @@ if( class_exists( 'CSF' ) ) {
       )
     ) );
 
-    CSF::createSection( $prefix, array(
+    EFS::createSection( $prefix, array(
       'title'  => 'آیکون های ایرانی',
       'icon'   => 'far fa-star',
       'fields' => array(
@@ -288,7 +288,7 @@ if( class_exists( 'CSF' ) ) {
       )
     ) );
 
-    CSF::createSection( $prefix, array(
+    EFS::createSection( $prefix, array(
       'title'  => 'درباره المنتور فارسی',
       'icon'   => 'fas fa-award',
       'fields' => array(

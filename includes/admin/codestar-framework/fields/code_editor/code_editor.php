@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_code_editor' ) ) {
-  class CSF_Field_code_editor extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_code_editor' ) ) {
+  class EFS_Field_code_editor extends EFS_Fields {
 
     public $version = '5.60.0';
     public $cdn_url = 'https://cdn.jsdelivr.net/npm/codemirror@';

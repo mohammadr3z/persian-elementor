@@ -17,7 +17,7 @@
 ?>
 <div class="csf-welcome csf-welcome-wrap">
 
-  <h1>Welcome to Codestar Framework v<?php echo esc_attr( CSF::$version ); ?></h1>
+  <h1>Welcome to Codestar Framework v<?php echo esc_attr( EFS::$version ); ?></h1>
 
   <p class="csf-about-text">A Simple and Lightweight WordPress Option Framework for Themes and Plugins</p>
 
@@ -30,7 +30,7 @@
       <div class="csf--wp-plugin-logo"></div>
     </div>
     <div class="csf--text">Codestar Framework</div>
-    <div class="csf--text csf--version">v<?php echo esc_attr( CSF::$version ); ?></div>
+    <div class="csf--text csf--version">v<?php echo esc_attr( EFS::$version ); ?></div>
   </div>
 
   <h2 class="nav-tab-wrapper wp-clearfix">
@@ -38,7 +38,7 @@
 
       foreach ( $links as $key => $link ) {
 
-        if ( CSF::$premium && $key === 'free-vs-premium' ) { continue; }
+        if ( EFS::$premium && $key === 'free-vs-premium' ) { continue; }
 
         $activate = ( $section === $key ) ? ' nav-tab-active' : '';
 

@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Abstract' ) ) {
-  abstract class CSF_Abstract {
+if ( ! class_exists( 'EFS_Abstract' ) ) {
+  abstract class EFS_Abstract {
 
     public $abstract   = '';
     public $output_css = '';
@@ -36,7 +36,7 @@ if ( ! class_exists( 'CSF_Abstract' ) ) {
           $field_type   = ( ! empty( $field['type'] ) ) ? $field['type'] : '';
           $field_output = ( ! empty( $field['output'] ) ) ? $field['output'] : '';
           $field_check  = ( $field_type === 'typography' || $field_output ) ? true : false;
-          $field_class  = 'CSF_Field_' . $field_type;
+          $field_class  = 'EFS_Field_' . $field_type;
 
           if ( $field_type && $field_id ) {
 
@@ -110,7 +110,7 @@ if ( ! class_exists( 'CSF_Abstract' ) ) {
 
                 // output css
                 if ( $field_output && $this->args['output_css'] ) {
-                  CSF::$css .= $instance->output();
+                  EFS::$css .= $instance->output();
                 }
 
                 unset( $instance );

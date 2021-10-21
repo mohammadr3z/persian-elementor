@@ -28,19 +28,19 @@ Open your current theme **functions.php** file and paste this code.
 
 ```php
 // Check core class for avoid errors
-if( class_exists( 'CSF' ) ) {
+if( class_exists( 'EFS' ) ) {
 
   // Set a unique slug-like ID
   $prefix = 'my_framework';
 
   // Create options
-  CSF::createOptions( $prefix, array(
+  EFS::createOptions( $prefix, array(
     'menu_title' => 'My Framework',
     'menu_slug'  => 'my-framework',
   ) );
 
   // Create a section
-  CSF::createSection( $prefix, array(
+  EFS::createSection( $prefix, array(
     'title'  => 'Tab Title 1',
     'fields' => array(
 
@@ -55,7 +55,7 @@ if( class_exists( 'CSF' ) ) {
   ) );
 
   // Create a section
-  CSF::createSection( $prefix, array(
+  EFS::createSection( $prefix, array(
     'title'  => 'Tab Title 2',
     'fields' => array(
 

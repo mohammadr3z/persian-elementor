@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_group' ) ) {
-  class CSF_Field_group extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_group' ) ) {
+  class EFS_Field_group extends EFS_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );
@@ -60,7 +60,7 @@ if ( ! class_exists( 'CSF_Field_group' ) ) {
             $field_default = ( isset( $field['default'] ) ) ? $field['default'] : '';
             $field_unique  = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .'][0]' : $this->field['id'] .'[0]';
 
-            CSF::field( $field, $field_default, '___'. $field_unique, 'field/group' );
+            EFS::field( $field, $field_default, '___'. $field_unique, 'field/group' );
 
           }
           echo '</div>';
@@ -102,7 +102,7 @@ if ( ! class_exists( 'CSF_Field_group' ) ) {
                 $field_unique = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .']['. $num .']' : $this->field['id'] .'['. $num .']';
                 $field_value  = ( isset( $field['id'] ) && isset( $value[$field['id']] ) ) ? $value[$field['id']] : '';
 
-                CSF::field( $field, $field_value, $field_unique, 'field/group' );
+                EFS::field( $field, $field_value, $field_unique, 'field/group' );
 
               }
 

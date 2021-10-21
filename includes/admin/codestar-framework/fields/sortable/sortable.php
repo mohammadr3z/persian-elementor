@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_sortable' ) ) {
-  class CSF_Field_sortable extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_sortable' ) ) {
+  class EFS_Field_sortable extends EFS_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );
@@ -59,7 +59,7 @@ if ( ! class_exists( 'CSF_Field_sortable' ) ) {
           $field_value   = ( isset( $this->value[$key] ) ) ? $this->value[$key] : $field_default;
           $unique_id     = ( ! empty( $this->unique ) ) ? $this->unique .'['. $this->field['id'] .']' : $this->field['id'];
 
-          CSF::field( $field, $field_value, $unique_id, 'field/sortable' );
+          EFS::field( $field, $field_value, $unique_id, 'field/sortable' );
 
           echo '</div>';
 

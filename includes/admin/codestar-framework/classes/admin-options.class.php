@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Options' ) ) {
-  class CSF_Options extends CSF_Abstract {
+if ( ! class_exists( 'EFS_Options' ) ) {
+  class EFS_Options extends EFS_Abstract {
 
     // constans
     public $unique       = '';
@@ -663,7 +663,7 @@ if ( ! class_exists( 'CSF_Options' ) ) {
 
                   $value = ( ! empty( $field['id'] ) && isset( $this->options[$field['id']] ) ) ? $this->options[$field['id']] : '';
 
-                  CSF::field( $field, $value, $this->unique, 'options' );
+                  EFS::field( $field, $value, $this->unique, 'options' );
 
                 }
 

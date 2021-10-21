@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'CSF_Field_map' ) ) {
-  class CSF_Field_map extends CSF_Fields {
+if ( ! class_exists( 'EFS_Field_map' ) ) {
+  class EFS_Field_map extends EFS_Fields {
 
     public $version = '1.7.1';
     public $cdn_url = 'https://cdn.jsdelivr.net/npm/leaflet@';
