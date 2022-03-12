@@ -11,11 +11,11 @@ Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsia
 
 Requires at least: 5.0
 
-Tested up to: 5.8.2
+Tested up to: 5.9.2
 
 Requires PHP: 7.0
 
-Stable tag: 2.4.11
+Stable tag: 2.4.15
 
 License: GPLv2 or later
 
@@ -49,6 +49,7 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 * Ele Skin
 * Essential Addons Lite
 * MetForm
+* Woolentor
 
 - **قالب های آماده فارسی**
 
@@ -86,7 +87,7 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 
 = Pro =
-برای مشاهده لیست 26 فونت محبوب فارسی به سایت زیر مراجعه کنید.
+برای مشاهده لیست 30 فونت محبوب فارسی به سایت زیر مراجعه کنید.
 * نسخه پرو فارسی ساز [افزونه المنتور](https://elementorfa.ir/%d8%a7%d9%81%d8%b2%d9%88%d9%86%d9%87-%d9%81%d8%a7%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%b2-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d9%88%d8%b1/)
 
 - **آیکون های ایرانی**
@@ -101,6 +102,22 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 
 == Changelog ==
+
+= 2.4.15 =
+
+* نرفع مشکل عدم نمایش قالب های ایرانی در المنتور
+
+= 2.4.14 =
+
+* نبروزرسانی ترجمه افزونه المنتور پرو نسخه 3.6.0
+
+= 2.4.13 =
+
+* نبروزرسانی ترجمه افزونه المنتور نسخه 3.5.0
+
+= 2.4.12 =
+
+* نبروزرسانی ترجمه افزونه المنتور پرو سازگار با نسخه 3.5.0
 
 = 2.4.11 =
 
