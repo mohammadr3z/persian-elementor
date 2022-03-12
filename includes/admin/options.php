@@ -39,7 +39,7 @@ if( class_exists( 'EFS' ) ) {
       'menu_parent'             => '',
   
       // menu extras
-      'show_bar_menu'           => true,
+      'show_bar_menu'           => false,
       'show_sub_menu'           => false,
       'show_in_network'         => true,
       'show_in_customizer'      => false,

@@ -13,7 +13,7 @@ if ( ! class_exists( 'Persian_Elementor_Templates_Manager' ) ) {
 	 * Define Persian_Elementor_Templates_Manager class
 	 */
 	class Persian_Elementor_Templates_Manager {
-
+		
 		/**
 		 * A reference to an instance of this class.
 		 *
@@ -32,8 +32,8 @@ if ( ! class_exists( 'Persian_Elementor_Templates_Manager' ) ) {
 
 			// Register efa-templates source
 			add_action( 'elementor/init', array( $this, 'register_templates_source' ) );
-
-			if ( defined( 'Elementor\Api::LIBRARY_OPTION_KEY' ) ) {
+			
+						if ( defined( 'Elementor\Api::LIBRARY_OPTION_KEY' ) ) {
 				// Add EFA Templates to Elementor templates list
 				add_filter( 'option_' . Elementor\Api::LIBRARY_OPTION_KEY, array( $this, 'prepend_categories' ) );
 			}
@@ -51,11 +51,11 @@ if ( ! class_exists( 'Persian_Elementor_Templates_Manager' ) ) {
 		 */
 		public function register_templates_source() {
 
-			require plugin_dir_path( __FILE__ ) . 'persian-elementor-templates-source.php';
+			require plugin_dir_path( __FILE__ ) . 'source.php';
 
 			$elementor = Elementor\Plugin::instance();
 			$elementor->templates_manager->register_source( 'Persian_Elementor_Templates_Source' );
-
+			
 		}
 
 		/**
@@ -100,9 +100,9 @@ if ( ! class_exists( 'Persian_Elementor_Templates_Manager' ) ) {
 		public function prepend_categories( $library_data ) {
 
 					$categories = [
+			'page',
 			'login',
 			'register',
-			'profile',
 			'loop',
 			'comment'
 		];
@@ -166,12 +166,14 @@ if ( ! class_exists( 'Persian_Elementor_Templates_Manager' ) ) {
 		 */
 		public function get_efa_template_data( $args ) {
 
-			$source = Elementor\Plugin::instance()->templates_manager->get_source( 'efa-templates' );
+			$source = Elementor\Plugin::instance()->templates_manager->get_source( 'persiantemplate' );
 
 			$data = $source->get_data( $args );
 
 			return $data;
 		}
+		
+
 
 		/**
 		 * Return template data insted of elementor template.
@@ -186,7 +188,7 @@ if ( ! class_exists( 'Persian_Elementor_Templates_Manager' ) ) {
 				return;
 			}
 
-			$_REQUEST['source'] = 'efa-templates';
+			$_REQUEST['source'] = 'persiantemplate';
 
 		}
 
@@ -204,6 +206,7 @@ if ( ! class_exists( 'Persian_Elementor_Templates_Manager' ) ) {
 	}
 
 }
+
 
 /**
  * Returns instance of Persian_Elementor_Templates_Manager

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Persian_Elementor_Templates_Source extends Elementor\TemplateLibrary\Source_Base {
-
+	
 	/**
 	 * Template prefix
 	 */
@@ -19,11 +19,11 @@ class Persian_Elementor_Templates_Source extends Elementor\TemplateLibrary\Sourc
 	}
 
 	public function get_id() {
-		return 'efa-templates';
+		return 'persiantemplate';
 	}
 
 	public function get_title() {
-		return __( 'EFA Templates', 'persian-elementor-templates' );
+		return __( 'Persian', 'persian-elementor-templates' );
 	}
 
 	public function register_data() {}
@@ -51,24 +51,26 @@ class Persian_Elementor_Templates_Source extends Elementor\TemplateLibrary\Sourc
 	}
 
 	public function get_item( $template_data ) {
-		return array(
-			'template_id'     => $this->get_prefix() . $template_data['template_id'],
-			'source'          => 'remote',
-			'type'            => $template_data['type'],
-			'subtype'         => $template_data['subtype'],
-			'title'           => $template_data['title'],
-			'thumbnail'       => $template_data['thumbnail'],
-			'accessLevel' => $template_data['access_level'],
-			'date'            => $template_data['date'],
-			'author'          => $template_data['author'],
-			'tags'            => $template_data['tags'],
-			'isPro'           => ( 1 == $template_data['isPro'] ),
-			'popularityIndex' => (int) $template_data['popularityIndex'],
-			'trendIndex'      => (int) $template_data['trendIndex'],
-			'hasPageSettings' => ( 1 == $template_data['hasPageSettings'] ),
-			'url'             => $template_data['url'],
-			'favorite'        => ( 1 == $template_data['favorite'] ),
-		);
+
+		return [
+			'template_id' => $this->get_prefix() . $template_data['template_id'],
+			'source' => 'remote',
+			'type' => $template_data['type'],
+			'subtype' => $template_data['subtype'],
+			'title' => $template_data['title'], // Prepend name for searchable string
+			'thumbnail' => $template_data['thumbnail'],
+			'date' => $template_data['tmpl_created'],
+			'author' => $template_data['author'],
+			'tags' => $template_data['tags'],
+			'isPro' => 0,
+			'templatePro' => false,
+			'popularityIndex' => (int) $template_data['popularity_index'],
+			'trendIndex' => (int) $template_data['trend_index'],
+			'hasPageSettings' => ( '1' === $template_data['has_page_settings'] ),
+			'url' => $template_data['url'],
+			'accessLevel' => 0,
+			'favorite' => ( 1 == $template_data['favorite'] ),
+		];
 	}
 
 	public function save_item( $template_data ) {
@@ -88,7 +90,7 @@ class Persian_Elementor_Templates_Source extends Elementor\TemplateLibrary\Sourc
 	}
 
 	public function get_data( array $args, $context = 'display' ) {
-
+		
 		$filename   = str_replace( $this->template_prefix, '', $args['template_id'] );
 		$url        = 'https://c204025.parspack.net/c204025/library/persian-elementor/templates/' . $filename . '.json';
 		$response   = wp_remote_get( $url, array( 'timeout' => 60 ) );
@@ -104,4 +106,5 @@ class Persian_Elementor_Templates_Source extends Elementor\TemplateLibrary\Sourc
 
 		return $result;
 	}
+
 }
