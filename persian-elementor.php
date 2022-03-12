@@ -8,8 +8,8 @@
  * Author URI: 
  * Text Domain: persian-elementor
  * License: GPL2
- * Elementor tested up to: 3.5.4
- * Elementor Pro tested up to: 3.5.2
+ * Elementor tested up to: 3.6.0
+ * Elementor Pro tested up to: 3.6.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
