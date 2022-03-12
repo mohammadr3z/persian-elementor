@@ -135,7 +135,7 @@ class PersianElementorCore {
         // Register Front RTL
         add_action('elementor/frontend/before_enqueue_styles', [ $this,	'persian_elementor_front']);
 		
-         // Register Flatpickr Mobile
+        // Register Flatpickr Mobile
         add_action('elementor/frontend/before_enqueue_styles', [ $this,	'persian_elementor_flatpickr_mobile']);
 		}
 		
