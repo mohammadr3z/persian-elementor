@@ -11,11 +11,11 @@ Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsia
 
 Requires at least: 5.0
 
-Tested up to: 5.9.2
+Tested up to: 6.0.1
 
 Requires PHP: 7.0
 
-Stable tag: 2.4.15
+Stable tag: 2.4.18
 
 License: GPLv2 or later
 
@@ -103,9 +103,17 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 == Changelog ==
 
-= 2.4.15 =
 
-* نرفع مشکل عدم نمایش قالب های ایرانی در المنتور
+= 2.4.17 =
+اضافه شدن فونت وزیر متن
+
+
+= 2.4.16 =
+بهبود ترجمه برای نسخه 3.6 المنتور
+
+
+= 2.4.15 =
+رفع مشکل عدم نمایش قالب های ایرانی در المنتور
 
 = 2.4.14 =
 
