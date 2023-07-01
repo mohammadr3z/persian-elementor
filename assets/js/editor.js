@@ -39,10 +39,10 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 
 var Templates = function Templates() {
-  // Find Elementor library remote template and prepend Jupiter X badge.
+  // Find Elementor library remote template and prepend Elementorfa X badge.
   function prependBadge() {
     var templateRemote = jQuery('#tmpl-elementor-template-library-template-remote'),
-        badgeHTML = "<# var ravenId = 'raven_' #>\n        <# if ( String( template_id ).substr( 0, ravenId.length ) === ravenId && typeof templatePro !== 'undefined' && templatePro ) { #>\n          <span class=\"raven-template-library-badge\">\n </span>\n        <# } else if ( String( template_id ).substr( 0, ravenId.length ) === ravenId && typeof templatePro !== 'undefined' && ! templatePro ) { #>\n          <span class=\"raven-template-library-badge raven-template-pro\">\n            <# if ( typeof jupiterxPremium !== 'undefined' ) { #>\n              Activate to Unlock\n            <# } else { #>\n              Upgrade to Unlock\n            <# } #>\n          </span>\n        <# } #>\n\t  ";
+        badgeHTML = "<# var ravenId = 'raven_' #>\n        <# if ( String( template_id ).substr( 0, ravenId.length ) === ravenId && typeof templatePro !== 'undefined' && templatePro ) { #>\n          <span class=\"raven-template-library-badge\">\n </span>\n        <# } else if ( String( template_id ).substr( 0, ravenId.length ) === ravenId && typeof templatePro !== 'undefined' && ! templatePro ) { #>\n          <span class=\"raven-template-library-badge raven-template-pro\">\n            <# if ( typeof ElementorfaxPremium !== 'undefined' ) { #>\n              Activate to Unlock\n            <# } else { #>\n              Upgrade to Unlock\n            <# } #>\n          </span>\n        <# } #>\n\t  ";
     var template = templateRemote.text();
     template = badgeHTML + template;
     templateRemote.text(template);
@@ -64,7 +64,7 @@ var Templates = function Templates() {
       return;
     }
 
-    var content = layout.modalContent; // Add Jupiter X filter button.
+    var content = layout.modalContent; // Add Elementorfa X filter button.
 
     function addFilter() {
       var filter = content.$el.find('#elementor-template-library-filter-toolbar-remote');
