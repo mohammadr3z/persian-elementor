@@ -1,6 +1,156 @@
-﻿﻿@font-face{font-family:'IRANYekan';src:url('font/IRANYekan/iranyekanwebbold(fanum).eot');src:url('font/IRANYekan/iranyekanwebbold(fanum).eot?#iefix') format('eot'),url('font/IRANYekan/iranyekanwebbold(fanum).woff2') format('woff2'),url('font/IRANYekan/iranyekanwebbold(fanum).woff') format('woff'),url('font/IRANYekan/iranyekanwebbold(fanum).ttf') format('ttf');font-weight:700}@font-face{font-family:'IRANYekan';src:url('font/IRANYekan/iranyekanwebregular(fanum).eot');src:url('font/IRANYekan/iranyekanwebregular(fanum).eot?#iefix') format('eot'),url('font/IRANYekan/iranyekanwebregular(fanum).woff2') format('woff2'),url('font/IRANYekan/iranyekanwebregular(fanum).woff') format('woff'),url('font/IRANYekan/iranyekanwebregular(fanum).ttf') format('ttf');font-weight:500}@font-face{font-family:'IRANYekan';src:url('font/IRANYekan/iranyekanweblight(fanum).eot');src:url('font/IRANYekan/iranyekanweblight(fanum).eot?#iefix') format('eot'),url('font/IRANYekan/iranyekanweblight(fanum).woff2') format('woff2'),url('font/IRANYekan/iranyekanweblight(fanum).woff') format('woff'),url('font/IRANYekan/iranyekanweblight(fanum).ttf') format('ttf');font-weight:300}.elementor-panel,.elementor-button,body,input#elementor-template-library-save-template-name,input#elementor-panel-elements-search-input,.wp-picker-clear.button,.elementor-templates-modal .dialog-widget-content,select,textarea,.tipsy-inner,.elementor-add-section-drag-title,.elementor-add-section-drag-title,.elementor-safe-mode-toast .elementor-toast-content,.elementor-safe-mode-toast header h2,#elementor-finder__search__input,#elementor-template-library-filter-text,.elementor-element-title-wrapper .title,.elementor-add-section-drag-title,.elementor-select-preset-title,.elementor-color-picker__saved-colors-edit,input.pcr-clear,.elementor-color-picker__header,.elementor-color-picker__saved-colors-title{font-family:IRANYekan!important}.elementor-loading-title{letter-spacing:0px!important;font-size:13px!important}#elementor-template-library-filter .select2-selection__rendered,#select2-elementor-template-library-filter-subtype-results .select2-results__option{text-align:right}#elementor-try-safe-mode .elementor-safe-mode-button{font-family:iranyekan;font-size:10px}button.dialog-button.dialog-cancel.dialog-confirm-cancel,button.dialog-button.dialog-ok.dialog-confirm-ok{font-family:iranyekan;font-size:13px}.elementor-panel .elementor-panel-alert{border-right:5px solid transparent;border-left:0 solid transparent!important}.elementor-control.elementor-control-type-select .elementor-control-input-wrapper select,.elementor-navigator__element__title__text {line-height: 2!important;}.flatpickr-month {height: 34px!important;}.flatpickr-calendar.animate.open.arrowTop,.flatpickr-calendar.animate.open.arrowBottom {width: 280px;direction: rtl;font-family: IRANYekan;}.flatpickr-current-month input.cur-year {padding: 0 .5ch 0 0!important;	direction: ltr;}.flatpickr-current-month span.cur-month {margin-right: .5ch;margin-left: 0;}
-.e-global__color-hex,.e-global-colors__color-value {font-family: Roboto,Arial,Helvetica,Verdana,sans-serif;}
-input.tooltip-target.elementor-control-tag-area,input.elementor-control-tag-area.elementor-input.ui-autocomplete-input {font-family: 'IRANYekan';height: 27px;}
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url(font/IRANYekanX/IRANYekanXVF.woff2) format("woff2-variations"),
+       url(font/IRANYekanX/IRANYekanXVF.woff2) format("woff2"); /* for older browsers */
+       font-weight: 400; font-style: normal;
+}
+
+/* Font */
+.elementor-panel,.elementor-loading-title,
+.MuiListItemText-root.eui-list-item-text.eui-rtl-1jgp53g,
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.eui-button.eui-rtl-1sbtwtr,
+.elementor-templates-modal__header,div#elementor-finder__search,.elementor-context-menu-list__item__title,.dialog-message.dialog-buttons-message,.dialog-button.dialog-view_revisions.dialog-buttons-view_revisions,
+div#wp-link-backdrop,.MuiTooltip-tooltip.MuiTooltip-tooltipArrow.MuiTooltip-tooltipPlacementBottom.eui-rtl-th7pql,#elementor-finder__search__input,
+div#elementor-finder__no-results,div#elementor-finder__no-results,.elementor-finder__results__item__description,
+.elementor-finder__results__category__title,a.elementor-finder__results__item__link,#elementor-navigator__header__title,
+span.elementor-navigator__element__title__text,.elementor-empty-view__title,span.elementor-button-title,
+input#elementor-template-library-filter-text,.elementor-template-library-blank-title,.elementor-template-library-blank-message,
+.elementor-template-library-blank-footer,label#elementor-template-library-filter-my-favorites-label,
+span#select2-elementor-template-library-filter-subtype-container,.elementor-excerpt,button.elementor-button.elementor-repeater-add,
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.eui-button.eui-rtl-15912cu,
+.dialog-button.dialog-back_to_editor.dialog-buttons-back_to_editor,
+.elementor-hotkeys__item--label,.elementor-hotkeys__header,button.elementor-button.e-btn-txt,button.elementor-button,
+.elementor-tags-list__group-title,.elementor-tags-list__item,p.MuiTypography-root.MuiTypography-body2.eui-typography.eui-rtl-n3o5gw,a#elementor-template-library-connect__button,
+.dialog-header.dialog-confirm-header,.dialog-message.dialog-confirm-message,.e-con-select-preset__title,.elementor-template-library-local-column-1,
+.elementor-template-library-template-meta.elementor-template-library-template-type.elementor-template-library-local-column-2,.elementor-template-library-template-meta.elementor-template-library-template-date.elementor-template-library-local-column-4,
+span.elementor-template-library-template-control-title,span.elementor-template-library-template-control-title,.elementor-template-library-order-label,
+input#elementor-template-library-save-template-name,div#elementor-template-library-import-form-or,label#elementor-template-library-import-form-label,.e-con-select-preset__title,
+.elementor-color-picker__header,span.e-admin-top-bar__heading-title,span.e-admin-top-bar__bar-button-title,span.e-global__popover-title-text,
+span.e-global__color-title,.dialog-message.dialog-simple-message,li.select2-results__option.select2-results__option--highlighted,strong.select2-results__group,.elementor-safe-mode-toast header h2,.elementor-toast-content,
+.eui-rtl-1p1nab2,.elementor-template-library-template-name.elementor-template-library-local-column-1,.elementor-template-library-template-meta.elementor-template-library-template-type.elementor-template-library-local-column-2,
+.elementor-template-library-template-meta.elementor-template-library-template-author.elementor-template-library-local-column-3,.elementor-template-library-template-meta.elementor-template-library-template-date.elementor-template-library-local-column-4,
+span.elementor-template-library-template-control-title,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.Mui-disabled.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedContained.MuiButtonGroup-groupedContainedHorizontal.MuiButtonGroup-groupedContainedPrimary.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.eui-button.eui-rtl-x0wigh,
+.MuiListItemText-root.eui-list-item-text.eui-rtl-1g01smi,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.eui-button.eui-rtl-1tjmgp1,.eui-rtl-1m7jbxj .MuiButtonGroup-grouped:not(:last-of-type),
+.elementor-icons-manager__tab-link.elementor-active,.elementor-icons-manager__tab-link,div#elementor-icons-manager__upload__title,div#elementor-icons-manager__tab__title,p.MuiTypography-root.MuiTypography-body2.MuiTypography-noWrap.eui-typography.eui-rtl-7llmr0,
+li.select2-results__option,input.select2-search__field,.elementor-panel-heading-title,a.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.eui-menu-item.eui-rtl-1iz7j5b,
+span.MuiChip-label.MuiChip-labelMedium.eui-rtl-14vsv3w,p.MuiTypography-root.MuiTypography-body2.MuiTypography-noWrap.eui-typography.eui-rtl-7llmr0,.eui-rtl-16eyisn,
+div#nested-list-subheader,a.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.eui-menu-item.eui-rtl-1iz7j5b,span.MuiChip-label.MuiChip-labelMedium.eui-rtl-14vsv3w,
+h2#elementor-navigator__header__title,.elementor-control-input-wrapper.elementor-control-unit-5,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedContained.MuiButtonGroup-groupedContainedHorizontal.MuiButtonGroup-groupedContainedPrimary.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.eui-button.eui-rtl-2v0k8i
+ {
+    font-family: IRANYekanX !important;
+}
+
+.elementor-panel-heading-title,.elementor-nerd-box-title,.elementor-panel #elementor-panel-header {
+    font-variation-settings: 'wght' 700;
+    font-weight: 100!important;
+}
+.elementor-panel #elementor-panel-header-title {
+	font-weight: 100!important;
+    font-variation-settings: 'wght' 400;
+}
+input#elementor-panel-elements-search-input {
+    font-family: 'IRANYekanX';
+    direction: rtl;
+}
+.tipsy-inner {
+	font-family: IRANYekanX !important;
+	line-height:2
+}
+.elementor-loading-title {
+    letter-spacing: 0px !important;
+    font-size: 13px !important;
+}
+/* Font */
+
+
+#elementor-template-library-filter .select2-selection__rendered,
+#select2-elementor-template-library-filter-subtype-results .select2-results__option {
+    text-align: right;
+}
+#elementor-try-safe-mode .elementor-safe-mode-button {
+    font-family: IRANYekanX;
+    font-size: 10px;
+}
+button.dialog-button.dialog-cancel.dialog-confirm-cancel,
+button.dialog-button.dialog-ok.dialog-confirm-ok {
+    font-family: IRANYekanX;
+    font-size: 13px;
+}
+.elementor-panel .elementor-panel-alert {
+    border-right: 5px solid transparent;
+    border-left: 0 solid transparent !important;
+}
+.elementor-control.elementor-control-type-select .elementor-control-input-wrapper select,
+.elementor-navigator__element__title__text {
+    line-height: 2 !important;
+}
+.flatpickr-month {
+    height: 34px !important;
+}
+.flatpickr-calendar.animate.open.arrowTop,
+.flatpickr-calendar.animate.open.arrowBottom {
+    width: 280px;
+    direction: rtl;
+    font-family: IRANYekanX;
+}
+.flatpickr-current-month input.cur-year {
+    padding: 0 0.5ch 0 0 !important;
+    direction: ltr;
+}
+.flatpickr-current-month span.cur-month {
+    margin-right: 0.5ch;
+    margin-left: 0;
+}
+.e-global__color-hex,
+.e-global-colors__color-value {
+    font-family: Roboto, Arial, Helvetica, Verdana, sans-serif;
+}
+input.tooltip-target.elementor-control-tag-area,
+input.elementor-control-tag-area.elementor-input.ui-autocomplete-input {
+    font-family: "IRANYekanX";
+    height: 27px;
+}
+
+.elementor-control-align .elementor-choices {
+    flex-direction: row-reverse;
+}
+.elementor-control-align label.elementor-choices-label.elementor-control-unit-1.tooltip-target {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left: 0px;
+}
+.elementor-control-align .elementor-choices .elementor-choices-label:last-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left: 0px;
+    border-top-right-radius: var(--e-a-border-radius);
+    border-bottom-right-radius: var(--e-a-border-radius);
+}
+.elementor-control-align .elementor-choices .elementor-choices-label:nth-child(2) {
+    border-top-right-radius: 0px!important;
+    border-bottom-right-radius: 0px!important;
+    border-top-left-radius: var(--e-a-border-radius)!important;
+    border-bottom-left-radius: var(--e-a-border-radius)!important;
+    border-left: 1px solid var(--e-a-border-color-bold)!important;
+}
+.elementor-control-align .elementor-control-dynamic input {
+    border-top-right-radius: var(--e-a-border-radius)!important;
+    border-bottom-right-radius: var(--e-a-border-radius)!important;
+    border-top-left-radius: 0px!important;
+    border-bottom-left-radius: 0px!important;
+}
+input.tooltip-target.elementor-control-tag-area {
+    border-start-end-radius: var(--e-a-border-radius);
+    border-end-end-radius: var(--e-a-border-radius);
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+}
+input.tooltip-target.elementor-control-tag-area.elementor-control-unit-2 {
+    border-start-end-radius: var(--e-a-border-radius);
+    border-end-end-radius: var(--e-a-border-radius);
+    border-start-start-radius: var(--e-a-border-radius);
+    border-end-start-radius: var(--e-a-border-radius);
+}
 
 /* Yoast SEO */
-.yoast-title {font-family: 'IRANYekan';}
+.yoast-title {font-family: 'IRANYekanX';}
