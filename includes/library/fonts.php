@@ -33,6 +33,7 @@ add_filter( 'elementor/fonts/additional_fonts', function( $additional_fonts ) {
 	$additional_fonts['Vazir'] = 'FARSI';
 	$additional_fonts['VazirFN'] = 'FARSI';
 	$additional_fonts['VazirMatn'] = 'FARSI';
+	$additional_fonts['VazirMatnFN'] = 'FARSI';
 	return $additional_fonts;
 } );
 
