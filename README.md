@@ -32,7 +32,6 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 * پشتیبانی [افزونه المنتور فارسی](https://elementorfa.ir/)
 
 
-![persian-elementor-template](https://user-images.githubusercontent.com/7595716/80913791-9ab0b100-8d5c-11ea-9357-655c5c9851b3.png)
 ![shamsi](https://user-images.githubusercontent.com/7595716/80913802-aac89080-8d5c-11ea-9d95-5de44a1f3903.png)
 
 
