@@ -5,7 +5,7 @@
        font-weight: 400; font-style: normal;
 }
 
-.elementor-templates-modal .dialog-widget-content, #elementor-new-template__form__submit, .eps-app, .elementor-loading-title {
+.elementor-templates-modal .dialog-widget-content, #elementor-new-template__form__submit, .eps-app, .elementor-loading-title,#e-admin-top-bar-root .e-admin-top-bar {
 	font-family:IRANYekanX!important
 }
 
