@@ -5,20 +5,14 @@ class PersianElementorCore {
     private static ?self $_instance = null;
 
     public static function instance(): self {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
+        return self::$_instance ??= new self();
     }
 
     private function __construct() {
-        $options = get_option('persian_elementor') ?: [];
+        $options = get_option('persian_elementor') ?? [];
 
         if (!empty($options['efa-panel-font'])) {
-            add_action('elementor/editor/before_enqueue_scripts', [$this, 'editor_rtl_css']);
-            add_action('elementor/preview/enqueue_styles', [$this, 'preview_rtl_css']);
-            add_action('elementor/app/init', [$this, 'app_rtl_css']);
-            add_action('admin_enqueue_scripts', [$this, 'app_rtl_css']);
+            $this->enqueue_editor_styles();
         }
 
         if (!empty($options['efa-all-font'])) {
@@ -26,16 +20,31 @@ class PersianElementorCore {
         }
 
         if (!empty($options['efa-flatpickr'])) {
-            add_action('elementor/frontend/before_enqueue_styles', [$this, 'persian_elementor_front']);
-            add_action('elementor/frontend/before_enqueue_styles', [$this, 'persian_elementor_flatpickr_mobile']);
+            $this->enqueue_flatpickr_styles();
         }
 
         if (!empty($options['efa-iranian-icon'])) {
-            add_action('elementor/editor/before_enqueue_scripts', [$this, 'persian_elementor_editor_icon']);
-            add_action('elementor/frontend/before_enqueue_styles', [$this, 'persian_elementor_preview_icon']);
+            $this->enqueue_iranian_icons();
         }
 
         add_action('elementor/editor/before_enqueue_scripts', [$this, 'persian_elementor_template']);
+    }
+
+    private function enqueue_editor_styles(): void {
+        add_action('elementor/editor/before_enqueue_scripts', [$this, 'editor_rtl_css']);
+        add_action('elementor/preview/enqueue_styles', [$this, 'preview_rtl_css']);
+        add_action('elementor/app/init', [$this, 'app_rtl_css']);
+        add_action('admin_enqueue_scripts', [$this, 'app_rtl_css']);
+    }
+
+    private function enqueue_flatpickr_styles(): void {
+        add_action('elementor/frontend/before_enqueue_styles', [$this, 'persian_elementor_front']);
+        add_action('elementor/frontend/before_enqueue_styles', [$this, 'persian_elementor_flatpickr_mobile']);
+    }
+
+    private function enqueue_iranian_icons(): void {
+        add_action('elementor/editor/before_enqueue_scripts', [$this, 'persian_elementor_editor_icon']);
+        add_action('elementor/frontend/before_enqueue_styles', [$this, 'persian_elementor_preview_icon']);
     }
 
     public function editor_rtl_css(): void {
@@ -62,11 +71,11 @@ class PersianElementorCore {
     }
 
     public function persian_elementor_flatpickr_mobile(): void {
-        wp_enqueue_script('persian-elementor-flatpickr-mobile', plugins_url('assets/js/flatpickr/flatpickr-mobile.js', __FILE__), ['flatpickr'], null, true);
+        wp_enqueue_script('persian-elementor-flatpickr-mobile', plugins_url('assets/js/flatpickr/flatpickr-mobile.js', __FILE__), ['flatpickr']);
     }
 
     public function persian_elementor_template(): void {
-        wp_enqueue_script('persian-elementor-template', plugins_url('assets/js/editor.js', __FILE__), [], null, true);
+        wp_enqueue_script('persian-elementor-template', plugins_url('assets/js/editor.js', __FILE__));
     }
 
     public function persian_elementor_editor_icon(): void {

@@ -9,10 +9,15 @@ $options = get_option('persian_elementor');
 
 function load_persian_textdomain(string $text_domain, string $locale, string $base_path): void {
     $persian_elementor_lang = "{$base_path}/languages/{$text_domain}/{$text_domain}-{$locale}.mo";
-    $wordpress_lang = "wp-content/languages/plugins/{$text_domain}-{$locale}.mo";
+    $wordpress_lang = WP_CONTENT_DIR . "/languages/plugins/{$text_domain}-{$locale}.mo";
     
     unload_textdomain($text_domain);
-    load_textdomain($text_domain, $persian_elementor_lang);
+    
+    if (file_exists($persian_elementor_lang)) {
+        load_textdomain($text_domain, $persian_elementor_lang);
+    } elseif (file_exists($wordpress_lang)) {
+        load_textdomain($text_domain, $wordpress_lang);
+    }
 }
 
 if (get_locale() === 'fa_IR') {
