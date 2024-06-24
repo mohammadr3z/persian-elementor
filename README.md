@@ -15,7 +15,7 @@ Tested up to: 6.5.0
 
 Requires PHP: 7.4
 
-Stable tag: 2.7.2
+Stable tag: 2.7.4
 
 License: GPLv2 or later
 
@@ -102,8 +102,9 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 == Changelog ==
 
-= 2.7.2 =
-* بازنویسی کد های افزونه برای افزایش سرعت و سازگاری با PHP 8.3
+= 2.7.4 =
+* بازطراحی افزونه برای سازگاری با PHP 8.3
+* تغییر صفحه تنظیمات برای افزایش سرعت پنل
 
 = 2.7.1 =
 * رفع مشکل Cannot declare class

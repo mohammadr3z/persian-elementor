@@ -4,8 +4,8 @@ Contributors: mohammadr3z,elementorir
 Tags: elementor,persian,parsi,farsi,iran,iranian,rtl,fa_IR,المنتور
 Requires at least: 5.0
 Tested up to: 6.5.0
-Requires PHP: 7.4
-Stable tag: 2.7.2
+Requires PHP: 7.0
+Stable tag: 2.7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 * Elementor
 * Elementor Pro
+* Hello Elementor
+* Dynamic Conditions
+* Ele Skin
+* Essential Addons Lite
+* MetForm
 
 در آینده به لیست افزونه های جانبی اضافه خواهد شد.
 
@@ -121,9 +126,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
-
-= 2.7.2 =
-بازنویسی کد های افزونه برای افزایش سرعت و سازگاری با PHP 8.3
+= 2.7.4 =
+بازطراحی افزونه برای سازگاری با PHP 8.3
+تغییر صفحه تنظیمات برای افزایش سرعت پنل
 
 = 2.7.1 =
 رفع مشکل Cannot declare class
