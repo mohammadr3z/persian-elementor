@@ -2,8 +2,8 @@
 /**
  * Plugin Name: المنتور فارسی
  * Plugin URI: 
- * Description: بسته فارسی ساز افزونه المنتور پرو به همراه اضافه شدن 13 فونت فارسی، تقویم شمسی برای المنتور و آیکون های ایرانی
- * Version: 2.7.4
+ * Description: بسته فارسی ساز افزونه المنتور پرو به همراه اضافه شدن 14 فونت فارسی، تقویم شمسی برای المنتور و آیکون های ایرانی
+ * Version: 2.7.5
  * Author: المنتور فارسی
  * Author URI: 
  * Text Domain: persian-elementor
@@ -14,39 +14,40 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
 final class Persian_Elementor {
     private static $instance = null;
-    private $version;
+    private $options = []; // Declare the options property
+
     public static function get_instance() {
         if (is_null(self::$instance)) {
             self::$instance = new self();
         }
         return self::$instance;
     }
+
     private function __construct() {
         add_action('plugins_loaded', [$this, 'init']);
     }
+
     public function init() {
         $this->define_constants();
-        $this->version = $this->get_plugin_version();
         if (!did_action('elementor/loaded')) {
-            add_action('admin_notices', [$this, 'admin_notice_missing_main_plugin']);
             return;
         }
-        add_action('init', [$this, 'i18n']);
+        $this->load_textdomain();
         $this->include_files();
-        add_action('elementor/widgets/register', [$this, 'register_new_widgets']);
+        $this->register_hooks();
     }
+
     private function define_constants() {
         define('PERSIAN_ELEMENTOR', plugin_dir_path(__FILE__));
     }
-    private function get_plugin_version() {
-        $plugin_data = get_file_data(__FILE__, ['Version' => 'Version'], false);
-        return $plugin_data['Version'];
-    }
-    public function i18n() {
+
+    public function load_textdomain() {
         load_plugin_textdomain('persian-elementor');
     }
+
     private function include_files() {
         $includes = [
             'plugin.php',
@@ -61,24 +62,36 @@ final class Persian_Elementor {
             if (file_exists($path)) {
                 require_once $path;
             } else {
-                error_log("File missing: " . $path);
+                error_log("File missing: " . esc_html($path));
             }
         }
     }
-    public function admin_notice_missing_main_plugin() {
-        if (isset($_GET['activate'])) {
-            unset($_GET['activate']);
+
+    public function register_hooks() {
+        $this->options = get_option('persian_elementor', []); // Assign to the declared property
+        
+        add_action('elementor/widgets/register', [$this, 'register_new_widgets']);
+        if ($this->options['efa-all-font'] ?? false) {
+            add_action('elementor/controls/controls_registered', [$this, 'persian_elementor_typography_control']);
+            $this->persian_elementor_typography_init();
         }
-        $message = sprintf(
-            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'persian-elementor'),
-            '<strong>' . esc_html__('Persian Elementor', 'persian-elementor') . '</strong>',
-            '<strong>' . esc_html__('Elementor', 'persian-elementor') . '</strong>'
-        );
-        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
     }
+
     public function register_new_widgets($widgets_manager) {
         require_once PERSIAN_ELEMENTOR . 'widget/video-widget.php';
         $widgets_manager->register(new \Persian_Elementor_Video_Widget());
     }
+    
+    public function persian_elementor_typography_init() {
+        if (did_action('elementor/loaded')) {
+            include_once PERSIAN_ELEMENTOR . 'widget/class-group-control-typography.php';
+        }
+    }
+
+    public function persian_elementor_typography_control($controls_manager) {
+        require_once PERSIAN_ELEMENTOR . 'widget/class-group-control-typography.php';
+        $controls_manager->add_group_control('typography', new \Elementor\Group_Control_Typography());
+    }
 }
+
 Persian_Elementor::get_instance();
