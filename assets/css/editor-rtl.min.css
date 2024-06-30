@@ -57,25 +57,12 @@ li.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-dense.MuiMenuItem-gutters.Mui
 .dialog-tooltip-widget .dialog-tooltip-message,.elementor-repeater-row-item-title,.eui-rtl-b8meod,h3.elementor-control-title,li.ui-menu-item,span.MuiTypography-root.MuiTypography-body2.MuiListItemText-primary.eui-rtl-14tqbo1,.MuiTooltip-tooltip.MuiTooltip-tooltipArrow.MuiTooltip-tooltipPlacementBottom.eui-rtl-hc94nj,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.Mui-disabled.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedContained.MuiButtonGroup-groupedContainedHorizontal.MuiButtonGroup-groupedContainedPrimary.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.eui-button.eui-rtl-1k7tcru,.eui-rtl-1ssw4uy,span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.eui-rtl-yb0lig,span.MuiChip-label.MuiChip-labelSmall.eui-rtl-1pjtbja,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.Mui-disabled.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.eui-button.eui-rtl-16yijr4,
 button.e-ai-button,.MuiTooltip-tooltip,div#condition-select,.e-con-select-type__icons__icon__subtitle,div#select-time_type,input#select-authors,input#select-pages,input#select-categories,
 input#select-tags,div#select-date_type,div#select-status,input#select-roles,input#text-from_url,textarea#\:rh\:,input#select-titles,input#select-days,input#text-dynamic_tag_value,.title-wrapper,
-.dialog-button.dialog-undo.dialog-buttons-undo,span.MuiChip-root
+.dialog-button.dialog-undo.dialog-buttons-undo,span.MuiChip-root,span.elementor-panel-heading-promotion a
  {
     font-family: IRANYekanX !important;
 }
 button,p,li,button span {
     font-family: IRANYekanX !important;
-}
-
-.elementor-context-menu-list__item__shortcut, .elementor-context-menu-list__item__title {
-	line-height: 1.2!important;
-}
-
-.elementor-panel-heading-title,.elementor-nerd-box-title,.elementor-panel #elementor-panel-header {
-    font-variation-settings: 'wght' 700;
-    font-weight: 100!important;
-}
-.elementor-panel #elementor-panel-header-title {
-	font-weight: 100!important;
-    font-variation-settings: 'wght' 400;
 }
 input#elementor-panel-elements-search-input {
     font-family: 'IRANYekanX';
@@ -92,6 +79,9 @@ input#elementor-panel-elements-search-input {
 .elementor-hotkeys__item--shortcut span {
     margin-inline-start: 27px;
     margin-inline-end: 0px!important;
+}
+.elementor-control-raw-html.elementor-descriptor b {
+    font-weight: 400;
 }
 /* Font */
 
