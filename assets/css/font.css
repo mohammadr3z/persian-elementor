@@ -1,1376 +1,893 @@
 @font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-Thin.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-Thin.woff') format('woff');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-ExLight.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-ExLight.woff') format('woff');
-    font-weight: 200;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-Light.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-Regular.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-Medium.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-Medium.woff') format('woff');
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-SemiBold.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-Bold.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-ExBold.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-ExBold.woff') format('woff');
-    font-weight: 800;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-Black.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-ExBlack.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-ExBlack.woff') format('woff');
-    font-weight: 950;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-Hv.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-Hv.woff') format('woff');
-    font-weight: 990;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Anjoman';
-    src: url('font/Anjoman/AnjomanMax-Fat.woff2') format('woff2'),
-         url('font/Anjoman/AnjomanMax-Fat.woff') format('woff');
-    font-weight: 990;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Artin';
-    src: url('font/Artin/Artin-Thin.woff2') format('woff2'),
-         url('font/Artin/Artin-Thin.woff') format('woff');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Artin';
-    src: url('font/Artin/Artin-Light.woff2') format('woff2'),
-         url('font/Artin/Artin-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Artin';
-    src: url('font/Artin/Artin-Regular.woff2') format('woff2'),
-         url('font/Artin/Artin-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Artin';
-    src: url('font/Artin/Artin-Bold.woff2') format('woff2'),
-         url('font/Artin/Artin-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Artin';
-    src: url('font/Artin/Artin-Black.woff2') format('woff2'),
-         url('font/Artin/Artin-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Aviny';
-    src: url('font/Aviny/Aviny.woff2') format('woff2'),
-         url('font/Aviny/Aviny.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Daal';
-    src: url('font/Daal/Daal-Regular.woff2') format('woff2'),
-         url('font/Daal/Daal-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Daal';
-    src: url('font/Daal/Daal-Black.woff2') format('woff2'),
-         url('font/Daal/Daal-Black.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Damavand';
-    src: url('font/Damavand/Damavand-ExtraBold.woff2') format('woff2'),
-         url('font/Damavand/Damavand-ExtraBold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Hairline.woff2') format('woff2'),
-         url('font/Dana/Dana-Hairline.woff') format('woff');
-    font-weight: 10;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Thin.woff2') format('woff2'),
-         url('font/Dana/Dana-Thin.woff') format('woff');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-UltraLight.woff2') format('woff2'),
-         url('font/Dana/Dana-UltraLight.woff') format('woff');
-    font-weight: 200;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Light.woff2') format('woff2'),
-         url('font/Dana/Dana-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Regular.woff2') format('woff2'),
-         url('font/Dana/Dana-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Medium.woff2') format('woff2'),
-         url('font/Dana/Dana-Medium.woff') format('woff');
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-DemiBold.woff2') format('woff2'),
-         url('font/Dana/Dana-DemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Bold.woff2') format('woff2'),
-         url('font/Dana/Dana-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-ExtraBold.woff2') format('woff2'),
-         url('font/Dana/Dana-ExtraBold.woff') format('woff');
-    font-weight: 800;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Black.woff2') format('woff2'),
-         url('font/Dana/Dana-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-ExtraBlack.woff2') format('woff2'),
-         url('font/Dana/Dana-ExtraBlack.woff') format('woff');
-    font-weight: 930;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Heavy.woff2') format('woff2'),
-         url('font/Dana/Dana-Heavy.woff') format('woff');
-    font-weight: 960;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Dana';
-    src: url('font/Dana/Dana-Fat.woff2') format('woff2'),
-         url('font/Dana/Dana-Fat.woff') format('woff');
-    font-weight: 990;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Emkan';
-    src: url('font/Emkan/Emkan-Thin.woff2') format('woff2'),
-         url('font/Emkan/Emkan-Thin.woff') format('woff');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Emkan';
-    src: url('font/Emkan/Emkan-Regular.woff2') format('woff2'),
-         url('font/Emkan/Emkan-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Emkan';
-    src: url('font/Emkan/Emkan-Bold.woff2') format('woff2'),
-         url('font/Emkan/Emkan-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Emkan';
-    src: url('font/Emkan/Emkan-Black.woff2') format('woff2'),
-         url('font/Emkan/Emkan-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Katibeh';
-    src: url('font/Katibeh/Katibeh-Bold.woff2') format('woff2'),
-         url('font/Katibeh/Katibeh-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-@font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-Thin.woff2') format('woff2'),
-         url('font/Estedad/Estedad-Thin.woff') format('woff');
+    src: url('font/Estedad/Estedad-Thin.woff2') format('woff2');
     font-weight: 100;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-ExtraLight.woff2') format('woff2'),
-         url('font/Estedad/Estedad-ExtraLight.woff') format('woff');
+    src: url('font/Estedad/Estedad-ExtraLight.woff2') format('woff2');
     font-weight: 200;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-Light.woff2') format('woff2'),
-         url('font/Estedad/Estedad-Light.woff') format('woff');
+    src: url('font/Estedad/Estedad-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-Regular.woff2') format('woff2'),
-         url('font/Estedad/Estedad-Regular.woff') format('woff');
+    src: url('font/Estedad/Estedad-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-Medium.woff2') format('woff2'),
-         url('font/Estedad/Estedad-Medium.woff') format('woff');
+    src: url('font/Estedad/Estedad-Medium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-SemiBold.woff2') format('woff2'),
-         url('font/Estedad/Estedad-SemiBold.woff') format('woff');
+    src: url('font/Estedad/Estedad-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-Bold.woff2') format('woff2'),
-         url('font/Estedad/Estedad-Bold.woff') format('woff');
+    src: url('font/Estedad/Estedad-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-ExtraBold.woff2') format('woff2'),
-         url('font/Estedad/Estedad-ExtraBold.woff') format('woff');
+    src: url('font/Estedad/Estedad-ExtraBold.woff2') format('woff2');
     font-weight: 800;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Estedad';
-    src: url('font/Estedad/Estedad-Black.woff2') format('woff2'),
-         url('font/Estedad/Estedad-Black.woff') format('woff');
+    src: url('font/Estedad/Estedad-Black.woff2') format('woff2');
     font-weight: 900;
     font-display: swap;
 }
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-Thin.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-Thin.woff2') format('woff2');
     font-weight: 100;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-ExtraLight.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-ExtraLight.woff2') format('woff2');
     font-weight: 200;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-Light.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-Regular.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-Medium.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-Medium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-DemiBold.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-Bold.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-ExtraBold.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-ExtraBold.woff2') format('woff2');
     font-weight: 800;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Farhang';
-    src: url('font/Farhang/Farhang2-Black.woff2') format('woff2');
+    font-family: 'EstedadFN';
+    src: url('font/Estedad/Estedad-Black.woff2') format('woff2');
     font-weight: 900;
     font-display: swap;
 }
+
 @font-face {
     font-family: 'Gandom';
     src: url('font/Gandom/Gandom.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
-@font-face {
-    font-family: 'IRANSansDN';
-    src: url('font/IRANSansDN/IRANSansDN-Light.woff2') format('woff2'),
-         url('font/IRANSansDN/IRANSansDN-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
 
-@font-face {
-    font-family: 'IRANSansDN';
-    src: url('font/IRANSansDN/IRANSansDN-Regular.woff2') format('woff2'),
-         url('font/IRANSansDN/IRANSansDN-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansDN';
-    src: url('font/IRANSansDN/IRANSansDN-Bold.woff2') format('woff2'),
-         url('font/IRANSansDN/IRANSansDN-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-Thin.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-Thin.woff') format('woff');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-UltraLight.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-UltraLight.woff') format('woff');
-    font-weight: 200;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-Light.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-Regular.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-Medium.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-Medium.woff') format('woff');
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-DemiBold.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-DemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-Bold.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-ExtraBold.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-ExtraBold.woff') format('woff');
-    font-weight: 800;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-Black.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-ExtraBlack.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-ExtraBlack.woff') format('woff');
-    font-weight: 950;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'IRANSansX';
-    src: url('font/IRANSansX/IRANSansX-Heavy.woff2') format('woff2'),
-         url('font/IRANSansX/IRANSansX-Heavy.woff') format('woff');
-    font-weight: 960;
-    font-display: swap;
-}
 @font-face {
     font-family: 'IRANSharp';
-    src: url('font/IRANSharp/IRANSharp-Light.woff2') format('woff2'),
-         url('font/IRANSharp/IRANSharp-Light.woff') format('woff');
+    src: url('font/IRANSharp/IRANSharp-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 @font-face {
     font-family: 'IRANSharp';
-    src: url('font/IRANSharp/IRANSharp-Regular.woff2') format('woff2'),
-         url('font/IRANSharp/IRANSharp-Regular.woff') format('woff');
+    src: url('font/IRANSharp/IRANSharp-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
     font-family: 'IRANSharp';
-    src: url('font/IRANSharp/IRANSharp-Bold.woff2') format('woff2'),
-         url('font/IRANSharp/IRANSharp-Bold.woff') format('woff');
+    src: url('font/IRANSharp/IRANSharp-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-Thin.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-Thin.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-Thin.woff2') format('woff2');
     font-weight: 100;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-UltraLight.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-UltraLight.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-UltraLight.woff2') format('woff2');
     font-weight: 200;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-Light.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-Light.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-Regular.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-Regular.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-Medium.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-Medium.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-Medium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-DemiBold.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-DemiBold.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-DemiBold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-Bold.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-Bold.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-ExtraBold.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-ExtraBold.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-ExtraBold.woff2') format('woff2');
     font-weight: 800;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-Black.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-Black.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-Black.woff2') format('woff2');
     font-weight: 900;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-ExtraBlack.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-ExtraBlack.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-ExtraBlack.woff2') format('woff2');
     font-weight: 950;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'IRANYekanX';
-    src: url('font/IRANYekanX/IRANYekanX-Heavy.woff2') format('woff2'),
-         url('font/IRANYekanX/IRANYekanX-Heavy.woff') format('woff');
+    src: url('font/IRANYekanX/IRANYekanX-Heavy.woff2') format('woff2');
     font-weight: 960;
     font-display: swap;
 }
+
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-Thin.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-Thin.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-Thin.woff2') format('woff2');
     font-weight: 100;
-    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-ExtraLight.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-ExtraLight.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-UltraLight.woff2') format('woff2');
     font-weight: 200;
-    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-Light.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-Light.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-Light.woff2') format('woff2');
     font-weight: 300;
-    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-Regular.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-Regular.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-Regular.woff2') format('woff2');
     font-weight: 400;
-    font-style: normal;
+    font-display: swap;
 }
+
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-Medium.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-Medium.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-Medium.woff2') format('woff2');
     font-weight: 500;
-    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-SemiBold.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-SemiBold.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-DemiBold.woff2') format('woff2');
     font-weight: 600;
-    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-Bold.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-Bold.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-Bold.woff2') format('woff2');
     font-weight: 700;
-    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-ExtraBold.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-ExtraBold.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-ExtraBold.woff2') format('woff2');
     font-weight: 800;
-    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kalameh';
-    src: url('font/Kalameh/Kalameh-Black.woff2') format('woff2'),
-         url('font/Kalameh/Kalameh-Black.woff') format('woff');
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-Black.woff2') format('woff2');
     font-weight: 900;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Kara';
-    src: url('font/Kara/Kara-Light.woff2') format('woff2'),
-         url('font/Kara/Kara-Light.woff') format('woff');
-    font-weight: 300;
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-ExtraBlack.woff2') format('woff2');
+    font-weight: 950;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanXFN';
+    src: url('font/IRANYekanX/IRANYekanX-Heavy.woff2') format('woff2');
+    font-weight: 960;
+    font-display: swap;
+}
+
 @font-face {
     font-family: 'Kara';
-    src: url('font/Kara/Kara-Regular.woff2') format('woff2'),
-         url('font/Kara/Kara-Regular.woff') format('woff');
+    src: url('font/Kara/Kara-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
     font-family: 'Kara';
-    src: url('font/Kara/Kara-SemiBold.woff2') format('woff2'),
-         url('font/Kara/Kara-SemiBold.woff') format('woff');
+    src: url('font/Kara/Kara-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
 }
-@font-face {
-    font-family: 'Katibeh';
-    src: url('font/Katibeh/Katibeh-Bold.woff2') format('woff2'),
-         url('font/Katibeh/Katibeh-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Maneli';
-    src: url('font/Maneli/Maneli.woff2') format('woff2'),
-         url('font/Maneli/Maneli.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
+
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-Thin.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-Thin.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-Thin.woff2') format('woff2');
     font-weight: 100;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-ExtraLight.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-ExtraLight.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-ExtraLight.woff2') format('woff2');
     font-weight: 200;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-Light.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-Light.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-Regular.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-Regular.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-Medium.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-Medium.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-Medium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-SemiBold.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-SemiBold.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-Bold.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-Bold.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-ExtraBold.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-ExtraBold.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-ExtraBold.woff2') format('woff2');
     font-weight: 800;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Mikhak';
-    src: url('font/Mikhak/Mikhak-Black.woff2') format('woff2'),
-         url('font/Mikhak/Mikhak-Black.woff') format('woff');
+    src: url('font/Mikhak/Mikhak-Black.woff2') format('woff2');
     font-weight: 900;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Nahid';
-    src: url('font/Nahid/Nahid.woff2') format('woff2'),
-         url('font/Nahid/Nahid.woff') format('woff');
+    src: url('font/Nahid/Nahid.woff2') format('woff2');
     font-weight: 700;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Noora';
-    src: url('font/Noora/Noora-ExtraLight.woff2') format('woff2'),
-         url('font/Noora/Noora-ExtraLight.woff') format('woff');
-    font-weight: 200;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Noora';
-    src: url('font/Noora/Noora-Light.woff2') format('woff2'),
-         url('font/Noora/Noora-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Noora';
-    src: url('font/Noora/Noora-Regular.woff2') format('woff2'),
-         url('font/Noora/Noora-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Noora';
-    src: url('font/Noora/Noora-Bold.woff2') format('woff2'),
-         url('font/Noora/Noora-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Noora';
-    src: url('font/Noora/Noora-ExtraBold.woff2') format('woff2'),
-         url('font/Noora/Noora-ExtraBold.woff') format('woff');
-    font-weight: 800;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Noora';
-    src: url('font/Noora/Noora-Black.woff2') format('woff2'),
-         url('font/Noora/Noora-Black.woff') format('woff');
-    font-weight: 900;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Parastoo';
-    src: url('font/Parastoo/Parastoo-Regular.woff2') format('woff2'),
-         url('font/Parastoo/Parastoo-Regular.woff') format('woff');
+    src: url('font/Parastoo/Parastoo-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
     font-family: 'Parastoo';
-    src: url('font/Parastoo/Parastoo-Bold.woff2') format('woff2'),
-         url('font/Parastoo/Parastoo-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Pelak';
-    src: url('font/Pelak/Pelak-Thin.woff2') format('woff2'),
-         url('font/Pelak/Pelak-Thin.woff') format('woff');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pelak';
-    src: url('font/Pelak/Pelak-Light.woff2') format('woff2'),
-         url('font/Pelak/Pelak-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pelak';
-    src: url('font/Pelak/Pelak-Regular.woff2') format('woff2'),
-         url('font/Pelak/Pelak-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pelak';
-    src: url('font/Pelak/Pelak-Medium.woff2') format('woff2'),
-         url('font/Pelak/Pelak-Medium.woff') format('woff');
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pelak';
-    src: url('font/Pelak/Pelak-SemiBold.woff2') format('woff2'),
-         url('font/Pelak/Pelak-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pelak';
-    src: url('font/Pelak/Pelak-Bold.woff2') format('woff2'),
-         url('font/Pelak/Pelak-Bold.woff') format('woff');
+    src: url('font/Parastoo/Parastoo-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'Pelak';
-    src: url('font/Pelak/Pelak-ExtraBold.woff2') format('woff2'),
-         url('font/Pelak/Pelak-ExtraBold.woff') format('woff');
-    font-weight: 800;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Pelak';
-    src: url('font/Pelak/Pelak-Black.woff2') format('woff2'),
-         url('font/Pelak/Pelak-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-Thin.woff2') format('woff2'),
-         url('font/Peyda/Peyda-Thin.woff') format('woff');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-ExtraLight.woff2') format('woff2'),
-         url('font/Peyda/Peyda-ExtraLight.woff') format('woff');
-    font-weight: 200;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-Light.woff2') format('woff2'),
-         url('font/Peyda/Peyda-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-Regular.woff2') format('woff2'),
-         url('font/Peyda/Peyda-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-Medium.woff2') format('woff2'),
-         url('font/Peyda/Peyda-Medium.woff') format('woff');
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-SemiBold.woff2') format('woff2'),
-         url('font/Peyda/Peyda-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-Bold.woff2') format('woff2'),
-         url('font/Peyda/Peyda-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-ExtraBold.woff2') format('woff2'),
-         url('font/Peyda/Peyda-ExtraBold.woff') format('woff');
-    font-weight: 800;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Peyda';
-    src: url('font/Peyda/Peyda-Black.woff2') format('woff2'),
-         url('font/Peyda/Peyda-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Ravi';
-    src: url('font/Ravi/Ravi-thin.woff2') format('woff2'),
-         url('font/Ravi/Ravi-thin.woff') format('woff');
-    font-weight: 100;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Ravi';
-    src: url('font/Ravi/Ravi-Light.woff2') format('woff2'),
-         url('font/Ravi/Ravi-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Ravi';
-    src: url('font/Ravi/Ravi-Regular.woff2') format('woff2'),
-         url('font/Ravi/Ravi-Regular.woff') format('woff');
-    font-weight: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Ravi';
-    src: url('font/Ravi/Ravi-Medium.woff2') format('woff2'),
-         url('font/Ravi/Ravi-Medium.woff') format('woff');
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Ravi';
-    src: url('font/Ravi/Ravi-SemiBold.woff2') format('woff2'),
-         url('font/Ravi/Ravi-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Ravi';
-    src: url('font/Ravi/Ravi-Bold.woff2') format('woff2'),
-         url('font/Ravi/Ravi-Bold.woff') format('woff');
-    font-weight: bold;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Ravi';
-    src: url('font/Ravi/Ravi-Black.woff2') format('woff2'),
-         url('font/Ravi/Ravi-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Ravi';
-    src: url('font/Ravi/Ravi-ExtraBlack.woff2') format('woff2'),
-         url('font/Ravi/Ravi-ExtraBlack.woff') format('woff');
-    font-weight: 950;
-    font-display: swap;
-}
 @font-face {
     font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-Light.woff2') format('woff2'),
-         url('font/Sahel/Sahel-Light.woff') format('woff');
+    src: url('font/Sahel/Sahel-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 @font-face {
     font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-Regular.woff2') format('woff2'),
-         url('font/Sahel/Sahel-Regular.woff') format('woff');
+    src: url('font/Sahel/Sahel-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
     font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-SemiBold.woff2') format('woff2'),
-         url('font/Sahel/Sahel-SemiBold.woff') format('woff');
+    src: url('font/Sahel/Sahel-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
 }
 @font-face {
     font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-Bold.woff2') format('woff2'),
-         url('font/Sahel/Sahel-Bold.woff') format('woff');
+    src: url('font/Sahel/Sahel-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 @font-face {
     font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-Black.woff2') format('woff2'),
-         url('font/Sahel/Sahel-Black.woff') format('woff');
+    src: url('font/Sahel/Sahel-Black.woff2') format('woff2');
     font-weight: 900;
     font-display: swap;
 }
-@font-face {
-    font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-Light.woff2') format('woff2'),
-         url('font/Sahel/Sahel-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
 
-@font-face {
-    font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-Regular.woff2') format('woff2'),
-         url('font/Sahel/Sahel-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-SemiBold.woff2') format('woff2'),
-         url('font/Sahel/Sahel-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-Bold.woff2') format('woff2'),
-         url('font/Sahel/Sahel-Bold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Sahel';
-    src: url('font/Sahel/Sahel-Black.woff2') format('woff2'),
-         url('font/Sahel/Sahel-Black.woff') format('woff');
-    font-weight: 900;
-    font-display: swap;
-}
 @font-face {
     font-family: 'Samim';
-    src: url('font/Samim/Samim-Regular.woff2') format('woff2'),
-         url('font/Samim/Samim-Bold.woff') format('woff');
+    src: url('font/Samim/Samim-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
     font-family: 'Samim';
-    src: url('font/Samim/Samim-Medium.woff2') format('woff2'),
-         url('font/Samim/Samim-Medium.woff') format('woff');
+    src: url('font/Samim/Samim-Medium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
 }
 @font-face {
     font-family: 'Samim';
-    src: url('font/Samim/Samim-Bold.woff2') format('woff2'),
-         url('font/Samim/Samim-Bold.woff') format('woff');
+    src: url('font/Samim/Samim-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 @font-face {
     font-family: 'Tanha';
-    src: url('font/Tanha/Tanha.woff2') format('woff2'),
-         url('font/Tanha/Tanha.woff') format('woff');
+    src: url('font/Tanha/Tanha.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'TanhaFN';
+    src: url('font/Tanha/Tanha.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
 @font-face {
     font-family: 'Shabnam';
-    src: url('font/Shabnam/Shabnam-Thin.woff2') format('woff2'),
-         url('font/Shabnam/Shabnam-Thin.woff') format('woff');
+    src: url('font/Shabnam/Shabnam-Thin.woff2') format('woff2');
     font-weight: 100;
     font-display: swap;
 }
 @font-face {
     font-family: 'Shabnam';
-    src: url('font/Shabnam/Shabnam-Light.woff2') format('woff2'),
-         url('font/Shabnam/Shabnam-Light.woff') format('woff');
+    src: url('font/Shabnam/Shabnam-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 @font-face {
     font-family: 'Shabnam';
-    src: url('font/Shabnam/Shabnam-Regular.woff2') format('woff2'),
-         url('font/Shabnam/Shabnam-Regular.woff') format('woff');
+    src: url('font/Shabnam/Shabnam-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
     font-family: 'Shabnam';
-    src: url('font/Shabnam/Shabnam-Medium.woff2') format('woff2'),
-         url('font/Shabnam/Shabnam-Medium.woff') format('woff');
+    src: url('font/Shabnam/Shabnam-Medium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
 }
 @font-face {
     font-family: 'Shabnam';
-    src: url('font/Shabnam/Shabnam-Bold.woff2') format('woff2'),
-         url('font/Shabnam/Shabnam-Bold.woff') format('woff');
+    src: url('font/Shabnam/Shabnam-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'ShabnamFN';
+    src: url('font/Shabnam/Shabnam-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'ShabnamFN';
+    src: url('font/Shabnam/Shabnam-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'ShabnamFN';
+    src: url('font/Shabnam/Shabnam-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'ShabnamFN';
+    src: url('font/Shabnam/Shabnam-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'ShabnamFN';
+    src: url('font/Shabnam/Shabnam-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-Thin.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-Thin.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-Thin.woff2') format('woff2');
     font-weight: 100;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-ExtraLight.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-ExtraLight.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-ExtraLight.woff2') format('woff2');
     font-weight: 200;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-Light.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-Light.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-Regular.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-Regular.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-Medium.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-Medium.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-Medium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-SemiBold.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-SemiBold.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-Bold.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-Bold.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-ExtraBold.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-ExtraBold.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-ExtraBold.woff2') format('woff2');
     font-weight: 800;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'VazirMatn';
-    src: url('font/VazirMatn/Vazirmatn-Black.woff2') format('woff2'),
-         url('font/VazirMatn/Vazirmatn-Black.woff') format('woff');
+    src: url('font/VazirMatn/Vazirmatn-Black.woff2') format('woff2');
     font-weight: 900;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'YekanBakh';
-    src: url('font/YekanBakh/YekanBakh-Thin.woff2') format('woff2'),
-         url('font/YekanBakh/YekanBakh-Thin.woff') format('woff');
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-Thin.woff2') format('woff2');
     font-weight: 100;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'YekanBakh';
-    src: url('font/YekanBakh/YekanBakh-Light.woff2') format('woff2'),
-         url('font/YekanBakh/YekanBakh-Light.woff') format('woff');
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-Light.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'YekanBakh';
-    src: url('font/YekanBakh/YekanBakh-Regular.woff2') format('woff2'),
-         url('font/YekanBakh/YekanBakh-Regular.woff') format('woff');
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'YekanBakh';
-    src: url('font/YekanBakh/YekanBakh-SemiBold.woff2') format('woff2'),
-         url('font/YekanBakh/YekanBakh-SemiBold.woff') format('woff');
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'YekanBakh';
-    src: url('font/YekanBakh/YekanBakh-Bold.woff2') format('woff2'),
-         url('font/YekanBakh/YekanBakh-Bold.woff') format('woff');
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'YekanBakh';
-    src: url('font/YekanBakh/YekanBakh-ExtraBold.woff2') format('woff2'),
-         url('font/YekanBakh/YekanBakh-ExtraBold.woff') format('woff');
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-ExtraBold.woff2') format('woff2');
     font-weight: 800;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'YekanBakh';
-    src: url('font/YekanBakh/YekanBakh-Black.woff2') format('woff2'),
-         url('font/YekanBakh/YekanBakh-Black.woff') format('woff');
+    font-family: 'VazirMatnFN';
+    src: url('font/VazirMatn/Vazirmatn-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+/* EXTRAFONT */
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-UltraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-DemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-Black.woff2') format('woff2');
     font-weight: 900;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'YekanBakh';
-    src: url('font/YekanBakh/YekanBakh-ExtraBlack.woff2') format('woff2'),
-         url('font/YekanBakh/YekanBakh-ExtraBlack.woff') format('woff');
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-ExtraBlack.woff2') format('woff2');
     font-weight: 950;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('font/IRANYekanX/IRANYekanX-Heavy.woff2') format('woff2');
+    font-weight: 960;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-UltraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-DemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-ExtraBlack.woff2') format('woff2');
+    font-weight: 950;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANYekanFN';
+    src: url('font/IRANYekanX/IRANYekanX-Heavy.woff2') format('woff2');
+    font-weight: 960;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('font/VazirMatn/Vazirmatn-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('font/VazirMatn/Vazirmatn-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('font/VazirMatn/Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('font/VazirMatn/Vazirmatn-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('font/VazirMatn/Vazirmatn-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('font/VazirMatn/Vazirmatn-black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VazirFN';
+    src: url('font/VazirMatn/Vazirmatn-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'VazirFN';
+    src: url('font/VazirMatn/Vazirmatn-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VazirFN';
+    src: url('font/VazirMatn/Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VazirFN';
+    src: url('font/VazirMatn/Vazirmatn-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'VazirFN';
+    src: url('font/VazirMatn/Vazirmatn-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VazirFN';
+    src: url('font/VazirMatn/Vazirmatn-black.woff2') format('woff2');
+    font-weight: 900;
     font-display: swap;
 }

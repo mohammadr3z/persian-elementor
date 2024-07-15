@@ -5,10 +5,10 @@ defined('ABSPATH') || exit;
 $options = get_option('persian_elementor', []);
 
 if (!empty($options['efa-iranian-icon'])) {
-    add_filter('elementor/icons_manager/native', 'add_eicons_to_icon_manager');
+    add_filter('elementor/icons_manager/native', 'PersianElementor_eicons_icon_manager');
 }
 
-function add_eicons_to_icon_manager($settings) {
+function PersianElementor_eicons_icon_manager($settings) {
     static $json_file = null;
 
     if ($json_file === null) {
@@ -21,7 +21,7 @@ function add_eicons_to_icon_manager($settings) {
 
     $settings['eicons'] = [
         'name'          => 'آیکون های ایرانی',
-        'label'         => esc_html__('آیکون های ایرانی', 'text-domain'),
+        'label'         => esc_html__('آیکون های ایرانی', 'persian-elementor'),
         'url'           => false,
         'enqueue'       => false,
         'prefix'        => 'efa-',

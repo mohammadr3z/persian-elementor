@@ -11,11 +11,11 @@ Tags: elementor,persian elementor,المنتور فارسی,persian,parsi,parsia
 
 Requires at least: 5.0
 
-Tested up to: 6.5.0
+Tested up to: 6.5.5
 
 Requires PHP: 7.4
 
-Stable tag: 2.7.5
+Stable tag: 2.7.6.2
 
 License: GPLv2 or later
 
@@ -104,8 +104,10 @@ Wordprses URI: https://wordpress.org/plugins/persian-elementor/
 
 
 == Changelog ==
+= 2.7.6.2 =
+* اضافه شدن ترجمه المنتور و المنتور پرو 3.23
 
-= 2.7.5 =
+= 2.7.6 =
 * بازطراحی افزونه برای سازگاری با PHP 8.3
 * تغییر صفحه تنظیمات برای افزایش سرعت پنل
 * اضافه شدن قابلیت اعداد فارسی در بخش تایپوگرافی

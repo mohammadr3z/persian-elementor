@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 
 var Templates = function Templates() {
-  // Find Elementor library remote template and prepend Elementorfa X badge.
+  // Find Elementor library remote template and prepend persian elementor X badge.
   function prependBadge() {
     var templateRemote = jQuery('#tmpl-elementor-template-library-template-remote'),
         badgeHTML = "<# var ravenId = 'raven_' #>\n        <# if ( String( template_id ).substr( 0, ravenId.length ) === ravenId && typeof templatePro !== 'undefined' && templatePro ) { #>\n          <span class=\"raven-template-library-badge\">\n </span>\n        <# } else if ( String( template_id ).substr( 0, ravenId.length ) === ravenId && typeof templatePro !== 'undefined' && ! templatePro ) { #>\n          <span class=\"raven-template-library-badge raven-template-pro\">\n            <# if ( typeof ElementorfaxPremium !== 'undefined' ) { #>\n              Activate to Unlock\n            <# } else { #>\n              Upgrade to Unlock\n            <# } #>\n          </span>\n        <# } #>\n\t  ";
@@ -64,7 +64,7 @@ var Templates = function Templates() {
       return;
     }
 
-    var content = layout.modalContent; // Add Elementorfa X filter button.
+    var content = layout.modalContent; // Add persian elementor X filter button.
 
     function addFilter() {
       var filter = content.$el.find('#elementor-template-library-filter-toolbar-remote');

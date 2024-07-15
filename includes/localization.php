@@ -1,4 +1,8 @@
 <?php
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 $options = get_option('persian_elementor');
 if (!isset($options['efa-flatpickr']) || $options['efa-flatpickr'] === false) {
     return;
@@ -8,9 +12,11 @@ class PersianElementorLocalization {
     private $locale;
     private $format;
     private $time24;
+    private $version;
 
     public function __construct() {
         add_action('init', array($this, 'init'));
+        $this->version = '2.7.6';
     }
 
     public function init() {
@@ -26,7 +32,16 @@ class PersianElementorLocalization {
     }
 
     public function scriptRegister() {
-        wp_register_script('flatpickr_localize', plugin_dir_url(__DIR__) . "assets/js/flatpickr/{$this->locale}.js", array('flatpickr'));
+        $file_path = plugin_dir_path(__DIR__) . "assets/js/flatpickr/{$this->locale}.js";
+        $file_version = file_exists($file_path) ? filemtime($file_path) : $this->version;
+
+        wp_register_script(
+            'flatpickr_localize', 
+            plugin_dir_url(__DIR__) . "assets/js/flatpickr/{$this->locale}.js", 
+            array('flatpickr'),
+            $file_version,
+            true
+        );
     }
 
     public function scriptEnqueue($item) {
@@ -41,13 +56,25 @@ class PersianElementorLocalization {
         if (!wp_script_is('flatpickr', 'enqueued')) {
             return;
         }
+
         $lang = wp_script_is('flatpickr_localize', 'enqueued') ? str_replace('-', '_', $this->locale) : '';
         $time24 = $this->time24 ? 'true' : 'false';
-        echo "<script>
-            flatpickr.setDefaults({dateFormat:'$this->format', time_24hr:$time24});
-            " . ($lang ? "flatpickr.localize(flatpickr.l10ns.$lang);" : '') . "
-            " . ($this->format !== 'Y-m-d' ? "jQuery('.elementor-date-field').removeAttr('pattern');" : '') . "
-        </script>";
+
+        $script = sprintf(
+            "flatpickr.setDefaults({dateFormat:'%s', time_24hr:%s});",
+            esc_js($this->format),
+            $time24
+        );
+
+        if ($lang) {
+            $script .= sprintf("flatpickr.localize(flatpickr.l10ns.%s);", esc_js($lang));
+        }
+
+        if ($this->format !== 'Y-m-d') {
+            $script .= "jQuery('.elementor-date-field').removeAttr('pattern');";
+        }
+
+        wp_add_inline_script('flatpickr', $script);
     }
 
     private function getLocale() {

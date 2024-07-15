@@ -1,6 +1,9 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 
-function get_persian_elementor_options(): array {
+function PersianElementor_options(): array {
     static $options = null;
     if ($options === null) {
         $options = get_option('persian_elementor') ?: [];
@@ -9,24 +12,25 @@ function get_persian_elementor_options(): array {
     return $options;
 }
 
-function add_farsi_fonts_to_elementor(): void {
+function PersianElementor_farsi_fonts(): void {
     static $farsi_fonts = [
-	'Estedad',
-	'Gandom',
-	'IRANYekanX',
-	'Kara',
-	'Mikhak',
-	'Nahid',
-	'Parastoo',
-	'Sahel',
-	'Samim',
-	'Shabnam',
-	'Tanha',
-	'VazirMatn',
+        'Estedad',
+        'Gandom',
+        'IRANYekanX',
+        'IRANSharp',
+        'Kara',
+        'Mikhak',
+        'Nahid',
+        'Parastoo',
+        'Sahel',
+        'Samim',
+        'Shabnam',
+        'Tanha',
+        'VazirMatn',
     ];
 
     add_filter('elementor/fonts/groups', function($font_groups) use ($farsi_fonts) {
-        $font_groups = array_merge(['FARSI' => __('فونت فارسی', 'plugin-textdomain')], $font_groups);
+        $font_groups = array_merge(['FARSI' => __('فونت فارسی', 'persian-elementor')], $font_groups);
         return $font_groups;
     });
 
@@ -37,7 +41,7 @@ function add_farsi_fonts_to_elementor(): void {
     });
 }
 
-$options = get_persian_elementor_options();
+$options = PersianElementor_options();
 if (!empty($options['efa-all-font'])) {
-    add_farsi_fonts_to_elementor();
+    PersianElementor_farsi_fonts();
 }

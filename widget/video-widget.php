@@ -579,6 +579,7 @@ class Persian_Elementor_Video_Widget extends \Elementor\Widget_Video {
 					'none'     => esc_html__( 'None', 'elementor' ),
 				],
 				'description' => sprintf(
+					// Translators: %1$s and %2$s are placeholders for opening and closing HTML link tags respectively.
 					esc_html__( 'Preload attribute lets you specify how the video should be loaded when the page loads. %1$sLearn More%2$s', 'elementor' ),
 					'<a target="_blank" href="https://go.elementor.com/preload-video/">',
 					'</a>'
@@ -949,43 +950,60 @@ class Persian_Elementor_Video_Widget extends \Elementor\Widget_Video {
 		$widget_video->end_controls_section();
 	}
 
-	protected function render() {
-		$settings = $this->get_settings_for_display();
-		if ( $settings['video_type'] ==='aparat') {
-			$video_id   = $settings['aparat_url'];
-			$video_id   = explode( "/", $video_id );
-			$video_id   = end( $video_id );
-			$mute       = $settings['mute_vid'] ? 'true' : 'false';
-			$autoplay   = $settings['autoplay'] ? 'true' : 'false';
-			$show_title = $settings['title_show'] ? 'true' : 'false';
-			$start_h    = $settings['start_h'] ?? 0;
-			$start_m    = $settings['start_m'] ?? 0;
-			$start_s    = $settings['start_s'] ?? 0;
-			$start_time = ( intval( $start_h ) * 60 * 60 ) + ( intval( $start_m ) * 60 ) + intval( $start_s );
-			$min_height = $settings['aparat_height'] ?? 400;
-			$response = wp_remote_get( 'https://www.aparat.com/etc/api/video/videohash/' . $video_id );
+protected function render() {
+    $settings = $this->get_settings_for_display();
+    if ( $settings['video_type'] === 'aparat' ) {
+        // Sanitize and validate inputs
+        $video_url = sanitize_text_field( $settings['aparat_url'] );
+        $video_id = explode( "/", $video_url );
+        $video_id = end( $video_id );
+        
+        $mute = isset( $settings['mute_vid'] ) && $settings['mute_vid'] ? 'true' : 'false';
+        $autoplay = isset( $settings['autoplay'] ) && $settings['autoplay'] ? 'true' : 'false';
+        $show_title = isset( $settings['title_show'] ) && $settings['title_show'] ? 'true' : 'false';
+        
+        $start_h = isset( $settings['start_h'] ) ? absint( $settings['start_h'] ) : 0;
+        $start_m = isset( $settings['start_m'] ) ? absint( $settings['start_m'] ) : 0;
+        $start_s = isset( $settings['start_s'] ) ? absint( $settings['start_s'] ) : 0;
+        $start_time = ( $start_h * 60 * 60 ) + ( $start_m * 60 ) + $start_s;
+        
+        $min_height = isset( $settings['aparat_height'] ) ? absint( $settings['aparat_height'] ) : 400;
 
-			if ( is_wp_error( $response ) ) {
-				echo 'ارتباط با آپارات برقرار نشد.';
+        $response = wp_remote_get( 'https://www.aparat.com/etc/api/video/videohash/' . urlencode( $video_id ) );
 
-				return;
-			}
+        if ( is_wp_error( $response ) ) {
+            echo esc_html__( 'ارتباط با آپارات برقرار نشد.', 'your-text-domain' );
+            return;
+        }
 
-			$data = json_decode( wp_remote_retrieve_body( $response ), true );
+        $data = json_decode( wp_remote_retrieve_body( $response ), true );
 
-			if ( isset( $data['error'] ) ) {
-				echo 'ارتباط با آپارات برقرار نشد.';
+        if ( isset( $data['error'] ) ) {
+            echo esc_html__( 'ارتباط با آپارات برقرار نشد.', 'your-text-domain' );
+            return;
+        }
 
-				return;
-			}
+        $iframe_src = add_query_arg(
+            array(
+                't' => $start_time,
+                'titleShow' => $show_title,
+                'muted' => $mute,
+                'autoplay' => $autoplay,
+            ),
+            'https://www.aparat.com/video/video/embed/videohash/' . esc_attr( $video_id ) . '/vt/frame'
+        );
 
-			echo '<iframe src="https://www.aparat.com/video/video/embed/videohash/' . $video_id . '/vt/frame?t=' . $start_time . '&titleShow=' . $show_title . '&muted=' . $mute . '&autoplay=' . $autoplay . '" height="' . $min_height . '" allow="autoplay" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>';
+        printf(
+            '<iframe src="%s" height="%d" allow="autoplay" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>',
+            esc_url( $iframe_src ),
+            esc_attr( $min_height )
+        );
 
-			return;
-		}
+        return;
+    }
 
-		parent::render();
-	}
+    parent::render();
+}
 }
 
 
