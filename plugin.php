@@ -19,7 +19,6 @@ class PersianElementorCore {
         
         $defaults = [
             'efa-panel-font' => '1',
-            'efa-flatpickr' => '1',
             'efa-iranian-icon' => '1',
             'efa-elementor-pro' => '1',
             'efa-elementor' => '1',
@@ -41,10 +40,7 @@ class PersianElementorCore {
             add_action('admin_enqueue_scripts', array($this, 'enqueue_rtl_styles'));
         }
         if (!empty($this->options['efa-all-font'])) {
-            add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_cdn_font'));
-        }
-        if (!empty($this->options['efa-flatpickr'])) {
-            add_action('elementor/frontend/before_enqueue_styles', array($this, 'enqueue_frontend_styles'));
+            add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_persian_font'));
         }
         add_action('elementor/editor/before_enqueue_scripts', array($this, 'enqueue_template_script'));
         if (!empty($this->options['efa-iranian-icon'])) {
@@ -64,13 +60,12 @@ class PersianElementorCore {
         wp_enqueue_style('persian-elementor-rtl', plugins_url("assets/css/$style_suffix", __FILE__), array(), $this->version);
     }
 
-    public function enqueue_cdn_font() {
+    public function enqueue_persian_font() {
         wp_enqueue_style('persian-elementor-font', plugins_url('assets/css/font.css', __FILE__), array(), $this->version);
     }
 
     public function enqueue_frontend_styles() {
         wp_enqueue_style('persian-elementor-front', plugins_url('assets/css/front-rtl.css', __FILE__), array(), $this->version);
-        wp_enqueue_script('persian-elementor-flatpickr-mobile', plugins_url('assets/js/flatpickr/flatpickr-mobile.js', __FILE__), array('flatpickr'), $this->version, true);
     }
 
     public function enqueue_template_script() {

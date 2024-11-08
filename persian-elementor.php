@@ -3,13 +3,13 @@
  * Plugin Name: المنتور فارسی
  * Plugin URI: 
  * Description: بسته فارسی ساز المنتور پرو با 13 فونت فارسی، تقویم شمسی و آیکون‌های ایرانی.
- * Version: 2.7.6.2
+ * Version: 2.7.6.7
  * Author: المنتور فارسی
  * Author URI: 
  * Text Domain: persian-elementor
  * License: GPL2
- * Elementor tested up to: 3.23
- * Elementor Pro tested up to: 3.23
+ * Elementor tested up to: 3.25
+ * Elementor Pro tested up to: 3.25
  */
 if (!defined('ABSPATH')) {
     exit;
@@ -52,7 +52,6 @@ final class Persian_Elementor {
         $includes = [
             'plugin.php',
             'includes/translate.php',
-            'includes/localization.php',
             'includes/fonts.php',
             'includes/icon.php',
             'includes/options.php'
@@ -70,18 +69,12 @@ final class Persian_Elementor {
     public function register_hooks() {
         $this->options = get_option('persian_elementor', []);
         
-        add_action('elementor/widgets/register', [$this, 'register_new_widgets']);
         if ($this->options['efa-all-font'] ?? false) {
             add_action('elementor/controls/controls_registered', [$this, 'persian_elementor_typography_control']);
             $this->persian_elementor_typography_init();
         }
     }
 
-    public function register_new_widgets($widgets_manager) {
-        require_once PERSIAN_ELEMENTOR . 'widget/video-widget.php';
-        $widgets_manager->register(new \Persian_Elementor_Video_Widget());
-    }
-    
     public function persian_elementor_typography_init() {
         if (did_action('elementor/loaded')) {
             include_once PERSIAN_ELEMENTOR . 'widget/class-group-control-typography.php';
