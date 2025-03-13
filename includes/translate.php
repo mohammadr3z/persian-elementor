@@ -36,6 +36,9 @@ add_action('init', 'load_persian_elementor_translations');
 
 if ( ! function_exists( 'persian_elementor_customize_library_menu' ) ) {
     function persian_elementor_customize_library_menu() {
+        if (get_locale() !== 'fa_IR') {
+            return;
+        }
         global $menu;
         foreach ($menu as $key => $item) {
             if (isset($item[2]) && $item[2] === 'edit.php?post_type=elementor_library') {
