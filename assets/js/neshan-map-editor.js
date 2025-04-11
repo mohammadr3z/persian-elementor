@@ -1,78 +1,50 @@
 /**
  * Neshan Map Editor Integration
+ * This script handles the initialization of Neshan Map in Elementor editor context
  */
 (function($) {
     'use strict';
-    
-    // Initialize maps in editor
-    function initEditorMaps() {
-        // Make sure we're in elementor
-        if (!window.elementor) return;
-        
-        // Create a MutationObserver to watch for DOM changes in the editor
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                    handleAddedNodes(mutation.addedNodes);
-                }
-            });
-        });
-        
-        // Start observing the editor preview
-        const editorPreview = document.querySelector('#elementor-preview-iframe')?.contentDocument;
-        if (editorPreview) {
-            observer.observe(editorPreview.body, {
-                childList: true,
-                subtree: true
-            });
-        }
-        
-        // Check existing nodes
-        const mapContainers = document.querySelectorAll('.neshan-map-container');
-        if (mapContainers.length) {
-            mapContainers.forEach(initSingleMap);
-        }
-        
-        // Also handle iframe load events
-        const previewFrame = document.getElementById('elementor-preview-iframe');
-        if (previewFrame) {
-            previewFrame.addEventListener('load', function() {
-                const frameMaps = previewFrame.contentDocument.querySelectorAll('.neshan-map-container');
-                if (frameMaps.length) {
-                    frameMaps.forEach(initSingleMap);
-                }
-            });
-        }
-    }
-    
-    // Handle added DOM nodes
-    function handleAddedNodes(nodes) {
-        nodes.forEach(function(node) {
-            if (node.nodeType === 1) { // Element node
-                // Check if the added node is a map container
-                if (node.classList && node.classList.contains('neshan-map-container')) {
-                    initSingleMap(node);
-                }
-                
-                // Check children
-                const mapContainers = node.querySelectorAll('.neshan-map-container');
-                if (mapContainers.length) {
-                    mapContainers.forEach(initSingleMap);
-                }
+
+    /**
+     * Initialize map in Elementor editor
+     */
+    function initNeshanMapInEditor() {
+        // If we're in the editor context
+        if (window.elementor || window.elementorFrontend) {
+            // Make sure we have the map library
+            if (typeof nmp_mapboxgl === 'undefined') {
+                return;
             }
-        });
-    }
-    
-    // Initialize a single map instance
-    function initSingleMap(mapContainer) {
-        // Skip if already initialized or SDK not loaded
-        if (mapContainer.getAttribute('data-initialized') === 'true' || typeof nmp_mapboxgl === 'undefined') return;
-        
-        try {
-            // Create a unique identifier for this map instance
-            const instanceId = mapContainer.getAttribute('data-instance-id') || mapContainer.id || Date.now().toString();
+
+            // Hook into Elementor's element ready event
+            if (window.elementorFrontend && window.elementorFrontend.hooks) {
+                window.elementorFrontend.hooks.addAction('frontend/element_ready/neshan_map.default', function($scope) {
+                    initializeMap($scope);
+                });
+            }
             
-            // Get map data
+            // Also attempt to initialize any existing maps in the editor
+            $('.neshan-map-container').each(function() {
+                const $mapContainer = $(this);
+                if (!$mapContainer.data('initialized')) {
+                    initializeMap($mapContainer);
+                }
+            });
+        }
+    }
+
+    /**
+     * Initialize a specific map instance
+     */
+    function initializeMap($scope) {
+        const $mapContainer = $scope.find('.neshan-map-container');
+        if ($mapContainer.length === 0) return;
+
+        const mapContainer = $mapContainer[0];
+        if (mapContainer.neshanMapInitialized) return;
+
+        try {
+            // Get data from DOM attributes
             const apiKey = mapContainer.getAttribute('data-api-key');
             const latitude = parseFloat(mapContainer.getAttribute('data-lat'));
             const longitude = parseFloat(mapContainer.getAttribute('data-lng'));
@@ -84,23 +56,21 @@
             const poi = mapContainer.getAttribute('data-poi') === 'true';
             const traffic = mapContainer.getAttribute('data-traffic') === 'true';
             
-            if (!apiKey || !latitude || !longitude) return;
+            // Apply dimensions
+            mapContainer.style.height = mapHeight;
+            mapContainer.style.minHeight = mapHeight;
+            mapContainer.style.width = mapWidth;
+            mapContainer.style.minWidth = mapWidth;
             
-            // Apply dimensions explicitly to this specific instance only
-            if (mapHeight) {
-                mapContainer.style.height = mapHeight;
-                mapContainer.style.minHeight = mapHeight;
+            // Location coordinates - Make sure we have valid coordinates
+            if (isNaN(latitude) || isNaN(longitude)) {
+                console.error('Invalid coordinates for Neshan map');
+                return;
             }
-            
-            if (mapWidth) {
-                mapContainer.style.width = mapWidth;
-                mapContainer.style.minWidth = mapWidth;
-            }
-            
-            // Location coordinates
+
             const mapCenterLocation = [latitude, longitude];
             
-            // Create map for this specific instance
+            // Create map
             const map = new nmp_mapboxgl.Map({
                 container: mapContainer,
                 mapKey: apiKey,
@@ -121,40 +91,39 @@
             
             // Add marker
             new nmp_mapboxgl.Marker({
-                color: markerColor || '#FF8330',
+                color: markerColor,
                 draggable: false
             })
             .setLngLat([...mapCenterLocation])
             .addTo(map);
             
-            // Mark as initialized in a way that won't conflict
+            // Mark as initialized
+            mapContainer.neshanMapInitialized = true;
             mapContainer.setAttribute('data-initialized', 'true');
             
+            // Handle resize in editor
+            if (window.elementor) {
+                $(window).on('resize', function() {
+                    setTimeout(function() {
+                        map.resize();
+                    }, 300);
+                });
+            }
         } catch (e) {
             console.error('Error initializing Neshan map in editor:', e);
         }
     }
-    
-    // Wait for DOM ready and Neshan SDK to load
+
+    // Initialize when document is ready
     $(document).ready(function() {
-        // Add listeners to editor events
-        if (window.elementor) {
-            // Init when editor is loaded
-            elementor.on('preview:loaded', initEditorMaps);
-            
-            // Re-init when preview is refreshed
-            elementor.channels.editor.on('section:activated', function() {
-                setTimeout(initEditorMaps, 500);
-            });
-            
-            // Re-init when panel changes
-            elementor.channels.editor.on('change', function() {
-                setTimeout(initEditorMaps, 500);
-            });
-        }
-        
-        // Initial call
-        initEditorMaps();
+        initNeshanMapInEditor();
     });
+
+    // Also listen for panel changes in Elementor
+    if (window.elementor) {
+        window.elementor.channels.editor.on('section:activated', function() {
+            setTimeout(initNeshanMapInEditor, 300);
+        });
+    }
 
 })(jQuery);

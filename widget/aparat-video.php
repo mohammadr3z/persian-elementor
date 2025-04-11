@@ -40,6 +40,9 @@ class Persian_Elementor_Aparat_Integration {
         
         // Handle Aparat video rendering
         add_filter('elementor/widget/render_content', [$this, 'render_aparat_video'], 10, 2);
+        
+        // Add editor scripts for preview
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_scripts']);
     }
     
     /**
@@ -80,35 +83,6 @@ class Persian_Elementor_Aparat_Integration {
             ]
         );
         
-        // Add back aparat_height control
-        $element->add_control(
-            'aparat_height',
-            [
-                'label' => esc_html__('ارتفاع ثابت', 'persian-elementor'),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'description' => esc_html__('حداقل ارتفاع (اختیاری - در صورت خالی بودن، نسبت تصویر استفاده می‌شود)', 'persian-elementor'),
-                'default' => '640',
-                'condition' => [
-                    'video_type' => 'aparat',
-                ],
-                'frontend_available' => true,
-            ]
-        );
-        
-        $element->add_control(
-            'start_h',
-            [
-                'label' => esc_html__('زمان شروع (ساعت)', 'persian-elementor'),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'min' => 0,
-                'default' => 0,
-                'condition' => [
-                    'video_type' => 'aparat',
-                ],
-                'frontend_available' => true,
-            ]
-        );
-        
         $element->add_control(
             'start_m',
             [
@@ -132,6 +106,38 @@ class Persian_Elementor_Aparat_Integration {
                 'min' => 0,
                 'max' => 59,
                 'default' => 0,
+                'condition' => [
+                    'video_type' => 'aparat',
+                ],
+                'frontend_available' => true,
+            ]
+        );
+
+        $element->add_control(
+            'mute_aparat',
+            [
+                'label' => esc_html__('پخش بی‌صدا', 'persian-elementor'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('بله', 'persian-elementor'),
+                'label_off' => esc_html__('خیر', 'persian-elementor'),
+                'return_value' => 'yes',
+                'default' => 'no',
+                'condition' => [
+                    'video_type' => 'aparat',
+                ],
+                'frontend_available' => true,
+            ]
+        );
+
+        $element->add_control(
+            'title_show_aparat',
+            [
+                'label' => esc_html__('نمایش عنوان', 'persian-elementor'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('بله', 'persian-elementor'),
+                'label_off' => esc_html__('خیر', 'persian-elementor'),
+                'return_value' => 'yes',
+                'default' => 'yes',
                 'condition' => [
                     'video_type' => 'aparat',
                 ],
@@ -274,16 +280,6 @@ class Persian_Elementor_Aparat_Integration {
                 $element->update_control($control_name, ['condition' => $condition]);
             }
         }
-        
-        // Hide image overlay section for Aparat
-        $element->update_control(
-            'show_image_overlay',
-            [
-                'condition' => [
-                    'video_type!' => ['aparat'],
-                ],
-            ]
-        );
     }
     
     /**
@@ -326,6 +322,52 @@ class Persian_Elementor_Aparat_Integration {
     }
     
     /**
+     * Generate Aparat embed HTML
+     * 
+     * @param string $video_hash The Aparat video hash
+     * @param array $params The parameters for the iframe
+     * @return string The HTML for the embed
+     */
+    private function generate_aparat_embed_html($video_hash, $params) {
+        $iframe_src = add_query_arg(
+            $params,
+            'https://www.aparat.com/video/video/embed/videohash/' . esc_attr($video_hash) . '/vt/frame'
+        );
+
+        ob_start();
+        echo '<style>
+            .h_iframe-aparat_embed_frame {
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+            }
+            .h_iframe-aparat_embed_frame .ratio {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            .h_iframe-aparat_embed_frame iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        </style>';
+
+        echo '<div class="h_iframe-aparat_embed_frame">';
+        echo '<span style="display: block; padding-top: 57%"></span>';
+        printf(
+            '<iframe src="%s" allow="autoplay" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>',
+            esc_url($iframe_src)
+        );
+        echo '</div>';
+
+        return ob_get_clean();
+    }
+    
+    /**
      * Render Aparat video content
      */
     public function render_aparat_video($widget_content, $widget) {
@@ -348,14 +390,15 @@ class Persian_Elementor_Aparat_Integration {
         $video_url = sanitize_text_field($settings['aparat_url']);
         $video_hash = $this->extract_aparat_hash($video_url);
         
-        // Calculate start time (hours + minutes + seconds)
-        $start_h = isset($settings['start_h']) ? absint($settings['start_h']) : 0;
+        // Calculate start time (minutes + seconds)
         $start_m = isset($settings['start_m']) ? absint($settings['start_m']) : 0;
         $start_s = isset($settings['start_s']) ? absint($settings['start_s']) : 0;
-        $start_time = ($start_h * 3600) + ($start_m * 60) + $start_s;
+        $start_time = ($start_m * 60) + $start_s;
         
         // Set default values for removed controls
         $autoplay = !empty($settings['autoplay']) ? 'true' : 'false';
+        $mute_aparat = (!empty($settings['mute_aparat']) && $settings['mute_aparat'] === 'yes') ? 'true' : 'false';
+        $title_show_aparat = (!empty($settings['title_show_aparat']) && $settings['title_show_aparat'] === 'yes') ? 'true' : 'false';
         
         // Check if we have a valid video hash
         if (empty($video_hash)) {
@@ -363,61 +406,53 @@ class Persian_Elementor_Aparat_Integration {
             return ob_get_clean();
         }
 
-        // Build iframe URL with default values for removed controls
-        $iframe_src = add_query_arg(
-            array(
-                't' => $start_time,
-                'titleShow' => 'true', // Default to showing title
-                'muted' => 'false',   // Default to unmuted
-                'autoplay' => $autoplay,
-            ),
-            'https://www.aparat.com/video/video/embed/videohash/' . esc_attr($video_hash) . '/vt/frame'
-        );
-
-        // Check if a fixed height is set
-        $fixed_height = !empty($settings['aparat_height']) ? absint($settings['aparat_height']) : 0;
+        // Build iframe URL with only relevant parameters
+        $params = [];
         
-        // Get aspect ratio class from video settings or use default
-        $aspect_ratio = !empty($settings['aspect_ratio']) ? $settings['aspect_ratio'] : '169';
-        
-        if ($fixed_height > 0) {
-            // Generate fixed height iframe
-            echo '<div class="elementor-video-wrapper">';
-            printf(
-                '<iframe src="%s" width="100%%" height="%d" frameborder="0" allow="autoplay" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>',
-                esc_url($iframe_src),
-                $fixed_height
-            );
-            echo '</div>';
-        } else {
-            // Generate responsive wrapper with aspect ratio
-            echo '<div class="elementor-video-wrapper">';
-            echo '<div class="elementor-video-container elementor-fit-aspect-ratio" style="--video-aspect-ratio: ' . $this->get_aspect_ratio_value($aspect_ratio) . ';">';
-            printf(
-                '<iframe src="%s" width="100%%" frameborder="0" allow="autoplay" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>',
-                esc_url($iframe_src)
-            );
-            echo '</div>';
-            echo '</div>';
+        // Only add titleShow when explicitly enabled
+        if (!empty($settings['title_show_aparat']) && $settings['title_show_aparat'] === 'yes') {
+            $params['titleShow'] = 'true';
         }
+        
+        // Only add muted when explicitly enabled
+        if (!empty($settings['mute_aparat']) && $settings['mute_aparat'] === 'yes') {
+            $params['muted'] = 'true';
+        }
+        
+        // Always include autoplay setting
+        $params['autoplay'] = $autoplay;
+        
+        // Add start time parameter if it's not zero
+        if ($start_time > 0) {
+            $params['t'] = $start_time;
+        }
+        
+        echo $this->generate_aparat_embed_html($video_hash, $params);
 
         return ob_get_clean();
     }
     
     /**
-     * Convert aspect ratio setting to CSS value
+     * Add script for handling Aparat in Elementor editor preview
      */
-    private function get_aspect_ratio_value($setting) {
-        $aspect_ratios = [
-            '169' => '1.77777', // 16:9
-            '219' => '2.33333', // 21:9
-            '43' => '1.33333',  // 4:3
-            '32' => '1.5',      // 3:2
-            '11' => '1',        // 1:1
-            '916' => '0.5625',  // 9:16
-        ];
+    public function enqueue_editor_scripts() {
+        // Register script for editor preview
+        wp_enqueue_script(
+            'persian-elementor-aparat-editor',
+            plugins_url('/assets/js/aparat-editor.js', dirname(__FILE__)),
+            ['elementor-editor'],
+            '1.0.0',
+            true
+        );
         
-        return isset($aspect_ratios[$setting]) ? $aspect_ratios[$setting] : $aspect_ratios['169'];
+        // Localize script with translation strings
+        wp_localize_script(
+            'persian-elementor-aparat-editor',
+            'persianElementorAparat',
+            [
+                'invalidUrl' => esc_html__('آدرس ویدیو آپارات معتبر نیست.', 'persian-elementor'),
+            ]
+        );
     }
 }
 

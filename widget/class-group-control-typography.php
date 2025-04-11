@@ -1,4 +1,9 @@
 <?php
+// Check if Elementor is loaded before proceeding
+if (!did_action('elementor/loaded')) {
+    return;
+}
+
 class Persian_Elementor_Extended_Group_Control_Typography extends \Elementor\Group_Control_Typography {
 
     protected function init_fields() {
@@ -55,6 +60,20 @@ class Persian_Elementor_Extended_Group_Control_Typography extends \Elementor\Gro
     }
 }
 
-add_action('elementor/controls/register', function($controls_manager) {
-    $controls_manager->add_group_control(Persian_Elementor_Extended_Group_Control_Typography::get_type(), new Persian_Elementor_Extended_Group_Control_Typography());
-});
+// Handle both the legacy and current registration methods for Elementor
+if (version_compare(ELEMENTOR_VERSION, '3.5.0', '>=')) {
+    add_action('elementor/controls/register', function($controls_manager) {
+        $controls_manager->add_group_control(
+            Persian_Elementor_Extended_Group_Control_Typography::get_type(), 
+            new Persian_Elementor_Extended_Group_Control_Typography()
+        );
+    });
+} else {
+    // For older versions of Elementor
+    add_action('elementor/controls/controls_registered', function($controls_manager) {
+        $controls_manager->add_group_control(
+            'typography', 
+            new Persian_Elementor_Extended_Group_Control_Typography()
+        );
+    });
+}

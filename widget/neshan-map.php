@@ -380,33 +380,34 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
             $unique_id = uniqid('neshanMap_');
             $map_id = 'neshanMap_' . $widget_id . '_' . $unique_id;
             
-            // Pass data to JS using custom data attributes instead of wp_localize_script
-            // to ensure completely isolated instances
-            
             // Always enqueue in frontend context (already done for editor and preview)
             if (!is_admin()) {
                 wp_enqueue_style('neshan-map-sdk');
                 wp_enqueue_script('neshan-map-sdk');
             }
             
+            // Use Elementor's render attribute system instead of hardcoding attributes
+            $this->add_render_attribute('map-container', [
+                'class' => 'neshan-map-container',
+                'id' => $map_id,
+                'data-widget-id' => $widget_id,
+                'data-instance-id' => $unique_id,
+                'data-api-key' => $api_key,
+                'data-lat' => $latitude,
+                'data-lng' => $longitude,
+                'data-marker-color' => $marker_color,
+                'data-height' => $height,
+                'data-width' => $width,
+                'data-zoom' => $map_zoom,
+                'data-map-type' => $map_type,
+                'data-poi' => $show_poi ? 'true' : 'false',
+                'data-traffic' => $show_traffic ? 'true' : 'false',
+                'style' => 'height:' . $height . '; width:' . $width . ';',
+            ]);
+            
             // The map container with all necessary data attributes
             ?>
-            <div class="neshan-map-container" 
-                id="<?php echo esc_attr($map_id); ?>"
-                data-widget-id="<?php echo esc_attr($widget_id); ?>"
-                data-instance-id="<?php echo esc_attr($unique_id); ?>"
-                data-api-key="<?php echo esc_attr($api_key); ?>"
-                data-lat="<?php echo esc_attr($latitude); ?>"
-                data-lng="<?php echo esc_attr($longitude); ?>"
-                data-marker-color="<?php echo esc_attr($marker_color); ?>"
-                data-height="<?php echo esc_attr($height); ?>"
-                data-width="<?php echo esc_attr($width); ?>"
-                data-zoom="<?php echo esc_attr($map_zoom); ?>"
-                data-map-type="<?php echo esc_attr($map_type); ?>"
-                data-poi="<?php echo $show_poi ? 'true' : 'false'; ?>"
-                data-traffic="<?php echo $show_traffic ? 'true' : 'false'; ?>"
-                style="height:<?php echo esc_attr($height); ?>; width:<?php echo esc_attr($width); ?>;">
-            </div>
+            <div <?php echo $this->get_render_attribute_string('map-container'); ?>></div>
 
             <style>
                 /* Instance-specific selectors to prevent conflicts */
@@ -522,6 +523,160 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
                     }
                 })();
             </script>
+            <?php
+        }
+        
+        /**
+         * Render map in Elementor editor
+         * This method uses JS template to render the map in the editor preview
+         */
+        protected function content_template() {
+            ?>
+            <#
+            // Get values from settings
+            var apiKey = settings.api_key ? settings.api_key : 'web.';
+            var markerColor = settings.marker_color ? settings.marker_color : '#FF8330';
+            var latitude = settings.map_latitude ? settings.map_latitude : '35.699789639952414';
+            var longitude = settings.map_longitude ? settings.map_longitude : '51.33748508581425';
+            var mapZoom = settings.map_zoom && settings.map_zoom.size ? parseInt(settings.map_zoom.size) : 15;
+            var mapType = settings.map_type ? settings.map_type : 'neshanVector';
+            var showPoi = settings.show_poi === 'yes';
+            var showTraffic = settings.show_traffic === 'yes';
+            
+            // Calculate heights and widths
+            var height = settings.map_height && settings.map_height.size ? settings.map_height.size + settings.map_height.unit : '400px';
+            var width = settings.map_width && settings.map_width.size ? settings.map_width.size + settings.map_width.unit : '100%';
+            
+            // Create unique ID for this map instance in editor
+            var widgetId = view.getID();
+            var uniqueId = Math.random().toString(36).substring(2, 15);
+            var mapId = 'neshanMap_' + widgetId + '_' + uniqueId + '_editor';
+            
+            // Use Elementor's JS render attribute system
+            view.addRenderAttribute('map-container', {
+                'class': 'neshan-map-container elementor-neshan-map-editor',
+                'id': mapId,
+                'data-widget-id': widgetId,
+                'data-instance-id': uniqueId,
+                'data-api-key': apiKey,
+                'data-lat': latitude,
+                'data-lng': longitude,
+                'data-marker-color': markerColor,
+                'data-height': height,
+                'data-width': width,
+                'data-zoom': mapZoom,
+                'data-map-type': mapType,
+                'data-poi': showPoi ? 'true' : 'false',
+                'data-traffic': showTraffic ? 'true' : 'false',
+                'style': 'height:' + height + '; width:' + width + ';',
+            });
+            #>
+            
+            <div {{{ view.getRenderAttributeString('map-container') }}}></div>
+            
+            <style>
+                #{{ mapId }} {
+                    overflow: hidden;
+                    height: {{ height }} !important;
+                    min-height: {{ height }} !important;
+                    width: {{ width }} !important;
+                    min-width: {{ width }} !important;
+                    position: relative;
+                    z-index: 1;
+                }
+                #{{ mapId }} a {
+                    text-decoration: none !important;
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                #{{ mapId }} a:hover,
+                #{{ mapId }} a:active {
+                    text-decoration: none !important;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                .elementor-editor-active .elementor-neshan-map-editor:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: 10;
+                    pointer-events: none;
+                }
+            </style>
+            
+            <# 
+            // We'll use the elementorFrontend.hooks system to initialize the map in editor
+            if (elementorFrontend.hooks) {
+                elementorFrontend.hooks.addAction('frontend/element_ready/neshan_map.default', function($scope) {
+                    if (typeof nmp_mapboxgl !== 'undefined') {
+                        var mapContainer = $scope.find('.neshan-map-container')[0];
+                        if (!mapContainer || mapContainer.neshanMapInitialized) return;
+
+                        try {
+                            // Get data from DOM attributes
+                            var apiKey = mapContainer.getAttribute('data-api-key');
+                            var latitude = parseFloat(mapContainer.getAttribute('data-lat'));
+                            var longitude = parseFloat(mapContainer.getAttribute('data-lng'));
+                            var markerColor = mapContainer.getAttribute('data-marker-color');
+                            var mapHeight = mapContainer.getAttribute('data-height');
+                            var mapWidth = mapContainer.getAttribute('data-width');
+                            var mapZoom = parseInt(mapContainer.getAttribute('data-zoom') || '15');
+                            var mapTypeStr = mapContainer.getAttribute('data-map-type') || 'neshanVector';
+                            var poi = mapContainer.getAttribute('data-poi') === 'true';
+                            var traffic = mapContainer.getAttribute('data-traffic') === 'true';
+                            
+                            // Apply dimensions
+                            mapContainer.style.height = mapHeight;
+                            mapContainer.style.minHeight = mapHeight;
+                            mapContainer.style.width = mapWidth;
+                            mapContainer.style.minWidth = mapWidth;
+                            
+                            // Location coordinates
+                            var mapCenterLocation = [latitude, longitude];
+                            
+                            // Create map
+                            var map = new nmp_mapboxgl.Map({
+                                container: mapContainer,
+                                mapKey: apiKey,
+                                mapType: nmp_mapboxgl.Map.mapTypes[mapTypeStr],
+                                zoom: mapZoom,
+                                pitch: 0,
+                                center: mapCenterLocation.reverse(),
+                                minZoom: 2,
+                                maxZoom: 21,
+                                trackResize: true,
+                                poi: poi,
+                                traffic: traffic,
+                                mapTypeControllerStatus: {
+                                    show: true,
+                                    position: 'bottom-right'
+                                }
+                            });
+                            
+                            // Add marker
+                            new nmp_mapboxgl.Marker({
+                                color: markerColor,
+                                draggable: false
+                            })
+                            .setLngLat([...mapCenterLocation])
+                            .addTo(map);
+                            
+                            // Mark as initialized
+                            mapContainer.neshanMapInitialized = true;
+                            mapContainer.setAttribute('data-initialized', 'true');
+                        } catch (e) {
+                            console.error('Error initializing Neshan map in editor:', e);
+                        }
+                    }
+                });
+            }
+            #>
             <?php
         }
     }

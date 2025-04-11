@@ -68,6 +68,11 @@ function persian_elementor_settings_page(): void {
 
     // Add Widget Settings section
     $widget_fields = [
+        'efa-form-fields' => [
+            'label' => 'فیلد فرم تاریخ شمسی',
+            'desc' => 'با فعال کردن این گزینه، فیلد تاریخ شمسی به فرم‌های المنتور اضافه می‌شود.',
+            'icon' => 'dashicons-calendar-alt',
+        ],
         'efa-aparat-video' => [
             'label' => 'ویجت آپارات',
             'desc' => 'با فعال کردن این گزینه، ویدیوی آپارات به ویجت ویدیو المنتور اضافه می‌شود.',
