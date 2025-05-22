@@ -53,6 +53,9 @@ button,p,li,button span {
 .elementor-context-menu-list__item__shortcut, .elementor-context-menu-list__item__title {
 	line-height: 1.2!important;
 }
+.elementor-control .elementor-control-title {
+    line-height: 1.4!important;
+}
 
 .elementor-panel-heading-title,.elementor-nerd-box-title,.elementor-panel #elementor-panel-header {
     font-variation-settings: 'wght' 700;
@@ -156,18 +159,6 @@ input.elementor-control-tag-area.elementor-input.ui-autocomplete-input {
     border-bottom-right-radius: var(--e-a-border-radius)!important;
     border-top-left-radius: 0px!important;
     border-bottom-left-radius: 0px!important;
-}
-input.tooltip-target.elementor-control-tag-area {
-    border-start-end-radius: var(--e-a-border-radius);
-    border-end-end-radius: var(--e-a-border-radius);
-    border-start-start-radius: 0;
-    border-end-start-radius: 0;
-}
-input.tooltip-target.elementor-control-tag-area.elementor-control-unit-2 {
-    border-start-end-radius: var(--e-a-border-radius);
-    border-end-end-radius: var(--e-a-border-radius);
-    border-start-start-radius: var(--e-a-border-radius);
-    border-end-start-radius: var(--e-a-border-radius);
 }
 /*
 .elementor-choices {

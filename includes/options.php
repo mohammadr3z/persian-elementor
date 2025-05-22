@@ -34,7 +34,7 @@ function persian_elementor_settings_page(): void {
         check_admin_referer('persian_elementor_nonce');
         $new_options = array_map('sanitize_text_field', $_POST['persian_elementor']);
         update_option('persian_elementor', $new_options);
-        echo '<div class="updated"><p>تنظیمات ذخیره شدند.</p></div>';
+        echo '<div class="notice notice-success is-dismissible"><p>تنظیمات با موفقیت ذخیره شدند.</p></div>';
     }
 
     $options = get_option('persian_elementor', []);
@@ -83,6 +83,11 @@ function persian_elementor_settings_page(): void {
             'desc' => 'با فعال کردن این گزینه، ویجت نقشه نشان به المنتور اضافه می‌شود.',
             'icon' => 'dashicons-location-alt',
         ],
+        'efa-zarinpal-button' => [
+			'label' => 'ویجت دکمه زرین‌پال',
+            'desc' => 'با فعال کردن این گزینه، امکان اتصال به درگاه پرداخت زرین‌پال در المنتور اضافه می‌شود.',
+            'icon' => 'dashicons-money-alt',
+        ],
     ];
 
     $plugin_url = plugin_dir_url(dirname(__FILE__));
@@ -96,17 +101,16 @@ function persian_elementor_settings_page(): void {
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 20px;
-                font-family: IRANYekanXVF, Tahoma, Arial, sans-serif;
             }
             .persian-elementor-header {
                 display: flex;
                 align-items: center;
                 margin-bottom: 25px;
-                background: linear-gradient(135deg, #b74573 0%, #940040 100%);
-                border-radius: 8px;
+                background: #fff;
+                border-radius: 3px;
                 padding: 20px;
-                color: #fff;
-                box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+                color: #495157;
+                box-shadow: 0 1px 4px rgba(0,0,0,.15);
                 flex-wrap: wrap;
             }
             .persian-elementor-header-main {
@@ -118,6 +122,7 @@ function persian_elementor_settings_page(): void {
             .persian-elementor-header-title {
                 display: flex;
                 flex-direction: column;
+                align-items: start;
             }
             .persian-elementor-header h1 {
                 color: white;
@@ -125,16 +130,15 @@ function persian_elementor_settings_page(): void {
                 font-size: 24px;
                 font-weight: bold;
             }
-            .persian-elementor-header h2 {
-                color: rgba(255, 255, 255, 0.9);
+            .persian-elementor-header h4 {
+                color: #495157;
                 margin: 5px 0 0;
                 font-size: 16px;
                 font-weight: normal;
                 font-size: 22px;
-                font-family: 'IRANYekanX';
             }
             .persian-elementor-header p {
-                color: rgba(255, 255, 255, 0.9);
+                color: #6d7882;
                 line-height: 1.6;
                 margin: 5px 0 0;
                 font-size: 14px;
@@ -144,7 +148,7 @@ function persian_elementor_settings_page(): void {
                 background: white;
                 padding: 10px;
                 border-radius: 8px;
-                box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+                box-shadow: 0 1px 4px rgba(0,0,0,.15);
             }
             .persian-elementor-logo img {
                 width: 60px;
@@ -166,18 +170,15 @@ function persian_elementor_settings_page(): void {
                 min-width: 500px;
             }
             .persian-elementor-premium-ad {
-                background: linear-gradient(135deg, #ffbc7d 0%, #ff7a3f 100%);
-                border-radius: 8px;
+                background: linear-gradient(135deg, #93003c 0%, #800035 100%);
+                border-radius: 3px;
                 padding: 20px;
                 color: #fff;
-                box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+                box-shadow: 0 1px 4px rgba(0,0,0,.15);
                 position: relative;
                 overflow: hidden;
-                transition: transform 0.3s ease;
-                cursor: pointer;
-            }
-            .persian-elementor-premium-ad:hover {
-                transform: translateY(-5px);
+                transition: none;
+                cursor: default;
             }
             .persian-elementor-premium-ad::before {
                 content: "";
@@ -205,12 +206,11 @@ function persian_elementor_settings_page(): void {
                 position: relative;
                 z-index: 1;
             }
-            .premium-ad-content h3 {
+            .premium-ad-content h5 {
                 margin-top: 0;
                 color: white;
                 font-size: 18px;
                 margin-bottom: 15px;
-                font-family: 'IRANYekanX';
             }
             .premium-ad-content p {
                 margin-bottom: 20px;
@@ -220,25 +220,23 @@ function persian_elementor_settings_page(): void {
             .premium-ad-button {
                 display: inline-block;
                 background: white;
-                color: #ed8936;
+                color: #890038;
                 font-weight: bold;
                 padding: 10px 20px;
                 border-radius: 5px;
                 text-decoration: none;
                 transition: all 0.3s ease;
-                box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+                box-shadow: 0 1px 4px rgba(0,0,0,.15);
             }
             .premium-ad-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
                 background: #f8f9fa;
-                color: #dd6b20;
+                color: #800035;
             }
             .persian-elementor-card {
                 background: #fff;
-                border-radius: 8px;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-                margin: 20px 0px;
+                border-radius: 3px;
+                box-shadow: 0 1px 4px rgba(0,0,0,.15);
+                margin: 0px 0px 20px 0px;
                 overflow: hidden;
             }
             .persian-elementor-card-header {
@@ -246,12 +244,11 @@ function persian_elementor_settings_page(): void {
                 background: #f8f9fa;
                 border-bottom: 1px solid #edf2f7;
             }
-            .persian-elementor-card-header h2 {
+            .persian-elementor-card-header h4 {
                 margin: 0;
                 color: #4a5568;
                 font-size: 16px;
                 font-weight: bold;
-                font-family: 'IRANYekanX';
             }
             .persian-elementor-card-body {
                 padding: 20px;
@@ -262,7 +259,7 @@ function persian_elementor_settings_page(): void {
                 padding: 20px;
                 margin-bottom: 20px;
                 text-align: center;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                box-shadow: 0 1px 4px rgba(0,0,0,.15);
             }
             .persian-elementor-about-header {
                 display: flex;
@@ -291,14 +288,14 @@ function persian_elementor_settings_page(): void {
             }
             .persian-elementor-settings-icon {
                 margin-left: 15px;
-                background: #ebf8ff;
+                background: #f1f3f5;
                 width: 36px;
                 height: 36px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #4299e1;
+                color: #a4afb7;
             }
             .persian-elementor-settings-content {
                 flex-grow: 1;
@@ -334,7 +331,7 @@ function persian_elementor_settings_page(): void {
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: #cbd5e0;
+                background-color: #a4afb7;
                 transition: .4s;
                 border-radius: 34px;
             }
@@ -350,16 +347,16 @@ function persian_elementor_settings_page(): void {
                 border-radius: 50%;
             }
             input:checked + .persian-elementor-slider {
-                background-color: #05047e;
+                background-color: #93003c;
             }
             input:focus + .persian-elementor-slider {
-                box-shadow: 0 0 1px #05047e;
+                box-shadow: 0 0 1px #93003c;
             }
             input:checked + .persian-elementor-slider:before {
                 transform: translateX(26px);
             }
             .persian-elementor-submit {
-                background: #05047e;
+                background: #93003c;
                 color: white;
                 border: none;
                 padding: 10px 20px;
@@ -368,53 +365,25 @@ function persian_elementor_settings_page(): void {
                 border-radius: 4px;
                 cursor: pointer;
                 transition: all 0.3s ease;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                box-shadow: 0 1px 4px rgba(0,0,0,.15);
             }
             .persian-elementor-submit:hover {
-                background: #5454bd;
-                transform: translateY(-2px);
-                box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+                background: #800035;
             }
             .featured-banner {
                 margin: 20px 0;
                 border-radius: 8px;
                 overflow: hidden;
-                box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-                transition: transform 0.3s ease;
+                box-shadow: 0 1px 4px rgba(0,0,0,.15);
+                transition: none;
             }
             .featured-banner:hover {
-                transform: translateY(-5px);
+                transform: none;
             }
             .featured-banner img {
                 width: 100%;
                 height: auto;
                 display: block;
-            }
-            .features-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 15px;
-                margin-top: 20px;
-            }
-            .feature-item {
-                background: white;
-                border-radius: 8px;
-                padding: 20px;
-                flex: 1 0 calc(33.333% - 15px);
-                min-width: 250px;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-                transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            }
-
-            .feature-item h4 {
-                margin-top: 0;
-                color: #2d3748;
-                font-size: 16px;
-                font-family: 'IRANYekanX';
-            }
-            .feature-item p {
-                color: #718096;
-                margin-bottom: 0;
             }
             @media (max-width: 768px) {
                 .persian-elementor-main {
@@ -424,7 +393,25 @@ function persian_elementor_settings_page(): void {
                 .persian-elementor-content {
                     min-width: 100%;
                 }
+                .persian-elementor-header {
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+                .persian-elementor-header-main {
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    margin-bottom: 0;
+                }
+                .persian-elementor-header-title {
+                    align-items: center;
+                }
+                .persian-elementor-header h4 {
+                    margin: 15px 0 0 !important;
+                }
             }
+            
         </style>
 
         <div class="persian-elementor-header">
@@ -433,11 +420,12 @@ function persian_elementor_settings_page(): void {
                     <img src="<?php echo esc_url($plugin_url . 'assets/images/icon-256x256.png') ?>" alt="Persian Elementor" />
                 </div>
                 <div class="persian-elementor-header-title">
-                    <h1>تنظیمات المنتور فارسی</h1>
-                    <h2>درباره المنتور فارسی</h2>
+                    <h4>تنظیمات المنتور فارسی</h4>
+                    <p style="color: #6d7882; font-size: 14px; margin: 15px 0 0;">
+                        در این صفحه می‌توانید تنظیمات و امکانات افزونه المنتور فارسی را مدیریت کنید. گزینه‌های زیر به شما کمک می‌کنند تا تجربه کار با المنتور را برای سایت‌های فارسی بهبود دهید و قابلیت‌های بیشتری را فعال یا غیرفعال کنید.
+                    </p>
                 </div>
             </div>
-            <p>این صفحه برای تنظیم ویژگی‌های مختلف افزونه المنتور به زبان فارسی است. با فعال کردن هر گزینه، قابلیت‌های مختلفی مانند افزودن آیکون‌های ایرانی، استفاده از تقویم شمسی و اضافه کردن فونت‌های فارسی به ویجت‌های المنتور فعال خواهد شد.</p>
         </div>
 
         <div class="persian-elementor-main">
@@ -452,7 +440,7 @@ function persian_elementor_settings_page(): void {
                     
                     <div class="persian-elementor-card">
                         <div class="persian-elementor-card-header">
-                            <h2>تنظیمات المنتور فارسی</h2>
+                            <h4>ویژگی ها</h4>
                         </div>
                         <div class="persian-elementor-card-body">
                             <?php foreach ($fields as $key => $field) : ?>
@@ -479,7 +467,7 @@ function persian_elementor_settings_page(): void {
                     <!-- New Widget Settings Section -->
                     <div class="persian-elementor-card">
                         <div class="persian-elementor-card-header">
-                            <h2>تنظیمات ویجت ها</h2>
+                            <h4>ویجت ها</h4>
                         </div>
                         <div class="persian-elementor-card-body">
                             <?php foreach ($widget_fields as $key => $field) : ?>
@@ -508,35 +496,21 @@ function persian_elementor_settings_page(): void {
             </div>
 
             <div class="persian-elementor-sidebar">
-                <a href="#" target="_blank" style="text-decoration: none;">
-                    <div class="persian-elementor-premium-ad">
-                        <div class="premium-ad-content">
-                            <h3>نسخه پریمیوم المنتور فارسی</h3>
-                            <p>با خرید نسخه پریمیوم به ۳۱ فونت فارسی حرفه‌ای، قالب‌های آماده اختصاصی و امکانات بیشتر دسترسی داشته باشید.</p>
-                            <a href="#" target="_blank" class="premium-ad-button">خرید نسخه پریمیوم</a>
-                        </div>
-                    </div>
-                </a>
-                
-                <div class="persian-elementor-card" style="margin-top: 20px;">
-                    <div class="persian-elementor-card-header">
-                        <h2>ویژگی‌های نسخه پریمیوم</h2>
+                <div class="persian-elementor-premium-ad">
+                    <div class="premium-ad-content">
+                        <h5>نسخه پریمیوم المنتور فارسی</h5>
+                            <p>با خرید نسخه پریمیوم به ۳۱ فونت فارسی حرفه‌ای دسترسی داشته باشید.</p>
+                        <a href="#" target="_blank" class="premium-ad-button">خرید نسخه پریمیوم</a>
                     </div>
                 </div>
                 
-                <!-- Features grid moved outside of card body -->
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <h4>۳۱ فونت حرفه‌ای فارسی</h4>
-                        <p>دسترسی به فونت‌های محبوب ایران سنس، یکان، فرهنگ و بیشتر</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4>قالب‌های آماده اختصاصی</h4>
-                        <p>دسترسی یه قالب های تمپلی <a href="https://temply.ir/" target="_blank" style="color: #05047e; font-weight: bold; text-decoration: none;">https://temply.ir</a> با کد تخفیف EFA20</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4>پشتیبانی حرفه‌ای</h4>
-                        <p>دسترسی به پشتیبانی اختصاصی برای رفع مشکلات فنی</p>
+                <div style="margin-top: 20px;">
+                    <div class="persian-elementor-premium-ad" style="background: linear-gradient(135deg, #255AFA 0%, #6523FB 100%);">
+                        <div class="premium-ad-content">
+                            <h5>قالب‌های آماده اختصاصی</h5>
+                            <p>دسترسی به قالب های آماده ایرانی تمپلی با کد تخفیف <strong style="color: #fff; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 3px;">PEFA</strong></p>
+                            <a href="https://temply.ir" target="_blank" class="premium-ad-button" style="color: #255AFA;">مشاهده قالب‌ها</a>
+                        </div>
                     </div>
                 </div>
             </div>

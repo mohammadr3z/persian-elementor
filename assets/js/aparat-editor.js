@@ -21,7 +21,7 @@
         });
         
         // Watch for other aparat settings changes
-        panel.$el.find('[data-setting="start_m"], [data-setting="start_s"], [data-setting="mute_aparat"], [data-setting="title_show_aparat"]').on('change', function() {
+        panel.$el.find('[data-setting="start_m"], [data-setting="start_s"], [data-setting="mute_aparat"], [data-setting="title_show_aparat"], [data-setting="recom_self"]').on('change', function() { // Added recom_self
             updateAparatPreview(model, view);
         });
     });
@@ -88,13 +88,23 @@
         if (startTime > 0) {
             params.push('t=' + startTime);
         }
+
+        // Add recom parameter if enabled
+        if (settings.recom_self === 'yes') {
+            params.push('recom=self');
+        }
         
         // Find the content wrapper
-        const $widgetContent = view.$el.find('.elementor-video-wrapper');
+        const $widgetContent = view.$el.find('.elementor-widget-container .elementor-video-wrapper, .elementor-widget-container > .elementor-custom-embed'); // Adjusted selector for better compatibility
         
         // If no valid hash, show error
         if (!videoHash) {
-            $widgetContent.html('<p>' + persianElementorAparat.invalidUrl + '</p>');
+            // Ensure the container exists before trying to set HTML
+            if ($widgetContent.length === 0) {
+                view.$el.find('.elementor-widget-container').html('<p>' + persianElementorAparat.invalidUrl + '</p>');
+            } else {
+                $widgetContent.html('<p>' + persianElementorAparat.invalidUrl + '</p>');
+            }
             return;
         }
         
@@ -104,17 +114,14 @@
             iframeSrc += '?' + params.join('&');
         }
         
-        // Update the widget content with our iframe
-        $widgetContent.html(`
+        // Prepare the iframe HTML
+        const iframeHtml = `
             <style>
                 .h_iframe-aparat_embed_frame {
                     position: relative;
                     overflow: hidden;
                     width: 100%;
-                }
-                .h_iframe-aparat_embed_frame span {
-                    display: block;
-                    padding-top: 57%;
+                    padding-top: 57%; /* Aspect ratio 16:9 */
                 }
                 .h_iframe-aparat_embed_frame iframe {
                     position: absolute;
@@ -125,11 +132,19 @@
                     border: 0;
                 }
             </style>
-            <div class="h_iframe-aparat_embed_frame">
-                <span></span>
+            <div class="h_iframe-aparat_embed_frame elementor-video-wrapper"> 
                 <iframe src="${iframeSrc}" allow="autoplay" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
             </div>
-        `);
+        `;
+
+        // Update the widget content with our iframe
+        // Ensure the container exists before trying to set HTML
+        if ($widgetContent.length === 0) {
+             // If the specific wrapper isn't found, fall back to the main container
+             view.$el.find('.elementor-widget-container').html(iframeHtml);
+        } else {
+             $widgetContent.html(iframeHtml);
+        }
     }
     
 })(jQuery);

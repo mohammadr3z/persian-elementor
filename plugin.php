@@ -11,7 +11,7 @@ class PersianElementorCore {
     private static $instance = null;
     
     /** @var string Plugin version */
-    private const VERSION = '2.7.9.2';
+    private const VERSION = '2.7.11';
     
     /** @var array Default plugin options */
     private const DEFAULT_OPTIONS = [
@@ -20,6 +20,7 @@ class PersianElementorCore {
         'efa-elementor-pro' => '1',
         'efa-elementor' => '1',
         'efa-all-font' => '1',
+        'efa-zarinpal-button' => '1'
     ];
     
     /** @var array Plugin options */

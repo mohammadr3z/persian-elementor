@@ -5,7 +5,7 @@ Tags: elementor,persian,المنتور
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 2.7.9.2
+Stable tag: 2.7.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,7 +123,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Installation ==
 1. Upload `persian-elementor` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-== Changelog ==
 
 
 == Frequently Asked Questions ==
@@ -140,6 +139,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
+= 2.7.11 =
+* رفع مشکل مارجین در ویجت زرین پال
+
+= 2.7.10 =
+* جدید: اضافه شدن ویجت دکمه زرین‌پال.
+
+= 2.7.9.4 =
+*   بهبود: ویجت نقشه نشان - نمایش پیام راهنما در صورت عدم وجود کلید و بارگذاری زنده نقشه در ویرایشگر پس از وارد کردن کلید (بدون نیاز به رفرش).
+*   بهبود: ویجت ویدیو آپارات - اضافه شدن گزینه "نمایش ویدیوهای پیشنهادی (از همین کانال)" (`recom=self`).
+
 = 2.7.9.2 =
 حذف شدن js های غیر ضروری
 

@@ -130,7 +130,8 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
                         esc_html__('کلید API نشان خود را وارد کنید. برای دریافت کلید به %s مراجعه کنید.', 'persian-elementor'),
                         '<a href="https://platform.neshan.org/panel/api-key" target="_blank">پنل نشان</a>'
                     ),
-                    'default' => 'web.',
+                    'placeholder' => esc_html__('web.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'persian-elementor'), // Added placeholder
+                    'default' => '', // Changed default to empty string
                     'separator' => 'after',
                 ]
             );
@@ -362,7 +363,7 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
             $settings = $this->get_settings_for_display();
             
             // Get values from settings
-            $api_key = !empty($settings['api_key']) ? $settings['api_key'] : 'web.';
+            $api_key = !empty($settings['api_key']) ? trim($settings['api_key']) : ''; // Trim whitespace
             $marker_color = !empty($settings['marker_color']) ? $settings['marker_color'] : '#FF8330';
             $latitude = !empty($settings['map_latitude']) ? $settings['map_latitude'] : '35.699789639952414';
             $longitude = !empty($settings['map_longitude']) ? $settings['map_longitude'] : '51.33748508581425';
@@ -374,6 +375,17 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
             // Calculate heights and widths - prioritize the responsive controls if set
             $height = isset($settings['map_height']['size']) ? $settings['map_height']['size'] . $settings['map_height']['unit'] : '400px';
             $width = isset($settings['map_width']['size']) ? $settings['map_width']['size'] . $settings['map_width']['unit'] : '100%';
+            
+            // Check if API key is missing or is the default placeholder (or the old default)
+            if (empty($api_key) || $api_key === 'web.') { // Keep check for 'web.' for safety/backward compatibility
+                // Display placeholder message if API key is missing
+                ?>
+                <div class="neshan-map-api-key-missing" style="height: <?php echo esc_attr($height); ?>; width: <?php echo esc_attr($width); ?>; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0; border: 1px dashed #ccc; text-align: center; padding: 20px; box-sizing: border-box;">
+                    <?php esc_html_e('برای نمایش نقشه باید کلید API نشان را در تنظیمات ویجت وارد کنید.', 'persian-elementor'); ?>
+                </div>
+                <?php
+                return; // Stop further execution for this widget instance
+            }
             
             // Create truly unique ID for this map instance
             $widget_id = $this->get_id();
@@ -402,7 +414,7 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
                 'data-map-type' => $map_type,
                 'data-poi' => $show_poi ? 'true' : 'false',
                 'data-traffic' => $show_traffic ? 'true' : 'false',
-                'style' => 'height:' . $height . '; width:' . $width . ';',
+                'style' => 'height:' . $height . '; width:' . $width . ';', // Style applied here too
             ]);
             
             // The map container with all necessary data attributes
@@ -413,10 +425,11 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
                 /* Instance-specific selectors to prevent conflicts */
                 #<?php echo esc_attr($map_id); ?> {
                     overflow: hidden;
-                    height: <?php echo esc_attr($height); ?> !important; 
+                    /* Height and width are now primarily set via inline style from add_render_attribute */
+                    /* height: <?php echo esc_attr($height); ?> !important; 
                     min-height: <?php echo esc_attr($height); ?> !important;
                     width: <?php echo esc_attr($width); ?> !important;
-                    min-width: <?php echo esc_attr($width); ?> !important;
+                    min-width: <?php echo esc_attr($width); ?> !important; */
                 }
                 #<?php echo esc_attr($map_id); ?> a {
                     text-decoration: none !important;
@@ -443,44 +456,57 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
             <script type="text/javascript">
                 (function() {
                     function initMap_<?php echo esc_js($unique_id); ?>() {
+                        // Check if SDK is loaded
                         if (typeof nmp_mapboxgl === 'undefined') {
+                            console.warn('Neshan SDK (nmp_mapboxgl) not loaded yet, retrying...');
                             setTimeout(initMap_<?php echo esc_js($unique_id); ?>, 300);
                             return;
                         }
                         
                         const mapContainer = document.getElementById('<?php echo esc_js($map_id); ?>');
-                        if (!mapContainer || mapContainer.neshanMapInitialized) return;
+                        // Ensure container exists and hasn't been initialized already
+                        if (!mapContainer || mapContainer.neshanMapInitialized) {
+                            // console.log('Map container <?php echo esc_js($map_id); ?> not found or already initialized.');
+                            return;
+                        }
                         
                         try {
                             // Get data from DOM - instance specific
                             const apiKey = mapContainer.getAttribute('data-api-key');
+                            // Double check API key here in JS as well, though PHP check should prevent this script from running if missing
+                            if (!apiKey || apiKey === 'web.') { // Keep check for 'web.' for safety/backward compatibility
+                                console.error('Neshan API Key is missing for map: <?php echo esc_js($map_id); ?>');
+                                mapContainer.innerHTML = '<p style="padding:20px; text-align:center;">' + <?php echo json_encode(esc_html__('خطا: کلید API نشان یافت نشد.', 'persian-elementor')); ?> + '</p>';
+                                return;
+                            }
+
                             const latitude = parseFloat(mapContainer.getAttribute('data-lat'));
                             const longitude = parseFloat(mapContainer.getAttribute('data-lng'));
                             const markerColor = mapContainer.getAttribute('data-marker-color');
-                            const mapHeight = mapContainer.getAttribute('data-height');
-                            const mapWidth = mapContainer.getAttribute('data-width');
+                            const mapHeight = mapContainer.getAttribute('data-height'); // Already applied via style
+                            const mapWidth = mapContainer.getAttribute('data-width');   // Already applied via style
                             const mapZoom = parseInt(mapContainer.getAttribute('data-zoom') || '15');
                             const mapTypeStr = mapContainer.getAttribute('data-map-type') || 'neshanVector';
                             const poi = mapContainer.getAttribute('data-poi') === 'true';
                             const traffic = mapContainer.getAttribute('data-traffic') === 'true';
                             
-                            // Apply dimensions explicitly to this specific instance
-                            mapContainer.style.height = mapHeight;
-                            mapContainer.style.minHeight = mapHeight;
-                            mapContainer.style.width = mapWidth;
-                            mapContainer.style.minWidth = mapWidth;
+                            // Apply dimensions explicitly (redundant if style attribute works, but safe fallback)
+                            // mapContainer.style.height = mapHeight;
+                            // mapContainer.style.minHeight = mapHeight;
+                            // mapContainer.style.width = mapWidth;
+                            // mapContainer.style.minWidth = mapWidth;
                             
-                            // Location coordinates
-                            const mapCenterLocation = [latitude, longitude];
+                            // Location coordinates [lng, lat] for MapboxGL
+                            const mapCenterLocation = [longitude, latitude]; // Correct order for MapboxGL
                             
                             // Create map for this specific instance
                             const map = new nmp_mapboxgl.Map({
                                 container: mapContainer,
                                 mapKey: apiKey,
-                                mapType: nmp_mapboxgl.Map.mapTypes[mapTypeStr],
+                                mapType: nmp_mapboxgl.Map.mapTypes[mapTypeStr] || nmp_mapboxgl.Map.mapTypes.neshanVector, // Fallback type
                                 zoom: mapZoom,
                                 pitch: 0,
-                                center: mapCenterLocation.reverse(),
+                                center: mapCenterLocation, // Use directly
                                 minZoom: 2,
                                 maxZoom: 21,
                                 trackResize: true,
@@ -497,7 +523,7 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
                                 color: markerColor,
                                 draggable: false
                             })
-                            .setLngLat([...mapCenterLocation])
+                            .setLngLat(mapCenterLocation) // Use directly
                             .addTo(map);
                             
                             // Add user location control
@@ -510,17 +536,49 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
                             // Mark as initialized with instance-specific flag
                             mapContainer.neshanMapInitialized = true;
                             mapContainer.setAttribute('data-initialized', 'true');
+                            // console.log('Neshan map initialized: <?php echo esc_js($map_id); ?>');
+
                         } catch (e) {
-                            console.error('Error initializing Neshan map:', e);
+                            console.error('Error initializing Neshan map (<?php echo esc_js($map_id); ?>):', e);
+                             mapContainer.innerHTML = '<p style="padding:20px; text-align:center;">' + <?php echo json_encode(esc_html__('خطا در بارگذاری نقشه رخ داد. لطفاً کنسول مرورگر را بررسی کنید.', 'persian-elementor')); ?> + '</p>';
                         }
                     }
                     
-                    // Initialize map when page loads - use instance-specific function
-                    if (document.readyState === 'loading') {
-                        document.addEventListener('DOMContentLoaded', initMap_<?php echo esc_js($unique_id); ?>);
-                    } else {
-                        initMap_<?php echo esc_js($unique_id); ?>();
+                    // Initialize map when page loads or when element becomes visible (for tabs, accordions etc.)
+                    function scheduleMapInit_<?php echo esc_js($unique_id); ?>() {
+                         const mapContainer = document.getElementById('<?php echo esc_js($map_id); ?>');
+                         if (mapContainer && mapContainer.offsetParent !== null) { // Check if visible
+                             initMap_<?php echo esc_js($unique_id); ?>();
+                         } else {
+                             // If not visible yet, check again later or use IntersectionObserver
+                             // console.log('Map <?php echo esc_js($map_id); ?> not visible yet, delaying init.');
+                             setTimeout(scheduleMapInit_<?php echo esc_js($unique_id); ?>, 500); 
+                         }
                     }
+
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', scheduleMapInit_<?php echo esc_js($unique_id); ?>);
+                    } else {
+                        scheduleMapInit_<?php echo esc_js($unique_id); ?>();
+                    }
+
+                    // Also try initializing if the element enters viewport (useful for dynamic content)
+                    if ('IntersectionObserver' in window) {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    initMap_<?php echo esc_js($unique_id); ?>();
+                                    observer.unobserve(entry.target); // Initialize only once
+                                }
+                            });
+                        }, { threshold: 0.1 }); // Trigger when 10% visible
+
+                        const target = document.getElementById('<?php echo esc_js($map_id); ?>');
+                        if (target) {
+                            observer.observe(target);
+                        }
+                    }
+
                 })();
             </script>
             <?php
@@ -534,7 +592,7 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
             ?>
             <#
             // Get values from settings
-            var apiKey = settings.api_key ? settings.api_key : 'web.';
+            var apiKey = settings.api_key ? settings.api_key.trim() : ''; // Trim whitespace
             var markerColor = settings.marker_color ? settings.marker_color : '#FF8330';
             var latitude = settings.map_latitude ? settings.map_latitude : '35.699789639952414';
             var longitude = settings.map_longitude ? settings.map_longitude : '51.33748508581425';
@@ -547,110 +605,129 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
             var height = settings.map_height && settings.map_height.size ? settings.map_height.size + settings.map_height.unit : '400px';
             var width = settings.map_width && settings.map_width.size ? settings.map_width.size + settings.map_width.unit : '100%';
             
-            // Create unique ID for this map instance in editor
-            var widgetId = view.getID();
-            var uniqueId = Math.random().toString(36).substring(2, 15);
-            var mapId = 'neshanMap_' + widgetId + '_' + uniqueId + '_editor';
-            
-            // Use Elementor's JS render attribute system
-            view.addRenderAttribute('map-container', {
-                'class': 'neshan-map-container elementor-neshan-map-editor',
-                'id': mapId,
-                'data-widget-id': widgetId,
-                'data-instance-id': uniqueId,
-                'data-api-key': apiKey,
-                'data-lat': latitude,
-                'data-lng': longitude,
-                'data-marker-color': markerColor,
-                'data-height': height,
-                'data-width': width,
-                'data-zoom': mapZoom,
-                'data-map-type': mapType,
-                'data-poi': showPoi ? 'true' : 'false',
-                'data-traffic': showTraffic ? 'true' : 'false',
-                'style': 'height:' + height + '; width:' + width + ';',
-            });
-            #>
-            
-            <div {{{ view.getRenderAttributeString('map-container') }}}></div>
-            
-            <style>
-                #{{ mapId }} {
-                    overflow: hidden;
-                    height: {{ height }} !important;
-                    min-height: {{ height }} !important;
-                    width: {{ width }} !important;
-                    min-width: {{ width }} !important;
-                    position: relative;
-                    z-index: 1;
-                }
-                #{{ mapId }} a {
-                    text-decoration: none !important;
-                    border: none;
-                    padding: 0;
-                    margin: 0;
-                }
-                #{{ mapId }} a:hover,
-                #{{ mapId }} a:active {
-                    text-decoration: none !important;
-                    background: none;
-                    border: none;
-                    padding: 0;
-                    margin: 0;
-                }
-                .elementor-editor-active .elementor-neshan-map-editor:before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    z-index: 10;
-                    pointer-events: none;
-                }
-            </style>
-            
-            <# 
-            // We'll use the elementorFrontend.hooks system to initialize the map in editor
-            if (elementorFrontend.hooks) {
-                elementorFrontend.hooks.addAction('frontend/element_ready/neshan_map.default', function($scope) {
-                    if (typeof nmp_mapboxgl !== 'undefined') {
-                        var mapContainer = $scope.find('.neshan-map-container')[0];
-                        if (!mapContainer || mapContainer.neshanMapInitialized) return;
+            // Check if API key is missing or is the default placeholder (or the old default)
+            if (!apiKey || apiKey === 'web.') { // Keep check for 'web.' for safety/backward compatibility
+                #>
+                <div class="neshan-map-api-key-missing elementor-nerd-box" style="height: {{ height }}; width: {{ width }}; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; box-sizing: border-box;">
+                    <div class="elementor-nerd-box-message">
+                        <?php esc_html_e('برای نمایش نقشه باید کلید API نشان را در تنظیمات ویجت وارد کنید.', 'persian-elementor'); ?>
+                    </div>
+                </div>
+                <#
+            } else {
+                // Create unique ID for this map instance in editor
+                var widgetId = view.getID();
+                // Generate a more robust unique ID for the editor context
+                var uniqueId = widgetId + '_' + Math.random().toString(36).substring(2, 9); 
+                var mapId = 'neshanMap_' + uniqueId + '_editor';
+                
+                // Use Elementor's JS render attribute system
+                view.addRenderAttribute('map-container', {
+                    'class': 'neshan-map-container elementor-neshan-map-editor',
+                    'id': mapId,
+                    'data-widget-id': widgetId,
+                    'data-instance-id': uniqueId,
+                    'data-api-key': apiKey,
+                    'data-lat': latitude,
+                    'data-lng': longitude,
+                    'data-marker-color': markerColor,
+                    'data-height': height, // Pass height/width for JS init
+                    'data-width': width,
+                    'data-zoom': mapZoom,
+                    'data-map-type': mapType,
+                    'data-poi': showPoi ? 'true' : 'false',
+                    'data-traffic': showTraffic ? 'true' : 'false',
+                    'style': 'height:' + height + '; width:' + width + ';', // Apply style directly
+                });
+                #>
+                
+                <div {{{ view.getRenderAttributeString('map-container') }}}>
+                    <div class="elementor-custom-embed-play" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; pointer-events: none;">
+                        <i class="eicon-loading eicon-animation-spin" aria-hidden="true"></i>
+                    </div>
+                </div>
+                
+                <style>
+                    /* Styles specific to the editor map instance */
+                    #{{ mapId }} {
+                        overflow: hidden;
+                        position: relative; /* Needed for overlay and spinner */
+                        /* height/width set by inline style */
+                    }
+                    #{{ mapId }} a {
+                        text-decoration: none !important; border: none; padding: 0; margin: 0;
+                    }
+                    #{{ mapId }} a:hover,
+                    #{{ mapId }} a:active {
+                        text-decoration: none !important; background: none; border: none; padding: 0; margin: 0;
+                    }
+                    /* Editor overlay to prevent interaction issues */
+                    .elementor-editor-active .elementor-neshan-map-editor:before {
+                        content: "";
+                        position: absolute;
+                        top: 0; left: 0; right: 0; bottom: 0;
+                        background: rgba(0,0,0,0.05); /* Slight overlay */
+                        z-index: 10; /* Above map controls but below spinner */
+                        pointer-events: none; /* Allow clicks to pass through to Elementor controls */
+                    }
+                     /* Hide spinner once map is initialized */
+                    #{{ mapId }}[data-initialized="true"] .elementor-custom-embed-play {
+                        display: none;
+                    }
+                </style>
+                
+                <# 
+                // Use a self-executing function to avoid polluting global scope in editor
+                (function() {
+                    var currentMapId = mapId; // Capture mapId in this scope
+                    var currentUniqueId = uniqueId; // Capture uniqueId
+
+                    // Define the initialization function specific to this instance
+                    function initEditorMap() {
+                        if (typeof nmp_mapboxgl === 'undefined') {
+                            // console.warn('Editor: Neshan SDK not ready for ' + currentMapId + ', retrying...');
+                            setTimeout(initEditorMap, 300);
+                            return;
+                        }
+
+                        var $mapContainer = jQuery('#' + currentMapId);
+                        if (!$mapContainer.length || $mapContainer.data('neshanMapInitialized')) {
+                            // console.log('Editor: Map container ' + currentMapId + ' not found or already initialized.');
+                            return; // Already initialized or container not found
+                        }
+
+                        var mapContainerEl = $mapContainer[0];
 
                         try {
-                            // Get data from DOM attributes
-                            var apiKey = mapContainer.getAttribute('data-api-key');
-                            var latitude = parseFloat(mapContainer.getAttribute('data-lat'));
-                            var longitude = parseFloat(mapContainer.getAttribute('data-lng'));
-                            var markerColor = mapContainer.getAttribute('data-marker-color');
-                            var mapHeight = mapContainer.getAttribute('data-height');
-                            var mapWidth = mapContainer.getAttribute('data-width');
-                            var mapZoom = parseInt(mapContainer.getAttribute('data-zoom') || '15');
-                            var mapTypeStr = mapContainer.getAttribute('data-map-type') || 'neshanVector';
-                            var poi = mapContainer.getAttribute('data-poi') === 'true';
-                            var traffic = mapContainer.getAttribute('data-traffic') === 'true';
+                            // Get data from attributes again (safer in editor context)
+                            var apiKey = $mapContainer.data('api-key');
+                            if (!apiKey || apiKey === 'web.') { // Keep check for 'web.' for safety/backward compatibility
+                                console.error('Editor: Neshan API Key missing for map: ' + currentMapId);
+                                $mapContainer.html('<p style="padding:20px; text-align:center;">' + <?php echo json_encode(esc_html__('خطا: کلید API نشان یافت نشد.', 'persian-elementor')); ?> + '</p>');
+                                return;
+                            }
+                            var latitude = parseFloat($mapContainer.data('lat'));
+                            var longitude = parseFloat($mapContainer.data('lng'));
+                            var markerColor = $mapContainer.data('marker-color');
+                            var mapZoom = parseInt($mapContainer.data('zoom') || '15');
+                            var mapTypeStr = $mapContainer.data('map-type') || 'neshanVector';
+                            var poi = $mapContainer.data('poi') === true; // data() might convert 'true'/'false'
+                            var traffic = $mapContainer.data('traffic') === true;
                             
-                            // Apply dimensions
-                            mapContainer.style.height = mapHeight;
-                            mapContainer.style.minHeight = mapHeight;
-                            mapContainer.style.width = mapWidth;
-                            mapContainer.style.minWidth = mapWidth;
-                            
-                            // Location coordinates
-                            var mapCenterLocation = [latitude, longitude];
+                            // Location coordinates [lng, lat]
+                            var mapCenterLocation = [longitude, latitude];
                             
                             // Create map
                             var map = new nmp_mapboxgl.Map({
-                                container: mapContainer,
+                                container: mapContainerEl,
                                 mapKey: apiKey,
-                                mapType: nmp_mapboxgl.Map.mapTypes[mapTypeStr],
+                                mapType: nmp_mapboxgl.Map.mapTypes[mapTypeStr] || nmp_mapboxgl.Map.mapTypes.neshanVector,
                                 zoom: mapZoom,
                                 pitch: 0,
-                                center: mapCenterLocation.reverse(),
+                                center: mapCenterLocation,
                                 minZoom: 2,
                                 maxZoom: 21,
-                                trackResize: true,
+                                trackResize: true, // Important for editor resizing
                                 poi: poi,
                                 traffic: traffic,
                                 mapTypeControllerStatus: {
@@ -662,20 +739,56 @@ function register_persian_elementor_neshan_map_widget($widgets_manager) {
                             // Add marker
                             new nmp_mapboxgl.Marker({
                                 color: markerColor,
-                                draggable: false
+                                draggable: false // Usually false in editor preview
                             })
-                            .setLngLat([...mapCenterLocation])
+                            .setLngLat(mapCenterLocation)
                             .addTo(map);
-                            
-                            // Mark as initialized
-                            mapContainer.neshanMapInitialized = true;
-                            mapContainer.setAttribute('data-initialized', 'true');
+
+                            // Add a slight delay before marking as initialized to allow rendering
+                            setTimeout(function() {
+                                $mapContainer.data('neshanMapInitialized', true);
+                                $mapContainer.attr('data-initialized', 'true'); // For CSS selector
+                                // console.log('Editor: Neshan map initialized: ' + currentMapId);
+                            }, 100); 
+
                         } catch (e) {
-                            console.error('Error initializing Neshan map in editor:', e);
+                            console.error('Error initializing Neshan map in editor (' + currentMapId + '):', e);
+                            $mapContainer.html('<p style="padding:20px; text-align:center;">' + <?php echo json_encode(esc_html__('خطا در بارگذاری نقشه در ویرایشگر.', 'persian-elementor')); ?> + '</p>');
                         }
                     }
-                });
-            }
+
+                    // Use Elementor frontend hooks for initialization in the editor
+                    if (elementorFrontend && elementorFrontend.hooks) {
+                         // Use a timeout to ensure the element is fully rendered in the DOM
+                         // Especially important when adding the widget for the first time
+                        setTimeout(function() {
+                            initEditorMap();
+                        }, 150); // Small delay
+
+                        // Re-initialize on view refresh (e.g., after changing settings)
+                        elementor.channels.editor.on('change', function( controlView, model ) {
+                            // Check if the changed control belongs to this widget instance
+                            if ( model.cid === view.cid ) {
+                                var $mapContainer = jQuery('#' + currentMapId);
+                                if ($mapContainer.length) {
+                                     // Clear previous instance if exists (simple way)
+                                     $mapContainer.empty().removeData('neshanMapInitialized').removeAttr('data-initialized');
+                                     // Re-render the container (might be needed if attributes changed significantly)
+                                     // This part is tricky, ideally Elementor handles re-rendering the template.
+                                     // For now, just re-run init after a short delay.
+                                     setTimeout(initEditorMap, 150); 
+                                }
+                            }
+                        });
+
+                    } else {
+                        // Fallback if hooks aren't available (less likely)
+                        jQuery(document).ready(initEditorMap);
+                    }
+                })();
+                #>
+            <# 
+            } // End else block (API key exists)
             #>
             <?php
         }

@@ -144,6 +144,22 @@ class Persian_Elementor_Aparat_Integration {
                 'frontend_available' => true,
             ]
         );
+
+        $element->add_control(
+            'recom_self',
+            [
+                'label' => esc_html__('ویدیو های پیشنهادی', 'persian-elementor'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('بله', 'persian-elementor'),
+                'label_off' => esc_html__('خیر', 'persian-elementor'),
+                'return_value' => 'yes',
+                'default' => 'no',
+                'condition' => [
+                    'video_type' => 'aparat',
+                ],
+                'frontend_available' => true,
+            ]
+        );
     }
     
     /**
@@ -260,23 +276,26 @@ class Persian_Elementor_Aparat_Integration {
             'loop', 'controls', 'showinfo', 'modestbranding', 'logo', 
             'yt_privacy', 'lazy_load', 'rel', 'vimeo_title', 
             'vimeo_portrait', 'vimeo_byline', 'color', 
-            'download_button', 'preload', 'poster'
+            'download_button', 'preload', 'poster' // Removed 'image_overlay'
         ];
         
         foreach ($controls_to_update as $control_name) {
             $control = $element->get_controls($control_name);
             if ($control) {
                 $condition = isset($control['condition']) ? $control['condition'] : [];
-                if (isset($condition['video_type']) && is_array($condition['video_type'])) {
-                    // Keep existing video type conditions
-                } else {
-                    // Add condition to hide for aparat type
-                    $condition['video_type!'] = array_merge(
-                        isset($condition['video_type!']) ? (array)$condition['video_type!'] : [],
-                        ['aparat']
-                    );
+                // Ensure 'video_type!' condition exists and includes 'aparat'
+                if (!isset($condition['video_type!'])) {
+                    $condition['video_type!'] = [];
                 }
-                
+                if (!is_array($condition['video_type!'])) {
+                    $condition['video_type!'] = (array) $condition['video_type!'];
+                }
+                if (!in_array('aparat', $condition['video_type!'])) {
+                    $condition['video_type!'][] = 'aparat';
+                }
+
+                // Removed special handling for image_overlay
+                // For other controls, just update the video_type condition
                 $element->update_control($control_name, ['condition' => $condition]);
             }
         }
@@ -399,6 +418,7 @@ class Persian_Elementor_Aparat_Integration {
         $autoplay = !empty($settings['autoplay']) ? 'true' : 'false';
         $mute_aparat = (!empty($settings['mute_aparat']) && $settings['mute_aparat'] === 'yes') ? 'true' : 'false';
         $title_show_aparat = (!empty($settings['title_show_aparat']) && $settings['title_show_aparat'] === 'yes') ? 'true' : 'false';
+        $recom_self = (!empty($settings['recom_self']) && $settings['recom_self'] === 'yes') ? 'self' : null; // Check the new setting
         
         // Check if we have a valid video hash
         if (empty($video_hash)) {
@@ -410,12 +430,12 @@ class Persian_Elementor_Aparat_Integration {
         $params = [];
         
         // Only add titleShow when explicitly enabled
-        if (!empty($settings['title_show_aparat']) && $settings['title_show_aparat'] === 'yes') {
+        if ($title_show_aparat === 'true') {
             $params['titleShow'] = 'true';
         }
         
         // Only add muted when explicitly enabled
-        if (!empty($settings['mute_aparat']) && $settings['mute_aparat'] === 'yes') {
+        if ($mute_aparat === 'true') {
             $params['muted'] = 'true';
         }
         
@@ -425,6 +445,11 @@ class Persian_Elementor_Aparat_Integration {
         // Add start time parameter if it's not zero
         if ($start_time > 0) {
             $params['t'] = $start_time;
+        }
+
+        // Add recom parameter if enabled
+        if ($recom_self === 'self') {
+            $params['recom'] = 'self';
         }
         
         echo $this->generate_aparat_embed_html($video_hash, $params);

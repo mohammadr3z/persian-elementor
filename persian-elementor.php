@@ -3,7 +3,7 @@
  * Plugin Name: المنتور فارسی
  * Plugin URI: 
  * Description: بسته کامل فارسی‌ساز المنتور با 13 فونت ایرانی، ترجمه المنتور و المنتور پرو، آیکون‌های ایرانی، تقویم شمسی، ویجت‌های نقشه نشان و آپارات.
- * Version: 2.7.9.2
+ * Version: 2.7.11
  * Author: المنتور فارسی
  * Author URI: 
  * Text Domain: persian-elementor
@@ -79,6 +79,12 @@ final class Persian_Elementor {
         // Add typography control if enabled (default to enabled if option doesn't exist)
         if ($options['efa-all-font'] ?? true) {
             $includes[] = 'widget/class-group-control-typography.php';
+        }
+        
+        // Add ZarinPal payment button if enabled (default to enabled if option doesn't exist)
+        if ($options['efa-zarinpal-button'] ?? true) {
+            $includes[] = 'widget/zarinpal/zarinpal-handler.php';
+            $includes[] = 'widget/zarinpal/zarinpal-register.php';
         }
         
         foreach ($includes as $file) {
