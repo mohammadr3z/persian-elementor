@@ -98,14 +98,33 @@
         }
     });
     
-    // Handle dynamic content changes
-    $(document).on('DOMNodeInserted', function(e) {
-        var $target = $(e.target);
+    // Handle dynamic content changes using MutationObserver (modern replacement for DOMNodeInserted)
+    var observer = new MutationObserver(function(mutations) {
+        var shouldReinit = false;
         
-        // Check if our target contains datepicker fields
-        if ($target.find('[data-jdp]').length > 0 || $target.is('[data-jdp]')) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        var $node = $(node);
+                        // Check if the added node contains datepicker fields or is one itself
+                        if ($node.find('[data-jdp]').length > 0 || $node.is('[data-jdp]')) {
+                            shouldReinit = true;
+                        }
+                    }
+                });
+            }
+        });
+        
+        if (shouldReinit) {
             setTimeout(initJalaliDatepicker, 300);
         }
+    });
+    
+    // Start observing the document for changes
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
     });
     
     // Make functions available globally for debugging

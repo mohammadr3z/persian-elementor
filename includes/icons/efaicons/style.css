@@ -1,11 +1,10 @@
 @font-face {
   font-family: 'efaicons';
-  src:  url('fonts/efaicons.eot');
-  src:  url('fonts/efaicons.eot?#iefix') format('embedded-opentype'),
-    url('fonts/efaicons.woff2') format('woff2'),
-    url('fonts/efaicons.ttf') format('truetype'),
-    url('fonts/efaicons.woff') format('woff'),
-    url('fonts/efaicons.svg?#efaicons') format('svg');
+  src:  url('fonts/efaicons.eot?6xl4u9');
+  src:  url('fonts/efaicons.eot?6xl4u9#iefix') format('embedded-opentype'),
+    url('fonts/efaicons.ttf?6xl4u9') format('truetype'),
+    url('fonts/efaicons.woff?6xl4u9') format('woff'),
+    url('fonts/efaicons.svg?6xl4u9#efaicons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -14,7 +13,7 @@
 [class^="efa-"], [class*=" efa-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'efaicons' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -26,24 +25,47 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.efa-eitaa:before {
-  content: "\e97c";
+.efa-rubika:before {
+  content: "\e90b";
 }
-.efa-soroush:before {
-  content: "\e97d";
+.efa-tamin:before {
+  content: "\e900";
 }
-.efa-bale:before {
-  content: "\e97e";
+.efa-karafarin:before {
+  content: "\e901";
+}
+.efa-postbank:before {
+  content: "\e902";
+}
+.efa-keshavarzi:before {
+  content: "\e903";
+}
+.efa-ayandeh:before {
+  content: "\e904";
+}
+.efa-toseetaavon:before {
+  content: "\e905";
+}
+.efa-resalat:before {
+  content: "\e906";
+}
+.efa-sepah:before {
+  content: "\e907";
+}
+.efa-post:before {
+  content: "\e908";
+}
+.efa-blu:before {
+  content: "\e909";
 }
 .efa-gap:before {
-  content: "\e900";
+  content: "\e90a";
 }
 .efa-bisphone:before {
   content: "\e916";
 }
 .efa-EFA:before {
   content: "\e917";
-  color: #eb345e;
 }
 .efa-Enbank:before {
   content: "\e918";
@@ -114,6 +136,15 @@
 .efa-Mehriran:before {
   content: "\e947";
 }
+.efa-eitaa:before {
+  content: "\e97c";
+}
+.efa-soroush:before {
+  content: "\e97d";
+}
+.efa-bale:before {
+  content: "\e97e";
+}
 .efa-tejarat:before {
   content: "\e97f";
 }
@@ -128,9 +159,6 @@
 }
 .efa-Shahr:before {
   content: "\e9d1";
-}
-.efa-Shaparak:before {
-  content: "\e9d2";
 }
 .efa-Shetab:before {
   content: "\e9d3";
