@@ -12,8 +12,49 @@ if (!defined('ABSPATH')) {
 class Persian_Date_Field extends Field_Base {
     
     public function __construct() {
-        add_action('elementor/preview/init', [$this, 'editor_preview_footer']);
         parent::__construct();
+        add_action('elementor/preview/init', [$this, 'editor_preview_footer']);
+        add_action('wp_enqueue_scripts', [$this, 'register_assets']);
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'register_assets']);
+        add_action('elementor/preview/enqueue_styles', [$this, 'register_assets']);
+    }
+    
+    /**
+     * Register necessary assets for Persian date field.
+     * 
+     * @return void
+     */
+    public function register_assets() {
+        // Use a fixed version number
+        $version = '1.2.0';
+        
+        wp_register_style(
+            'persian-elementor-datepicker-custom',
+            PERSIAN_ELEMENTOR_URL . 'assets/css/datepicker-custom.css',
+            [],
+            $version
+        );
+        
+        wp_register_script(
+            'persian-elementor-datepicker',
+            PERSIAN_ELEMENTOR_URL . 'assets/js/jalalidatepicker.min.js',
+            ['jquery'],
+            $version,
+            true
+        );
+        
+        wp_register_script(
+            'persian-elementor-datepicker-init',
+            PERSIAN_ELEMENTOR_URL . 'assets/js/datepicker-init.js',
+            ['jquery', 'persian-elementor-datepicker'],
+            $version,
+            true
+        );
+        
+        // Enqueue the assets
+        wp_enqueue_style('persian-elementor-datepicker-custom');
+        wp_enqueue_script('persian-elementor-datepicker');
+        wp_enqueue_script('persian-elementor-datepicker-init');
     }
     
     public function editor_preview_footer(): void {
@@ -25,14 +66,48 @@ class Persian_Date_Field extends Field_Base {
         <script>
         jQuery(document).ready(() => {
             elementor.hooks.addFilter(
-                'elementor_pro/forms/content_template/field/<?php echo $this->get_type(); ?>',
+                'elementor_pro/forms/content_template/field/<?php echo esc_js($this->get_type()); ?>',
                 function(inputField, item, i) {
                     const fieldType = 'text';
                     const fieldId = `form_field_${i}`;
-                    const fieldClass = `elementor-field-textual elementor-field persian-date-input ${item.css_classes}`;
-                    const placeholder = item['persian-date-placeholder'] || '';
+                    // Sanitize CSS classes to prevent XSS
+                    const baseCssClasses = 'elementor-field-textual elementor-field persian-date-input';
+                    const additionalClasses = (item.css_classes || '').replace(/[<>"']/g, '');
+                    const fieldClass = `${baseCssClasses} ${additionalClasses}`.trim();
+                    // Sanitize placeholder to prevent XSS
+                    const placeholder = (item['persian-date-placeholder'] || '').replace(/[<>"']/g, '');
                     
-                    return `<input type="${fieldType}" id="${fieldId}" class="${fieldClass}" data-jdp readonly="readonly" placeholder="${placeholder}">`;
+                    // Initialize datepicker after element is added to DOM with multiple attempts
+                    setTimeout(function() {
+                        const initAttempts = function(attempts) {
+                            if (attempts > 5) return;
+                            
+                            const element = document.getElementById(fieldId);
+                            if (element && typeof window.jalaliDatepicker !== "undefined") {
+                                try {
+                                    window.jalaliDatepicker.attachDatepicker(element);
+                                    element.setAttribute('data-jdp-initialized', 'true');
+                                } catch (e) {
+                                    console.log('Persian Elementor: Retry datepicker init attempt ' + attempts);
+                                    setTimeout(() => initAttempts(attempts + 1), 200);
+                                }
+                            } else {
+                                setTimeout(() => initAttempts(attempts + 1), 200);
+                            }
+                        };
+                        initAttempts(1);
+                    }, 300);
+                    
+                    // Create input element safely
+                    const input = document.createElement('input');
+                    input.type = fieldType;
+                    input.id = fieldId;
+                    input.className = fieldClass;
+                    input.setAttribute('data-jdp', '');
+                    input.readOnly = true;
+                    input.placeholder = placeholder;
+                    
+                    return input.outerHTML;
                 }, 10, 3
             );
         });
@@ -52,21 +127,10 @@ class Persian_Date_Field extends Field_Base {
      * Renders the Persian Date field on the frontend
      */
     public function render($item, $item_index, $form) {
-        // Ensure assets are enqueued
-        wp_enqueue_style('persian-elementor-datepicker-custom');
-        wp_enqueue_script('persian-elementor-datepicker');
-        wp_enqueue_script('persian-elementor-datepicker-init');
-        
-        // Generate a unique ID for the field
-        $field_id = 'persian-date-' . uniqid();
-        
-        // Define datepicker options
-        $datepicker_options = [
-            'selector' => '#' . $field_id,
-            'persianDigit' => true,
-            'autoClose' => true,
-            'format' => 'YYYY/MM/DD',
-        ];
+        // Sanitize placeholder value
+        $placeholder = isset($item['persian-date-placeholder']) ? 
+            sanitize_text_field($item['persian-date-placeholder']) : 
+            esc_attr__('تاریخ را انتخاب کنید', 'persian-elementor');
         
         // Set required attributes
         $form->add_render_attribute(
@@ -74,26 +138,15 @@ class Persian_Date_Field extends Field_Base {
             [
                 'class' => 'elementor-field-textual persian-date-input',
                 'name' => $form->get_attribute_name($item),
-                'id' => $field_id,
                 'type' => 'text',
                 'data-jdp' => '',
-                'data-jdp-option' => json_encode($datepicker_options),
                 'readonly' => 'readonly',
-                'placeholder' => $item['persian-date-placeholder'],
+                'placeholder' => $placeholder,
             ]
         );
         
-        // Output the field
+        // Output the field safely
         echo '<input ' . $form->get_render_attribute_string('input' . $item_index) . '>';
-        echo '<script>
-            jQuery(document).ready(function($) {
-                setTimeout(function() {
-                    if (typeof window.jalaliDatepicker !== "undefined") {
-                        window.jalaliDatepicker.attachDatepicker("#' . $field_id . '");
-                    }
-                }, 300);
-            });
-        </script>';
     }
     
     /**
@@ -136,11 +189,43 @@ class Persian_Date_Field extends Field_Base {
      * Field validation
      */
     public function validation($field, $record, $ajax_handler) {
+        // Check if field is required and empty
         if (empty($field['value']) && $field['required']) {
             $ajax_handler->add_error(
                 $field['id'],
                 esc_html__('تاریخ را وارد کنید.', 'persian-elementor')
             );
+            return;
+        }
+        
+        // If field has value, validate Persian date format
+        if (!empty($field['value'])) {
+            $date_value = sanitize_text_field($field['value']);
+            
+            // Basic Persian date format validation (YYYY/MM/DD)
+            if (!preg_match('/^\d{4}\/\d{1,2}\/\d{1,2}$/', $date_value)) {
+                $ajax_handler->add_error(
+                    $field['id'],
+                    esc_html__('فرمت تاریخ صحیح نیست. لطفاً تاریخ را از تقویم انتخاب کنید.', 'persian-elementor')
+                );
+                return;
+            }
+            
+            // Additional validation: check if date parts are in valid range
+            $date_parts = explode('/', $date_value);
+            if (count($date_parts) === 3) {
+                $year = (int) $date_parts[0];
+                $month = (int) $date_parts[1];
+                $day = (int) $date_parts[2];
+                
+                // Basic range validation for Persian calendar
+                if ($year < 1300 || $year > 1500 || $month < 1 || $month > 12 || $day < 1 || $day > 31) {
+                    $ajax_handler->add_error(
+                        $field['id'],
+                        esc_html__('تاریخ وارد شده معتبر نیست.', 'persian-elementor')
+                    );
+                }
+            }
         }
     }
 }

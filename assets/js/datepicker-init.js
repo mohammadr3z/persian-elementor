@@ -23,14 +23,10 @@
         if (!isJalaliDatepickerLoaded()) {
             console.error('Persian Elementor: jalaliDatepicker library not loaded (attempt ' + initializationAttempts + ')');
             
-            // Try to load the library dynamically
-            var script = document.createElement('script');
-            script.src = 'https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js';
-            script.onload = function() {
-                console.log('Persian Elementor: Loaded jalaliDatepicker library');
-                setTimeout(applyDatepicker, 300);
-            };
-            document.head.appendChild(script);
+            // Retry after a short delay instead of dynamic loading
+            setTimeout(function() {
+                initJalaliDatepicker();
+            }, 500);
             
             return false;
         }
@@ -62,18 +58,22 @@
             console.log('Persian Elementor: Datepicker initialized successfully');
             isInitialized = true;
             
-            // Force re-init on click for problematic fields
-            $(document).off('click', '.shamsi-date-input');  // Remove any duplicate handlers
-            $(document).on('click', '.shamsi-date-input', function() {
+            // Force re-init on click for problematic fields - use both selectors
+            $(document).off('click', '.persian-date-input, [data-jdp]');  // Remove any duplicate handlers
+            $(document).on('click', '.persian-date-input, [data-jdp]', function() {
                 var $this = $(this);
                 if (!$this.attr('data-jdp-initialized') || $this.attr('data-jdp-initialized') === "false") {
                     jalaliDatepicker.attachDatepicker($this[0]);
+                    $this.attr('data-jdp-initialized', 'true');
                 }
             });
             
-            // Initialize existing fields directly
-            $('.shamsi-date-input').each(function() {
-                jalaliDatepicker.attachDatepicker(this);
+            // Initialize existing fields directly - use both selectors
+            $('.persian-date-input, [data-jdp]').each(function() {
+                if (!$(this).attr('data-jdp-initialized')) {
+                    jalaliDatepicker.attachDatepicker(this);
+                    $(this).attr('data-jdp-initialized', 'true');
+                }
             });
             
             return true;
@@ -97,6 +97,19 @@
             });
         }
     });
+    
+    // Handle Elementor editor/preview mode
+    if (typeof elementor !== 'undefined') {
+        // Editor mode
+        $(window).on('elementor:init', function() {
+            setTimeout(initJalaliDatepicker, 1000);
+        });
+        
+        // Preview mode
+        $(window).on('elementor/frontend/init', function() {
+            setTimeout(initJalaliDatepicker, 1000);
+        });
+    }
     
     // Handle dynamic content changes using MutationObserver (modern replacement for DOMNodeInserted)
     var observer = new MutationObserver(function(mutations) {

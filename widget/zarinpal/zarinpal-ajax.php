@@ -18,8 +18,8 @@ class ZarinPal_Ajax {
         add_action('wp_ajax_zarinpal_payment_request', [$this, 'process_payment_request']);
         add_action('wp_ajax_nopriv_zarinpal_payment_request', [$this, 'process_payment_request']);
         
-        // Handle verification requests
-        add_action('template_redirect', [$this, 'handle_verification']);
+        // Handle verification requests with higher specificity to avoid conflicts
+        add_action('template_redirect', [$this, 'handle_verification'], 5); // Lower priority
     }
     
     /**
@@ -62,14 +62,15 @@ class ZarinPal_Ajax {
             wp_die('همه فیلدهای ضروری را پر کنید: ' . implode(' ', $errors));
         }
         
-        // Store transaction data for later verification
-        $transaction_id = wp_generate_uuid4();
+        // Store transaction data for later verification with unique prefix
+        $transaction_id = 'pe_' . wp_generate_uuid4(); // PE = Persian Elementor
         $transaction_data = [
             'merchant_id' => $merchant_id,
             'amount' => $amount,
             'description' => $description,
             'transaction_id' => $transaction_id,
             'created_at' => time(),
+            'source' => 'persian_elementor', // Mark as our transaction
         ];
         
         update_option('zarinpal_transaction_' . $transaction_id, $transaction_data, false);
@@ -103,17 +104,22 @@ class ZarinPal_Ajax {
      * Handle payment verification
      */
     public function handle_verification() {
-        // Check if Zarinpal callback parameters are present
-        if (!isset($_GET['Authority']) || !isset($_GET['Status'])) {
-            return; // Exit if not a Zarinpal callback
+        // More specific check to avoid conflicts with theme's ZarinPal system
+        if (!isset($_GET['Authority']) || !isset($_GET['Status']) || !isset($_GET['transaction_id'])) {
+            return; // Exit if not our specific Zarinpal callback
+        }
+
+        // Additional check: ensure this is our transaction by checking the transaction_id format
+        $transaction_id = isset($_GET['transaction_id']) ? sanitize_text_field($_GET['transaction_id']) : '';
+        if (empty($transaction_id) || !$this->is_our_transaction($transaction_id)) {
+            return; // Not our transaction, let theme handle it
         }
 
         // Get data from Zarinpal callback
         $authority = isset($_GET['Authority']) ? sanitize_text_field($_GET['Authority']) : '';
         $status = isset($_GET['Status']) ? sanitize_text_field($_GET['Status']) : '';
-        $transaction_id = isset($_GET['transaction_id']) ? sanitize_text_field($_GET['transaction_id']) : '';
         
-        if (empty($authority) || empty($status) || empty($transaction_id)) {
+        if (empty($authority) || empty($status)) {
             wp_die('اطلاعات بازگشتی از درگاه ناقص است.');
         }
         
@@ -145,8 +151,8 @@ class ZarinPal_Ajax {
                 $transaction_data['ref_id'] = $result['ref_id'];
                 update_option('zarinpal_transaction_' . $transaction_id, $transaction_data, false);
                 
-                // Run action hook for successful payment
-                do_action('zarinpal_payment_success', $transaction_data, $result);
+                // Run action hook for successful payment with namespace
+                do_action('persian_elementor_zarinpal_payment_success', $transaction_data, $result);
                 
                 // Prepare the success message
                 $zarinpal_message = sprintf('پرداخت با موفقیت انجام شد. کد پیگیری: %s', '<strong>' . esc_html($result['ref_id']) . '</strong>');
@@ -326,6 +332,28 @@ class ZarinPal_Ajax {
             </script>
             <?php
         }, 99);
+    }
+
+    /**
+     * Check if transaction belongs to our plugin
+     * 
+     * @param string $transaction_id
+     * @return bool
+     */
+    private function is_our_transaction($transaction_id) {
+        // Check if transaction ID has our prefix
+        if (!str_starts_with($transaction_id, 'pe_')) {
+            return false;
+        }
+        
+        // Check if transaction exists in our options and has our source marker
+        $transaction_data = get_option('zarinpal_transaction_' . $transaction_id, false);
+        if ($transaction_data === false) {
+            return false;
+        }
+        
+        // Verify it's marked as our transaction
+        return isset($transaction_data['source']) && $transaction_data['source'] === 'persian_elementor';
     }
 }
 

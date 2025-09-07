@@ -5,7 +5,7 @@ Tags: elementor,persian,المنتور
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.7.11.5
+Stable tag: 2.7.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,6 +118,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
+= 2.7.12 =
+* بهبود: بازسازی کامل ساختار فیلد تاریخ شمسی برای بهبود عملکرد و نگهداری آسان‌تر
+* بهبود: جداسازی منطق ثبت فیلدهای فرم از منطق اختصاصی تاریخ شمسی
+* بهبود: حذف تنظیمات غیرضروری تاریخ شمسی که باعث عدم عملکرد صحیح می‌شد
+* اضافه شدن شناسه منحصر به فرد برای تراکنش‌های زرین‌پال
+* بهبود امنیت و جلوگیری از تداخل با سایر سیستم‌های پرداخت
+* اضافه شدن namespace برای action hook های زرین‌پال
+
 = 2.7.11.5 =
 * رفع خطای [Deprecation] Listener added for a 'DOMNodeInserted' mutation event با جایگزینی DOMNodeInserted با MutationObserver.
 

@@ -24,7 +24,6 @@ class Persian_Elementor_Form_Fields {
         }
         
         add_action( 'elementor_pro/forms/fields/register', [ self::class, 'register_form_fields' ] );
-        add_action( 'wp_enqueue_scripts', [ self::class, 'register_assets' ] );
     }
 
     /**
@@ -36,75 +35,6 @@ class Persian_Elementor_Form_Fields {
     public static function register_form_fields( $form_fields_registrar ) {
         // Register Persian Date field
         self::register_persian_date_field( $form_fields_registrar );
-        
-        // Add filter to reorder the form fields
-        add_filter('elementor_pro/forms/fields', [self::class, 'reorder_form_fields']);
-    }
-    
-    /**
-     * Reorder form fields to place persian date after the regular date field
-     *
-     * @param array $fields
-     * @return array
-     */
-    public static function reorder_form_fields($fields) {
-        if (isset($fields['persian_date']) && isset($fields['date'])) {
-            $ordered_fields = [];
-            
-            foreach ($fields as $key => $field) {
-                $ordered_fields[$key] = $field;
-                
-                // After adding date field, add our persian date field
-                if ($key === 'date') {
-                    $ordered_fields['persian_date'] = $fields['persian_date'];
-                    // Then unset it so we don't add it twice
-                    unset($fields['persian_date']);
-                }
-            }
-            
-            return $ordered_fields;
-        }
-        
-        return $fields;
-    }
-    
-    /**
-     * Register necessary assets for custom form fields.
-     * 
-     * @return void
-     */
-    public static function register_assets() {
-        // Use a fixed version number
-        $version = '1.0.0';
-        
-        // Register our custom CSS that overrides and enhances the datepicker
-        wp_register_style(
-            'persian-elementor-datepicker-custom',
-            PERSIAN_ELEMENTOR_URL . 'assets/css/datepicker-custom.css',
-            [],
-            $version . '.' . time() // Add timestamp to bypass cache during development
-        );
-        
-        wp_register_script(
-            'persian-elementor-datepicker',
-            PERSIAN_ELEMENTOR_URL . 'assets/js/jalalidatepicker.min.js',
-            ['jquery'],
-            $version,
-            true
-        );
-        
-        wp_register_script(
-            'persian-elementor-datepicker-init',
-            PERSIAN_ELEMENTOR_URL . 'assets/js/datepicker-init.js',
-            ['jquery', 'persian-elementor-datepicker'],
-            $version . '.' . time(),
-            true
-        );
-        
-        // Load assets in both front-end and editor
-        wp_enqueue_style('persian-elementor-datepicker-custom');
-        wp_enqueue_script('persian-elementor-datepicker');
-        wp_enqueue_script('persian-elementor-datepicker-init');
     }
     
     /**

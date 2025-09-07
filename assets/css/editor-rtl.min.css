@@ -6,48 +6,26 @@
 }
 
 /* Font */
-.elementor-panel,.elementor-loading-title,
-.MuiListItemText-root.eui-list-item-text.eui-rtl-1jgp53g,
-button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.eui-button.eui-rtl-1sbtwtr,
-.elementor-templates-modal__header,div#elementor-finder__search,.elementor-context-menu-list__item__title,.dialog-message.dialog-buttons-message,.dialog-button.dialog-view_revisions.dialog-buttons-view_revisions,
-div#wp-link-backdrop,.MuiTooltip-tooltip.MuiTooltip-tooltipArrow.MuiTooltip-tooltipPlacementBottom.eui-rtl-th7pql,#elementor-finder__search__input,
-div#elementor-finder__no-results,div#elementor-finder__no-results,.elementor-finder__results__item__description,
-.elementor-finder__results__category__title,a.elementor-finder__results__item__link,#elementor-navigator__header__title,
-span.elementor-navigator__element__title__text,.elementor-empty-view__title,span.elementor-button-title,
-input#elementor-template-library-filter-text,.elementor-template-library-blank-title,.elementor-template-library-blank-message,
-.elementor-template-library-blank-footer,label#elementor-template-library-filter-my-favorites-label,
-span#select2-elementor-template-library-filter-subtype-container,.elementor-excerpt,button.elementor-button.elementor-repeater-add,
-button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.eui-button.eui-rtl-15912cu,
-.dialog-button.dialog-back_to_editor.dialog-buttons-back_to_editor,
-.elementor-hotkeys__item--label,.elementor-hotkeys__header,button.elementor-button.e-btn-txt,button.elementor-button,
-.elementor-tags-list__group-title,.elementor-tags-list__item,p.MuiTypography-root.MuiTypography-body2.eui-typography.eui-rtl-n3o5gw,a#elementor-template-library-connect__button,
-.dialog-header.dialog-confirm-header,.dialog-message.dialog-confirm-message,.e-con-select-preset__title,.elementor-template-library-local-column-1,
-.elementor-template-library-template-meta.elementor-template-library-template-type.elementor-template-library-local-column-2,.elementor-template-library-template-meta.elementor-template-library-template-date.elementor-template-library-local-column-4,
-span.elementor-template-library-template-control-title,span.elementor-template-library-template-control-title,.elementor-template-library-order-label,
-input#elementor-template-library-save-template-name,div#elementor-template-library-import-form-or,label#elementor-template-library-import-form-label,.e-con-select-preset__title,
-.elementor-color-picker__header,span.e-admin-top-bar__heading-title,span.e-admin-top-bar__bar-button-title,span.e-global__popover-title-text,
-span.e-global__color-title,.dialog-message.dialog-simple-message,li.select2-results__option.select2-results__option--highlighted,strong.select2-results__group,.elementor-safe-mode-toast header h2,.elementor-toast-content,
-.eui-rtl-1p1nab2,.elementor-template-library-template-name.elementor-template-library-local-column-1,.elementor-template-library-template-meta.elementor-template-library-template-type.elementor-template-library-local-column-2,
-.elementor-template-library-template-meta.elementor-template-library-template-author.elementor-template-library-local-column-3,.elementor-template-library-template-meta.elementor-template-library-template-date.elementor-template-library-local-column-4,
-span.elementor-template-library-template-control-title,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.Mui-disabled.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedContained.MuiButtonGroup-groupedContainedHorizontal.MuiButtonGroup-groupedContainedPrimary.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.eui-button.eui-rtl-x0wigh,
-.MuiListItemText-root.eui-list-item-text.eui-rtl-1g01smi,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.eui-button.eui-rtl-1tjmgp1,.eui-rtl-1m7jbxj .MuiButtonGroup-grouped:not(:last-of-type),
-.elementor-icons-manager__tab-link.elementor-active,.elementor-icons-manager__tab-link,div#elementor-icons-manager__upload__title,div#elementor-icons-manager__tab__title,p.MuiTypography-root.MuiTypography-body2.MuiTypography-noWrap.eui-typography.eui-rtl-7llmr0,
-li.select2-results__option,input.select2-search__field,.elementor-panel-heading-title,a.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.eui-menu-item.eui-rtl-1iz7j5b,
-span.MuiChip-label.MuiChip-labelMedium.eui-rtl-14vsv3w,p.MuiTypography-root.MuiTypography-body2.MuiTypography-noWrap.eui-typography.eui-rtl-7llmr0,.eui-rtl-16eyisn,
-div#nested-list-subheader,a.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.eui-menu-item.eui-rtl-1iz7j5b,span.MuiChip-label.MuiChip-labelMedium.eui-rtl-14vsv3w,
-h2#elementor-navigator__header__title,.elementor-control-input-wrapper.elementor-control-unit-5,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedContained.MuiButtonGroup-groupedContainedHorizontal.MuiButtonGroup-groupedContainedPrimary.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.eui-button.eui-rtl-2v0k8i,
-.elementor-nerd-box-title,.elementor-nerd-box-message,span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.eui-rtl-1u5uj05,.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-dense.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-dense.MuiMenuItem-gutters.eui-menu-item.eui-rtl-14c94tx,
-li.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-dense.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-dense.MuiMenuItem-gutters.eui-menu-item.eui-rtl-jbxpg6,.e-con-select-type__title,.eui-rtl-5omgw0,.dialog-tooltip-widget .dialog-tooltip-header,
-.dialog-tooltip-widget .dialog-tooltip-message,.elementor-repeater-row-item-title,.eui-rtl-b8meod,h3.elementor-control-title,li.ui-menu-item,span.MuiTypography-root.MuiTypography-body2.MuiListItemText-primary.eui-rtl-14tqbo1,.MuiTooltip-tooltip.MuiTooltip-tooltipArrow.MuiTooltip-tooltipPlacementBottom.eui-rtl-hc94nj,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.Mui-disabled.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedContained.MuiButtonGroup-groupedContainedHorizontal.MuiButtonGroup-groupedContainedPrimary.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.eui-button.eui-rtl-1k7tcru,.eui-rtl-1ssw4uy,span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.eui-rtl-yb0lig,span.MuiChip-label.MuiChip-labelSmall.eui-rtl-1pjtbja,button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.Mui-disabled.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.eui-button.eui-rtl-16yijr4,
-button.e-ai-button,.MuiTooltip-tooltip,div#condition-select,.e-con-select-type__icons__icon__subtitle,div#select-time_type,input#select-authors,input#select-pages,input#select-categories,
-input#select-tags,div#select-date_type,div#select-status,input#select-roles,input#text-from_url,textarea#\:rh\:,input#select-titles,input#select-days,input#text-dynamic_tag_value,.title-wrapper,
-.dialog-button.dialog-undo.dialog-buttons-undo,span.MuiChip-root,.elementor-publish__tab__title,.elementor-publish__tab__description,
-span.elementor-switch-label,label.elementor-control-title
- {
-    font-family: IRANYekanXVF !important;
-}
-button,p,li,button span {
-    font-family: IRANYekanXVF !important;
+/* Editor V4 */
+body.elementor-editor-active :where(
+  div,
+  span,
+  label,
+  input,
+  textarea,
+  select,
+  button,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li
+):not(pre.elementor-code-editor):not(pre.elementor-code-editor *),
+body.elementor-editor-active .elementor-loading-title div {
+  font-family: "IRANYekanXVF", sans-serif !important;
 }
 
 .elementor-context-menu-list__item__shortcut, .elementor-context-menu-list__item__title {
@@ -160,26 +138,6 @@ input.elementor-control-tag-area.elementor-input.ui-autocomplete-input {
     border-top-left-radius: 0px!important;
     border-bottom-left-radius: 0px!important;
 }
-/*
-.elementor-choices {
-    flex-direction: row-reverse;
-}
-.elementor-choices .elementor-choices-label:last-child {
-    border-right: var(--e-a-border-bold);
-    border-top-right-radius: var(--e-a-border-radius);
-    border-bottom-right-radius: var(--e-a-border-radius);
-	border-left: 0px!important;
-    border-top-left-radius: 0px!important;
-    border-bottom-left-radius: 0px!important;
-}
-.elementor-choices .elementor-choices-label:nth-child(2) {
-    border-top-right-radius: 0!important;
-    border-bottom-right-radius: 0!important;
-    border-top-left-radius: var(--e-a-border-radius);
-    border-bottom-left-radius: var(--e-a-border-radius);
-    border-left: var(--e-a-border-bold);
-}
-*/
 .elementor-control-type-url .elementor-control-url-autocomplete-spinner {
 	right:auto;
     left: 0;
@@ -194,3 +152,4 @@ input.elementor-control-tag-area.elementor-input.ui-autocomplete-input {
 
 /* Yoast SEO */
 .yoast-title {font-family: 'IRANYekanXVF';}
+

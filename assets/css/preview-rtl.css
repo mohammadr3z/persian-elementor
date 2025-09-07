@@ -4,4 +4,4 @@
        url(font/IRANYekanX/IRANYekanXVF.woff2) format("woff2"); /* for older browsers */
        font-weight: 400; font-style: normal;
 }
-.elementor-sortable-helper .title,.elementor-add-section-drag-title,.elementor-select-preset-title,.elementor-document-handle__title,.e-con-select-type__title,.e-con-select-preset__title {font-family: IRANYekanX!important;}
+.elementor-sortable-helper .title,.elementor-add-section-drag-title,.elementor-select-preset-title,.elementor-document-handle__title,.e-con-select-type__title,.e-con-select-preset__title {font-family: IRANYekanXVF!important;}
