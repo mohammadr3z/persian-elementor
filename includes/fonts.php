@@ -14,6 +14,7 @@ function PersianElementor_options(): array {
 
 function PersianElementor_farsi_fonts(): void {
     static $farsi_fonts = [
+        'Arad',
         'Estedad',
         'Gandom',
         'IRANYekanX',

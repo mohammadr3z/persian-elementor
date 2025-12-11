@@ -1,4 +1,73 @@
 @font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arad';
+    src: url('font/Arad/Arad-ExtraBlack.woff2') format('woff2');
+    font-weight: 950;
+    font-display: swap;
+}
+@font-face {
     font-family: 'Estedad';
     src: url('font/Estedad/Estedad-Thin.woff2') format('woff2');
     font-weight: 100;

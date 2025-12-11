@@ -21,6 +21,7 @@ class Persian_Elementor_Extended_Group_Control_Typography extends \Elementor\Gro
 				'condition' => [
                     'font_family' => [
 					'Anjoman',
+					'Arad',
 					'Artin',
 					'Aviny',
 					'Daal',

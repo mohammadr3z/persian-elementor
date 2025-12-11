@@ -94,30 +94,6 @@
     cursor: default;
 }
 
-.persian-elementor-premium-ad::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: rgba(255, 255, 255, 0.1);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.persian-elementor-premium-ad::after {
-    content: "";
-    position: absolute;
-    bottom: -40px;
-    left: -40px;
-    background: rgba(255, 255, 255, 0.1);
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    z-index: 0;
-}
-
 .premium-ad-content {
     position: relative;
     z-index: 1;

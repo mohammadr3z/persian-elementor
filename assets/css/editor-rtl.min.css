@@ -61,6 +61,9 @@ input#elementor-panel-elements-search-input {
 }
 /* Font */
 
+label.elementor-switch.elementor-control-unit-2 {
+    direction: ltr;
+}
 
 #elementor-template-library-filter .select2-selection__rendered,
 #select2-elementor-template-library-filter-subtype-results .select2-results__option {

@@ -201,6 +201,41 @@ function persian_elementor_settings_page(): void {
                         </div>
                     </div>
                 </div>
+                
+                <div style="margin-top: 20px;">
+                    <div class="persian-elementor-premium-ad" style="background: #23282d;">
+                        <div class="premium-ad-content">
+                            <h5>فعال سازی تاریخ شمسی</h5>
+                            <p>برای فعال سازی تاریخ شمسی و استفاده از تقویم شمسی در وردپرس، افزونه تقویم فارسی را نصب کنید.</p>
+                            <?php
+                                $plugin_slug = 'persian-calendar';
+                                $install_url = wp_nonce_url(
+                                    self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_slug),
+                                    'install-plugin_' . $plugin_slug
+                                );
+                                $activate_url = wp_nonce_url(
+                                    self_admin_url('plugins.php?action=activate&plugin=' . $plugin_slug . '/' . $plugin_slug . '.php'),
+                                    'activate-plugin_' . $plugin_slug . '/' . $plugin_slug . '.php'
+                                );
+
+                                if ( ! function_exists( 'get_plugins' ) ) {
+                                    require_once ABSPATH . 'wp-admin/includes/plugin.php';
+                                }
+                                $all_plugins = get_plugins();
+
+                                if ( array_key_exists( $plugin_slug . '/' . $plugin_slug . '.php', $all_plugins ) ) {
+                                    if ( is_plugin_active( $plugin_slug . '/' . $plugin_slug . '.php' ) ) {
+                                        echo '<a href="https://wordpress.org/plugins/persian-calendar/" target="_blank" class="premium-ad-button" style="color: #23282d;">مشاهده افزونه</a>';
+                                    } else {
+                                        echo '<a href="' . esc_url( $activate_url ) . '" class="premium-ad-button" style="color: #23282d;">فعال سازی</a>';
+                                    }
+                                } else {
+                                    echo '<a href="' . esc_url( $install_url ) . '" class="premium-ad-button" style="color: #23282d;">نصب افزونه</a>';
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
