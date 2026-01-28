@@ -3,9 +3,9 @@ author: المنتور فارسی
 Contributors: mohammadr3z
 Tags: elementor,persian,المنتور
 Requires at least: 5.0
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.7.15
+Stable tag: 2.7.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,6 +119,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
+= 2.7.16 =
+* بهبود: جایگزینی تقویم شمسی با تقویم جدید با ظاهر بهتر و عملکرد بهینه‌تر
+* بهبود: اسکریپت‌های تقویم تنها در صفحاتی که فیلد تاریخ شمسی استفاده شده لود می‌شوند
+* ترجمه نسخه 3.34
+
 = 2.7.15 =
 * اضافه شدن فونت جدید Arad
 

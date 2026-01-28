@@ -34,18 +34,37 @@ function load_persian_elementor_translations(): void {
 
 add_action('init', 'load_persian_elementor_translations');
 
-if ( ! function_exists( 'persian_elementor_customize_library_menu' ) ) {
-    function persian_elementor_customize_library_menu() {
-        if (get_locale() !== 'fa_IR') {
+add_action( 'admin_init', 'fer_redirect_elementor_to_settings' );
+function fer_redirect_elementor_to_settings() {
+    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+        return;
+    }
+
+    if ( ! is_admin() ) {
+        return;
+    }
+
+    if ( isset( $_GET['page'] ) && $_GET['page'] === 'elementor' ) {
+        $target = admin_url( 'admin.php?page=elementor-settings' );
+
+        $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
+        if ( strpos( $request_uri, 'page=elementor-settings' ) !== false ) {
             return;
         }
-        global $menu;
-        foreach ($menu as $key => $item) {
-            if (isset($item[2]) && $item[2] === 'edit.php?post_type=elementor_library') {
-                $menu[$key][0] = 'قالب‌های المنتور';
-                break;
-            }
-        }
+
+        wp_safe_redirect( $target );
+        exit;
     }
-    add_action('admin_menu', 'persian_elementor_customize_library_menu', 999);
+
+    if ( isset( $_GET['page'] ) && $_GET['page'] === 'elementor-home' ) {
+        $target = admin_url( 'admin.php?page=elementor-settings' );
+
+        $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
+        if ( strpos( $request_uri, 'page=elementor-settings' ) !== false ) {
+            return;
+        }
+
+        wp_safe_redirect( $target );
+        exit;
+    }
 }
