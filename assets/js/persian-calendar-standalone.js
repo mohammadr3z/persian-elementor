@@ -424,6 +424,6 @@
   }
 
   // Global Exports
-  window.PersianDateConverter = { gregorianToJalali, jalaliToGregorian, isValidGregorian, isValidJalali, toPersianDigits, toAsciiDigits, getDaysInJalaliMonth, PERSIAN_MONTHS, PERSIAN_WEEKDAYS };
-  window.PersianCalendar = PersianCalendar;
+  window.PersianElementorDateConverter = { gregorianToJalali, jalaliToGregorian, isValidGregorian, isValidJalali, toPersianDigits, toAsciiDigits, getDaysInJalaliMonth, PERSIAN_MONTHS, PERSIAN_WEEKDAYS };
+  window.PersianElementorCalendar = PersianCalendar;
 })();

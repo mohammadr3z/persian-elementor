@@ -14,7 +14,7 @@ class ZarinPal_Register {
      */
     public function __construct() {
         // Register widget
-        add_action('elementor/widgets/widgets_registered', [$this, 'register_widgets']);
+        add_action('elementor/widgets/register', [$this, 'register_widgets']);
         
         // Initialize AJAX handler
         $this->init_ajax_handler();
@@ -28,7 +28,7 @@ class ZarinPal_Register {
     public function register_widgets($widgets_manager) {
 		require_once plugin_dir_path(__FILE__) . 'zarinpal-button.php';
         
-        $widgets_manager->register_widget_type(new Widgets\ZarinPal_Button());
+        $widgets_manager->register(new Widgets\ZarinPal_Button());
     }
     
     /**

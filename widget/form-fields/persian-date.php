@@ -30,7 +30,7 @@ class Persian_Date_Field extends Field_Base
     public function register_assets()
     {
         // Use a fixed version number
-        $version = '1.2.0';
+        $version = '1.3.0';
 
         wp_register_script(
             'persian-elementor-datepicker',

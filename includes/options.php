@@ -31,6 +31,10 @@ add_action('admin_menu', function(): void {
 function persian_elementor_settings_page(): void {
     // Handle form submission
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['persian_elementor'])) {
+        // Verify user has permission to manage options
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_die( esc_html__( 'شما اجازه دسترسی به این صفحه را ندارید.', 'persian-elementor' ) );
+        }
         check_admin_referer('persian_elementor_nonce');
         $new_options = array_map('sanitize_text_field', $_POST['persian_elementor']);
         update_option('persian_elementor', $new_options);
@@ -112,6 +116,10 @@ function persian_elementor_settings_page(): void {
                     <p style="color: #6d7882; font-size: 14px; margin: 15px 0 0;">
                         در این صفحه می‌توانید تنظیمات و امکانات افزونه المنتور فارسی را مدیریت کنید. گزینه‌های زیر به شما کمک می‌کنند تا تجربه کار با المنتور را برای سایت‌های فارسی بهبود دهید و قابلیت‌های بیشتری را فعال یا غیرفعال کنید.
                     </p>
+                </div>
+                <!-- بخش نمایش نسخه افزونه -->
+                <div class="persian-elementor-version">
+                    <?php printf(esc_html__('Version %s', 'persian-elementor'), \PersianElementor\PersianElementorCore::instance()->get_version()); ?>
                 </div>
             </div>
         </div>

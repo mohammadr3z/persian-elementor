@@ -56,8 +56,8 @@
      * Show calendar popup
      */
     function showCalendar(input) {
-        if (typeof PersianCalendar === 'undefined') {
-            console.error('Persian Elementor: PersianCalendar not loaded');
+        if (typeof PersianElementorCalendar === 'undefined') {
+            console.error('Persian Elementor: PersianElementorCalendar not loaded');
             return;
         }
 
@@ -89,13 +89,13 @@
         var targetInput = input;
         var selectedDate = new Date();
         var existingValue = targetInput.value;
-        if (existingValue && typeof PersianDateConverter !== 'undefined') {
+        if (existingValue && typeof PersianElementorDateConverter !== 'undefined') {
             var parts = existingValue.split('/');
             if (parts.length === 3) {
                 var jy = parseInt(parts[0], 10);
                 var jm = parseInt(parts[1], 10);
                 var jd = parseInt(parts[2], 10);
-                var gregorian = PersianDateConverter.jalaliToGregorian(jy, jm, jd);
+                var gregorian = PersianElementorDateConverter.jalaliToGregorian(jy, jm, jd);
                 if (gregorian[0] > 0) {
                     selectedDate = new Date(gregorian[0], gregorian[1] - 1, gregorian[2]);
                 }
@@ -103,7 +103,7 @@
         }
 
         // Create calendar with closure for this specific input
-        var calendar = new PersianCalendar(popup, {
+        var calendar = new PersianElementorCalendar(popup, {
             selectedDate: selectedDate,
             title: 'انتخاب تاریخ',
             showCloseButton: true,

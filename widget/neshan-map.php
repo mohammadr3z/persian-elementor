@@ -32,8 +32,8 @@ add_action('elementor/preview/enqueue_styles', 'enqueue_neshan_map_styles');
  */
 function register_neshan_map_assets()
 {
-    wp_register_style('neshan-map-sdk', 'https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.0.8/index.css', [], '1.0.8');
-    wp_register_script('neshan-map-sdk', 'https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.0.8/index.js', [], '1.0.8', true);
+    wp_register_style('neshan-map-sdk', 'https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.1.5/index.css', [], '1.1.5');
+    wp_register_script('neshan-map-sdk', 'https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.1.5/index.js', [], '1.1.5', true);
 
     // Register custom editor script to initialize map in editor
     wp_register_script(
@@ -528,7 +528,7 @@ function register_persian_elementor_neshan_map_widget($widgets_manager)
                                 trackResize: true,
                                 poi: poi,
                                 traffic: traffic,
-                                mapTypeControllerStatus: {
+                                mapTypeControllerOptions: {
                                     show: true,
                                     position: 'bottom-right'
                                 }
@@ -642,8 +642,22 @@ function register_persian_elementor_neshan_map_widget($widgets_manager)
                     var uniqueId=widgetId + '_' + Math.random().toString(36).substring(2, 9);
                     var mapId='neshanMap_' + uniqueId + '_editor' ;
 
-                    // Use Elementor's JS render attribute system
-                    view.addRenderAttribute('map-container', { 'class' : 'neshan-map-container elementor-neshan-map-editor' , 'id' : mapId, 'data-widget-id' : widgetId, 'data-instance-id' : uniqueId, 'data-api-key' : apiKey, 'data-lat' : latitude, 'data-lng' : longitude, 'data-marker-color' : markerColor, 'data-height' : height, // Pass height/width for JS init 'data-width' : width, 'data-zoom' : mapZoom, 'data-map-type' : mapType, 'data-poi' : showPoi ? 'true' : 'false' , 'data-traffic' : showTraffic ? 'true' : 'false' , 'style' : 'height:' + height + '; width:' + width + ';' , // Apply style directly
+                    view.addRenderAttribute('map-container', {
+                        'class': 'neshan-map-container elementor-neshan-map-editor',
+                        'id': mapId,
+                        'data-widget-id': widgetId,
+                        'data-instance-id': uniqueId,
+                        'data-api-key': apiKey,
+                        'data-lat': latitude,
+                        'data-lng': longitude,
+                        'data-marker-color': markerColor,
+                        'data-height': height,
+                        'data-width': width,
+                        'data-zoom': mapZoom,
+                        'data-map-type': mapType,
+                        'data-poi': showPoi ? 'true' : 'false',
+                        'data-traffic': showTraffic ? 'true' : 'false',
+                        'style': 'height:' + height + '; width:' + width + ';'
                     });
                     #>
 
@@ -769,7 +783,7 @@ function register_persian_elementor_neshan_map_widget($widgets_manager)
                         trackResize: true, // Important for editor resizing
                         poi: poi,
                         traffic: traffic,
-                        mapTypeControllerStatus: {
+                        mapTypeControllerOptions: {
                         show: true,
                         position: 'bottom-right'
                         }

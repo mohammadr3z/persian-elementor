@@ -8,6 +8,7 @@
 /* Font */
 /* Editor V4 */
 body.elementor-editor-active :where(
+  a,
   div,
   span,
   label,
@@ -26,6 +27,10 @@ body.elementor-editor-active :where(
 ):not(pre.elementor-code-editor):not(pre.elementor-code-editor *),
 body.elementor-editor-active .elementor-loading-title div {
   font-family: "IRANYekanXVF", sans-serif !important;
+}
+
+[class*="eui-"], [class*="eui-"] *, .MuiTypography-root, .MuiButtonBase-root, .MuiButton-root, .MuiAppBar-root, .MuiPaper-root, .MuiInputBase-input, .MuiLink-root {
+  font-family: "IRANYekanXVF" !important;
 }
 
 .elementor-context-menu-list__item__shortcut, .elementor-context-menu-list__item__title {
@@ -113,28 +118,7 @@ input.elementor-control-tag-area.elementor-input.ui-autocomplete-input {
     height: 27px;
 }
 
-.elementor-control-align .elementor-choices {
-    flex-direction: row-reverse;
-}
-.elementor-control-align label.elementor-choices-label.elementor-control-unit-1.tooltip-target {
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-left: 0px;
-}
-.elementor-control-align .elementor-choices .elementor-choices-label:last-child {
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-left: 0px;
-    border-top-right-radius: var(--e-a-border-radius);
-    border-bottom-right-radius: var(--e-a-border-radius);
-}
-.elementor-control-align .elementor-choices .elementor-choices-label:nth-child(2) {
-    border-top-right-radius: 0px!important;
-    border-bottom-right-radius: 0px!important;
-    border-top-left-radius: var(--e-a-border-radius)!important;
-    border-bottom-left-radius: var(--e-a-border-radius)!important;
-    border-left: 1px solid var(--e-a-border-color-bold)!important;
-}
+
 .elementor-control-align .elementor-control-dynamic input {
     border-top-right-radius: var(--e-a-border-radius)!important;
     border-bottom-right-radius: var(--e-a-border-radius)!important;
@@ -155,4 +139,3 @@ input.elementor-control-tag-area.elementor-input.ui-autocomplete-input {
 
 /* Yoast SEO */
 .yoast-title {font-family: 'IRANYekanXVF';}
-

@@ -4,13 +4,13 @@
  * Plugin Name: المنتور فارسی
  * Plugin URI: 
  * Description: بسته کامل فارسی‌ساز المنتور با 13 فونت ایرانی، ترجمه المنتور و المنتور پرو، آیکون‌های ایرانی، تقویم شمسی، ویجت‌های نقشه نشان و آپارات.
- * Version: 2.7.16
+ * Version: 2.8.0
  * Author: المنتور فارسی
  * Author URI: 
  * Text Domain: persian-elementor
  * License: GPL2
- * Elementor tested up to: 3.34
- * Elementor Pro tested up to: 3.34
+ * Elementor tested up to: 4.2.0
+ * Elementor Pro tested up to: 4.2.0
  */
 if (!defined('ABSPATH')) {
     exit;
@@ -32,6 +32,11 @@ final class Persian_Elementor
     private function __construct()
     {
         add_action('plugins_loaded', [$this, 'init']);
+
+        // Clear cleanup cron on plugin deactivation
+        register_deactivation_hook(__FILE__, function () {
+            wp_clear_scheduled_hook('persian_elementor_cleanup_transactions');
+        });
     }
 
     public function init()

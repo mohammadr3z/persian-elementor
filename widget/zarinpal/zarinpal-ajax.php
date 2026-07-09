@@ -11,6 +11,12 @@ class ZarinPal_Ajax {
 
     private $zarinpal_handler;
 
+    /** @var int Transaction expiry time in seconds (30 days) */
+    private const TRANSACTION_EXPIRY = 30 * DAY_IN_SECONDS;
+
+    /** @var string Cron hook name for transaction cleanup */
+    private const CLEANUP_CRON_HOOK = 'persian_elementor_cleanup_transactions';
+
     public function __construct() {
         $this->zarinpal_handler = new ZarinPal_Handler();
         
@@ -20,6 +26,12 @@ class ZarinPal_Ajax {
         
         // Handle verification requests with higher specificity to avoid conflicts
         add_action('template_redirect', [$this, 'handle_verification'], 5); // Lower priority
+
+        // Schedule daily cleanup cron job
+        add_action(self::CLEANUP_CRON_HOOK, [$this, 'cleanup_expired_transactions']);
+        if ( ! wp_next_scheduled(self::CLEANUP_CRON_HOOK) ) {
+            wp_schedule_event(time(), 'daily', self::CLEANUP_CRON_HOOK);
+        }
     }
     
     /**
@@ -73,7 +85,7 @@ class ZarinPal_Ajax {
             'source' => 'persian_elementor', // Mark as our transaction
         ];
         
-        update_option('zarinpal_transaction_' . $transaction_id, $transaction_data, false);
+        set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
         
         // Always add transaction_id parameter to the callback URL
         $callback_url = add_query_arg(['transaction_id' => $transaction_id], $callback_url);
@@ -91,7 +103,7 @@ class ZarinPal_Ajax {
         if ($result['success']) {
             // Update transaction with authority
             $transaction_data['authority'] = $result['authority'];
-            update_option('zarinpal_transaction_' . $transaction_id, $transaction_data, false);
+            set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
             
             // Redirect to payment gateway
             $this->zarinpal_handler->redirect($result['payment_url']);
@@ -124,7 +136,7 @@ class ZarinPal_Ajax {
         }
         
         // Get transaction data
-        $transaction_data = get_option('zarinpal_transaction_' . $transaction_id, false);
+        $transaction_data = get_transient('zarinpal_transaction_' . $transaction_id);
         
         if (!$transaction_data) {
             wp_die('تراکنش یافت نشد یا نامعتبر است.');
@@ -149,7 +161,7 @@ class ZarinPal_Ajax {
                 // Payment verified successfully
                 $transaction_data['status'] = 'completed';
                 $transaction_data['ref_id'] = $result['ref_id'];
-                update_option('zarinpal_transaction_' . $transaction_id, $transaction_data, false);
+                set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
                 
                 // Run action hook for successful payment with namespace
                 do_action('persian_elementor_zarinpal_payment_success', $transaction_data, $result);
@@ -163,7 +175,7 @@ class ZarinPal_Ajax {
                 // Payment verification failed
                 $transaction_data['status'] = 'failed';
                 $transaction_data['error'] = $result['message'];
-                update_option('zarinpal_transaction_' . $transaction_id, $transaction_data, false);
+                set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
                 
                 // Prepare the error message
                 $zarinpal_message = sprintf('تایید پرداخت ناموفق بود. پیام درگاه: %s (کد خطا: %s)', esc_html($result['message']), esc_html($result['status']));
@@ -173,7 +185,7 @@ class ZarinPal_Ajax {
         } else {
             // Payment canceled or failed (Status != OK)
             $transaction_data['status'] = 'canceled';
-            update_option('zarinpal_transaction_' . $transaction_id, $transaction_data, false);
+            set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
             
             // Prepare the cancel message
             $zarinpal_message = 'پرداخت توسط کاربر لغو شد یا در مرحله اولیه ناموفق بود.';
@@ -347,13 +359,56 @@ class ZarinPal_Ajax {
         }
         
         // Check if transaction exists in our options and has our source marker
-        $transaction_data = get_option('zarinpal_transaction_' . $transaction_id, false);
+        $transaction_data = get_transient('zarinpal_transaction_' . $transaction_id);
         if ($transaction_data === false) {
             return false;
         }
         
         // Verify it's marked as our transaction
         return isset($transaction_data['source']) && $transaction_data['source'] === 'persian_elementor';
+    }
+
+    public function cleanup_expired_transactions() {
+        global $wpdb;
+
+        // 1. Delete expired transients matching our pattern
+        $wpdb->query(
+            $wpdb->prepare(
+                "DELETE a, b FROM {$wpdb->options} a
+                LEFT JOIN {$wpdb->options} b ON b.option_name = CONCAT('_transient_timeout_', SUBSTRING(a.option_name, 12))
+                WHERE a.option_name LIKE %s
+                AND b.option_value < %d",
+                $wpdb->esc_like('_transient_zarinpal_transaction_pe_') . '%',
+                time()
+            )
+        );
+
+        // 2. Clean up legacy regular options (saved before version 2.8.0 upgrade)
+        $legacy_options = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE %s",
+                $wpdb->esc_like('zarinpal_transaction_pe_') . '%'
+            )
+        );
+
+        if ( ! empty( $legacy_options ) ) {
+            $thirty_days_ago = time() - self::TRANSACTION_EXPIRY;
+            foreach ( $legacy_options as $option ) {
+                $data = maybe_unserialize( $option->option_value );
+                // Delete if the data is corrupt, has no timestamp, or is older than 30 days
+                if ( ! is_array( $data ) || ! isset( $data['created_at'] ) || (int) $data['created_at'] < $thirty_days_ago ) {
+                    delete_option( $option->option_name );
+                }
+            }
+        }
+    }
+
+    /**
+     * Unschedule the cleanup cron job on plugin deactivation.
+     * Should be called from the main plugin file's deactivation hook.
+     */
+    public static function deactivate() {
+        wp_clear_scheduled_hook(self::CLEANUP_CRON_HOOK);
     }
 }
 
