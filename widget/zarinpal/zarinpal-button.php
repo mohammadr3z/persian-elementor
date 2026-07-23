@@ -521,6 +521,23 @@ class ZarinPal_Button extends Widget_Base {
 		// Format total price for display
 		$formatted_price = number_format($total_price) . ' ' . esc_html__('تومان', 'persian-elementor');
 
+		// Resolve the source document/post id safely. Elementor widgets do not
+		// expose a get_document() method, and in the editor render() runs inside
+		// get_raw_data() where get_the_ID() may be unavailable, so guard everything.
+		$post_id = 0;
+		if (class_exists('\Elementor\Plugin') && isset(\Elementor\Plugin::$instance->documents)) {
+			$documents = \Elementor\Plugin::$instance->documents;
+			if (method_exists($documents, 'get_current')) {
+				$current_document = $documents->get_current();
+				if ($current_document && method_exists($current_document, 'get_main_id')) {
+					$post_id = absint($current_document->get_main_id());
+				}
+			}
+		}
+		if (!$post_id) {
+			$post_id = absint(get_the_ID());
+		}
+
 		// Form attributes
 		$this->add_render_attribute([
 			'button' => [
@@ -537,6 +554,7 @@ class ZarinPal_Button extends Widget_Base {
 				'method' => 'post',
 				'target' => esc_attr($target),
 				'class' => 'elementor-zarinpal-form', // Add a class to the form if needed
+				'id' => 'zarinpal-payment-form-' . esc_attr($this->get_id()),
 			],
 		]);
 
@@ -555,11 +573,9 @@ class ZarinPal_Button extends Widget_Base {
 		
 		<form <?php $this->print_render_attribute_string('form'); ?>>
 			<input type="hidden" name="action" value="zarinpal_payment_request" />
-			<input type="hidden" name="merchant_id" value="<?php echo esc_attr($settings['merchant_id']); ?>" />
-			<input type="hidden" name="amount" value="<?php echo esc_attr($total_price); ?>" />
-			<input type="hidden" name="description" value="<?php echo esc_attr($settings['product_name']) . ' (' . esc_attr($quantity) . ' ' . esc_html__('عدد', 'persian-elementor') . ')'; ?>" />
+			<input type="hidden" name="post_id" value="<?php echo esc_attr($post_id); ?>" />
+			<input type="hidden" name="widget_id" value="<?php echo esc_attr($this->get_id()); ?>" />
 			<input type="hidden" name="callback_url" value="<?php echo $callback_url; // Already escaped ?>" />
-			<input type="hidden" name="quantity" value="<?php echo esc_attr($quantity); ?>" />
 			<?php wp_nonce_field('zarinpal_payment_request', 'zarinpal_nonce'); ?>
 
 			<button <?php $this->print_render_attribute_string('button'); ?>>
@@ -607,6 +623,22 @@ class ZarinPal_Button extends Widget_Base {
 	 * @access protected
 	 */
 	protected function content_template(): void {
+		// Resolve the source document/post id safely. Elementor widgets do not
+		// expose a get_document() method, and in the editor render() runs inside
+		// get_raw_data() where get_the_ID() may be unavailable, so guard everything.
+		$post_id = 0;
+		if (class_exists('\Elementor\Plugin') && isset(\Elementor\Plugin::$instance->documents)) {
+			$documents = \Elementor\Plugin::$instance->documents;
+			if (method_exists($documents, 'get_current')) {
+				$current_document = $documents->get_current();
+				if ($current_document && method_exists($current_document, 'get_main_id')) {
+					$post_id = absint($current_document->get_main_id());
+				}
+			}
+		}
+		if (!$post_id) {
+			$post_id = absint(get_the_ID());
+		}
 		?>
 		<#
 		var target = 'yes' === settings.open_in_new_window ? '_blank' : '_top';
@@ -650,11 +682,9 @@ class ZarinPal_Button extends Widget_Base {
 
 		<form {{{ view.getRenderAttributeString('form') }}}>
 			<input type="hidden" name="action" value="zarinpal_payment_request" />
-			<input type="hidden" name="merchant_id" value="{{ settings.merchant_id }}" />
-			<input type="hidden" name="amount" value="{{ totalPrice }}" />
-			<input type="hidden" name="description" value="{{ settings.product_name + ' (' + quantity + ' عدد)' }}" />
+			<input type="hidden" name="post_id" value="<?php echo esc_attr($post_id); ?>" />
+			<input type="hidden" name="widget_id" value="{{ id }}" />
 			<input type="hidden" name="callback_url" value="{{ callbackUrl }}" />
-			<input type="hidden" name="quantity" value="{{ quantity }}" />
 
 			<button {{{ view.getRenderAttributeString('button') }}}>
 				<span class="elementor-button-content-wrapper">

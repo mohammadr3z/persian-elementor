@@ -1,0 +1,19 @@
+{%- set classes = settings.classes | merge( [ base_styles.base, 'persian-date-input' ] ) | join(' ') | trim %}
+{%- set id_attribute = settings._cssid is not empty ? 'id=' ~ settings._cssid | e('html_attr') : '' %}
+{%- set interactions_attribute = interactions is not empty ? 'data-interactions=' ~ interactions | json_encode | e('html_attr') : '' %}
+{%- set required_attribute = settings.required ? 'required' : '' %}
+{%- set name = settings._cssid is not empty ? settings._cssid : id %}
+{%- set name_attribute = 'name=' ~ name | e('html_attr') %}
+{%- set placeholder_attribute = settings.placeholder is not empty ? 'placeholder=' ~ settings.placeholder | e('html_attr') : '' %}
+<input type="text"
+	{{ id_attribute }}
+	{{ name_attribute }}
+	class="{{ classes }}"	
+	data-interaction-id="{{ interaction_id | default(id) }}"
+	data-persian-date=""
+	readonly="readonly"
+	{{ placeholder_attribute | raw }}
+	{{ settings.attributes | raw }} 
+	{{ interactions_attribute }}
+	{{ required_attribute }}
+/>

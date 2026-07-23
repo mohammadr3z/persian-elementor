@@ -8,18 +8,22 @@
 
   // CSS Styles
   const PERSIAN_CALENDAR_STYLES = `
-    .persian-calendar-wrapper {
-      background: #ffffff;
-      font-family: inherit;
-      direction: rtl;
-      text-align: right;
-      position: relative;
-      padding: 8px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      max-width: 320px;
+    /* Persian Calendar Popup Container */
+    .persian-date-popup {
+      background: #fff !important;
+      border: 1px solid #ccc !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+      border-radius: 8px !important;
+      padding: 16px !important;
+      width: 290px !important;
+      box-sizing: border-box !important;
+      font-family: 'VazirMatn', 'Vazir', 'VazirmatnVF', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
       -webkit-animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);
       animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .persian-date-popup * {
+      box-sizing: border-box !important;
+      font-family: 'VazirMatn', 'Vazir', 'VazirmatnVF', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     }
     @-webkit-keyframes fpFadeInDown {
       from { opacity: 0; -webkit-transform: translate3d(0, -20px, 0); transform: translate3d(0, -20px, 0); }
@@ -29,74 +33,104 @@
       from { opacity: 0; -webkit-transform: translate3d(0, -20px, 0); transform: translate3d(0, -20px, 0); }
       to { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
     }
-    .persian-calendar-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 0;
+
+    /* Calendar Wrapper Reset */
+    .persian-calendar-wrapper {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      direction: rtl;
+      text-align: right;
+      position: relative;
+      max-width: 100% !important;
     }
+
+    /* Month and Year Header Navigation */
+    .persian-calendar-nav {
+      display: flex !important;
+      gap: 6px !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 12px !important;
+      padding: 0 !important;
+      height: 32px !important;
+    }
+
+    /* Header Clickable Labels (No border) */
+    .persian-calendar-header-labels {
+      display: flex !important;
+      gap: 6px !important;
+      align-items: center !important;
+    }
+    .persian-calendar-month-label,
+    .persian-calendar-year-label,
+    .persian-calendar-year-label-view,
+    .persian-calendar-years-range-label {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: #1e1e1e !important;
+      padding: 4px 8px !important;
+      border-radius: 4px !important;
+      user-select: none !important;
+      transition: background-color 0.15s ease, color 0.15s ease !important;
+    }
+    .persian-calendar-month-label[role="button"],
+    .persian-calendar-year-label[role="button"],
+    .persian-calendar-year-label-view[role="button"] {
+      cursor: pointer !important;
+    }
+    .persian-calendar-month-label[role="button"]:hover,
+    .persian-calendar-year-label[role="button"]:hover,
+    .persian-calendar-year-label-view[role="button"]:hover {
+      background-color: #f7f9fe !important;
+      color: #3858e9 !important;
+    }
+
+    /* Prev & Next Buttons */
     .persian-calendar-prev,
-    .persian-calendar-next {
-      width: 32px;
-      height: 32px;
-      border: none;
-      background: transparent!important;
-      border-radius: 2px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: #007cba!important;
-      transition: background-color 0.2s ease;
+    .persian-calendar-next,
+    .persian-calendar-prev-year,
+    .persian-calendar-next-year,
+    .persian-calendar-prev-years,
+    .persian-calendar-next-years {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+      text-shadow: none !important;
+      width: 32px !important;
+      height: 32px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 20px !important;
+      color: #3858e9 !important;
+      border-radius: 2px !important;
+      transition: background-color 0.1s ease !important;
     }
     .persian-calendar-prev:hover,
-    .persian-calendar-next:hover {
-      background: #f5fafc!important;
+    .persian-calendar-next:hover,
+    .persian-calendar-prev-year:hover,
+    .persian-calendar-next-year:hover,
+    .persian-calendar-prev-years:hover,
+    .persian-calendar-next-years:hover {
+      background-color: #f7f9fe !important;
+      color: #183ad6 !important;
     }
-    .persian-calendar-month-select {
-      padding: 4px 8px;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: inherit;
-      border: 0px solid #ddd;
-      background: #fff;
-      cursor: pointer;
-      color: #1a1a1a;
-      min-width: 90px;
+    .persian-calendar-prev:focus,
+    .persian-calendar-prev:active,
+    .persian-calendar-next:focus,
+    .persian-calendar-next:active {
+      background-color: #eff2fe !important;
+      color: #183ad6 !important;
+      outline: none !important;
     }
-    .persian-calendar-month-select:hover {
-      background: #f2f2f2;
-    }
-    .persian-calendar-month-select:focus {
-      outline: none;
-      border-color: #007cba;
-    }
-    .persian-calendar-year-input {
-      width: 60px !important;
-      padding: 4px 8px !important;
-      font-size: 13px !important;
-      font-weight: 600 !important;
-      font-family: inherit !important;
-      border: 0px solid #ddd !important;
-      background: #fff;
-      text-align: center !important;
-      color: #1a1a1a;
-      -moz-appearance: textfield;
-    }
-    .persian-calendar-year-input::-webkit-outer-spin-button,
-    .persian-calendar-year-input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    .persian-calendar-year-input:hover {
-      background: #f2f2f2;
-    }
-    .persian-calendar-year-input:focus {
-      outline: none;
-      border-color: #007cba;
-    }
+
+    /* Grid & Weekdays */
     .persian-calendar-grid { margin-top: 12px; }
     .persian-calendar-weekdays {
       display: grid;
@@ -116,28 +150,85 @@
       grid-template-columns: repeat(7, 1fr);
       gap: 4px;
     }
+
+    /* Day Display */
     .persian-calendar-day {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      border-radius: 50%;
-      cursor: pointer;
+      padding: 0 !important;
+      height: 28px !important;
+      width: 28px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-sizing: border-box !important;
+      border-radius: 50% !important;
+      margin: 0 auto !important;
+      font-size: 14px !important;
+      cursor: pointer !important;
+      transition: none !important;
       position: relative;
-      height: 32px;
-      width: 32px;
-      margin: 0 auto;
-      transition: all 0.15s ease;
     }
-    .persian-calendar-day:not(.empty):hover { color: #007cba; }
-    .persian-calendar-day.today { background: #e0e0e0; font-weight: 500; }
-    .persian-calendar-day.selected { background: #007cba; color: white; font-weight: 600; }
-    .persian-calendar-day.selected:hover {color: white; }
-    .persian-calendar-day.empty { cursor: default; pointer-events: none; }
-    .persian-calendar-day:not(.empty):focus {
-      box-shadow: 0 0 0 var(--wp-admin-border-width-focus, 2px) var(--wp-components-color-accent, var(--wp-admin-theme-color, #007cba));
-      outline-offset: 2px;
+    .persian-calendar-day:not(.empty):hover {
+      color: #3858e9 !important;
     }
+    .persian-calendar-day.today {
+      background: #e0e0e0 !important;
+      font-weight: 500 !important;
+    }
+    .persian-calendar-day.selected {
+      background: #3858e9 !important;
+      color: white !important;
+      font-weight: 600 !important;
+    }
+    .persian-calendar-day.selected:hover {
+      color: white !important;
+    }
+    .persian-calendar-day.empty {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* Months and Years Selection Grids */
+    .persian-calendar-months-grid,
+    .persian-calendar-years-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 8px !important;
+      margin-top: 12px !important;
+    }
+    .persian-calendar-month-item,
+    .persian-calendar-year-item {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 40px !important;
+      border-radius: 6px !important;
+      font-size: 13px !important;
+      cursor: pointer !important;
+      background: #fdfdfd !important;
+      border: none !important;
+      transition: all 0.15s ease !important;
+      user-select: none !important;
+      color: #1e1e1e !important;
+    }
+    .persian-calendar-month-item:hover,
+    .persian-calendar-year-item:hover {
+      background: #f7f9fe !important;
+      color: #3858e9 !important;
+    }
+    .persian-calendar-month-item.system-current,
+    .persian-calendar-year-item.system-current {
+      color: #1e1e1e !important;
+      font-weight: 600 !important;
+      background: #e0e0e0 !important;
+    }
+    .persian-calendar-month-item.active,
+    .persian-calendar-year-item.active {
+      background: #3858e9 !important;
+      color: white !important;
+      font-weight: 600 !important;
+      border: none !important;
+    }
+
     @media (max-width: 480px) {
       .persian-calendar-wrapper { max-width: 100%; margin: 0 auto; }
     }
@@ -278,6 +369,7 @@
       this.currentYear = jy;
       this.currentMonth = jm;
       this.selectedDate = { year: jy, month: jm, day: jd };
+      this.viewMode = 'days';
       this._boundClickHandler = null;
       this.render();
       this.attachEventListeners();
@@ -287,38 +379,8 @@
       this.container.textContent = '';
       const wrapper = document.createElement('div');
       wrapper.className = 'persian-calendar-wrapper';
-      wrapper.appendChild(this.createDatePickerElement());
       this.container.appendChild(wrapper);
-      this.dom = {
-        monthSelect: this.container.querySelector('.persian-calendar-month-select'),
-        yearInput: this.container.querySelector('.persian-calendar-year-input'),
-        daysContainer: this.container.querySelector('.persian-calendar-days')
-      };
       this.updateCalendarView();
-    }
-
-    createDatePickerElement() {
-      const datePicker = document.createElement('div');
-      datePicker.className = 'persian-calendar-date-picker';
-      const nav = document.createElement('div');
-      nav.className = 'persian-calendar-nav';
-      nav.innerHTML = `
-        <button class="persian-calendar-prev" type="button" aria-label="ماه قبل">‹</button>
-        <select class="persian-calendar-month-select" aria-label="انتخاب ماه">
-          ${PERSIAN_MONTHS.map((m, i) => `<option value="${i + 1}"${(i + 1) === this.currentMonth ? ' selected' : ''}>${m}</option>`).join('')}
-        </select>
-        <input type="number" class="persian-calendar-year-input" value="${this.currentYear}" min="1300" max="1500" aria-label="سال">
-        <button class="persian-calendar-next" type="button" aria-label="ماه بعد">›</button>
-      `;
-      const grid = document.createElement('div');
-      grid.className = 'persian-calendar-grid';
-      grid.innerHTML = `
-        <div class="persian-calendar-weekdays">${PERSIAN_WEEKDAYS.map(day => `<div class="persian-calendar-weekday">${day}</div>`).join('')}</div>
-        <div class="persian-calendar-days" role="grid" aria-label="تقویم"></div>
-      `;
-      datePicker.appendChild(nav);
-      datePicker.appendChild(grid);
-      return datePicker;
     }
 
     createDaysFragment() {
@@ -355,30 +417,52 @@
     attachEventListeners() {
       this._boundClickHandler = (e) => {
         const target = e.target;
+
+        // Days View Actions
         if (target.matches('.persian-calendar-day:not(.empty)')) {
           const day = safeParseInt(target.dataset.day, 1, 1, 31);
           if (isValidJalaliDate(this.currentYear, this.currentMonth, day)) this.selectDate(this.currentYear, this.currentMonth, day);
-        } else if (target.matches('.persian-calendar-prev')) { this.previousMonth(); }
-        else if (target.matches('.persian-calendar-next')) { this.nextMonth(); }
+        } else if (target.matches('.persian-calendar-prev')) {
+          this.previousMonth();
+        } else if (target.matches('.persian-calendar-next')) {
+          this.nextMonth();
+        } else if (target.closest('.persian-calendar-month-label')) {
+          this.viewMode = 'months';
+          this.updateCalendarView();
+        } else if (target.closest('.persian-calendar-year-label') || target.closest('.persian-calendar-year-label-view')) {
+          this.viewMode = 'years';
+          this.updateCalendarView();
+        }
+
+        // Months View Actions
+        else if (target.matches('.persian-calendar-prev-year')) {
+          this.currentYear--;
+          this.updateCalendarView();
+        } else if (target.matches('.persian-calendar-next-year')) {
+          this.currentYear++;
+          this.updateCalendarView();
+        } else if (target.closest('.persian-calendar-month-item')) {
+          const item = target.closest('.persian-calendar-month-item');
+          this.currentMonth = parseInt(item.dataset.month, 10);
+          this.viewMode = 'days';
+          this.updateCalendarView();
+        }
+
+        // Years View Actions
+        else if (target.matches('.persian-calendar-prev-years')) {
+          this.currentYear -= 12;
+          this.updateCalendarView();
+        } else if (target.matches('.persian-calendar-next-years')) {
+          this.currentYear += 12;
+          this.updateCalendarView();
+        } else if (target.closest('.persian-calendar-year-item')) {
+          const item = target.closest('.persian-calendar-year-item');
+          this.currentYear = parseInt(item.dataset.year, 10);
+          this.viewMode = 'days';
+          this.updateCalendarView();
+        }
       };
       this.container.addEventListener('click', this._boundClickHandler);
-      if (this.dom.monthSelect) {
-        this.dom.monthSelect.addEventListener('change', (e) => {
-          this.currentMonth = parseInt(e.target.value, 10);
-          this.updateCalendarView();
-        });
-      }
-      if (this.dom.yearInput) {
-        this.dom.yearInput.addEventListener('change', (e) => {
-          const year = parseInt(e.target.value, 10);
-          if (year >= 1300 && year <= 1500) {
-            this.currentYear = year;
-            this.updateCalendarView();
-          } else {
-            e.target.value = this.currentYear;
-          }
-        });
-      }
     }
 
     selectDate(year, month, day) {
@@ -400,9 +484,99 @@
     }
 
     updateCalendarView() {
-      if (this.dom.monthSelect) this.dom.monthSelect.value = this.currentMonth;
-      if (this.dom.yearInput) this.dom.yearInput.value = this.currentYear;
-      if (this.dom.daysContainer) { this.dom.daysContainer.textContent = ''; this.dom.daysContainer.appendChild(this.createDaysFragment()); }
+      const wrapper = this.container.querySelector('.persian-calendar-wrapper');
+      if (!wrapper) return;
+      wrapper.textContent = '';
+
+      const datePicker = document.createElement('div');
+      datePicker.className = 'persian-calendar-date-picker';
+
+      const nav = document.createElement('div');
+      nav.className = 'persian-calendar-nav';
+
+      const body = document.createElement('div');
+      body.className = 'persian-calendar-body';
+
+      if (this.viewMode === 'days') {
+        nav.innerHTML = `
+          <button class="persian-calendar-prev" type="button" aria-label="ماه قبل">‹</button>
+          <div class="persian-calendar-header-labels">
+            <span class="persian-calendar-month-label" role="button" tabindex="0">${PERSIAN_MONTHS[this.currentMonth - 1]}</span>
+            <span class="persian-calendar-year-label" role="button" tabindex="0">${toPersianDigits(this.currentYear)}</span>
+          </div>
+          <button class="persian-calendar-next" type="button" aria-label="ماه بعد">›</button>
+        `;
+        body.innerHTML = `
+          <div class="persian-calendar-grid">
+            <div class="persian-calendar-weekdays">${PERSIAN_WEEKDAYS.map(day => `<div class="persian-calendar-weekday">${day}</div>`).join('')}</div>
+            <div class="persian-calendar-days" role="grid" aria-label="تقویم"></div>
+          </div>
+        `;
+        datePicker.appendChild(nav);
+        datePicker.appendChild(body);
+        const daysContainer = body.querySelector('.persian-calendar-days');
+        daysContainer.appendChild(this.createDaysFragment());
+      } else if (this.viewMode === 'months') {
+        nav.innerHTML = `
+          <button class="persian-calendar-prev-year" type="button" aria-label="سال قبل">‹</button>
+          <span class="persian-calendar-year-label-view" role="button" tabindex="0">${toPersianDigits(this.currentYear)}</span>
+          <button class="persian-calendar-next-year" type="button" aria-label="سال بعد">›</button>
+        `;
+        const today = getIranLocalDate();
+        const [todayJy, todayJm, todayJd] = gregorianToJalali(today.getFullYear(), today.getMonth() + 1, today.getDate());
+        const monthsGrid = document.createElement('div');
+        monthsGrid.className = 'persian-calendar-months-grid';
+        PERSIAN_MONTHS.forEach((m, idx) => {
+          const monthVal = idx + 1;
+          const monthBtn = document.createElement('div');
+          monthBtn.className = 'persian-calendar-month-item';
+          monthBtn.setAttribute('role', 'button');
+          monthBtn.setAttribute('tabindex', '0');
+          monthBtn.setAttribute('data-month', monthVal);
+          monthBtn.textContent = m;
+          if (this.currentMonth === monthVal) {
+            monthBtn.classList.add('active');
+          }
+          if (monthVal === todayJm) {
+            monthBtn.classList.add('system-current');
+          }
+          monthsGrid.appendChild(monthBtn);
+        });
+        body.appendChild(monthsGrid);
+        datePicker.appendChild(nav);
+        datePicker.appendChild(body);
+      } else if (this.viewMode === 'years') {
+        const startYear = this.currentYear - (this.currentYear % 12);
+        const endYear = startYear + 11;
+        nav.innerHTML = `
+          <button class="persian-calendar-prev-years" type="button" aria-label="۱۲ سال قبل">‹</button>
+          <span class="persian-calendar-years-range-label">${toPersianDigits(startYear)} - ${toPersianDigits(endYear)}</span>
+          <button class="persian-calendar-next-years" type="button" aria-label="۱۲ سال بعد">›</button>
+        `;
+        const today = getIranLocalDate();
+        const [todayJy, todayJm, todayJd] = gregorianToJalali(today.getFullYear(), today.getMonth() + 1, today.getDate());
+        const yearsGrid = document.createElement('div');
+        yearsGrid.className = 'persian-calendar-years-grid';
+        for (let y = startYear; y <= endYear; y++) {
+          const yearBtn = document.createElement('div');
+          yearBtn.className = 'persian-calendar-year-item';
+          yearBtn.setAttribute('role', 'button');
+          yearBtn.setAttribute('tabindex', '0');
+          yearBtn.setAttribute('data-year', y);
+          yearBtn.textContent = toPersianDigits(y);
+          if (this.currentYear === y) {
+            yearBtn.classList.add('active');
+          }
+          if (y === todayJy) {
+            yearBtn.classList.add('system-current');
+          }
+          yearsGrid.appendChild(yearBtn);
+        }
+        body.appendChild(yearsGrid);
+        datePicker.appendChild(nav);
+        datePicker.appendChild(body);
+      }
+      wrapper.appendChild(datePicker);
     }
 
     notifyDateChange() {

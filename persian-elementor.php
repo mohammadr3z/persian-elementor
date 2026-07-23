@@ -4,7 +4,7 @@
  * Plugin Name: المنتور فارسی
  * Plugin URI: 
  * Description: بسته کامل فارسی‌ساز المنتور با 13 فونت ایرانی، ترجمه المنتور و المنتور پرو، آیکون‌های ایرانی، تقویم شمسی، ویجت‌های نقشه نشان و آپارات.
- * Version: 2.8.0
+ * Version: 2.8.2
  * Author: المنتور فارسی
  * Author URI: 
  * Text Domain: persian-elementor
@@ -54,6 +54,7 @@ final class Persian_Elementor
     {
         define('PERSIAN_ELEMENTOR', plugin_dir_path(__FILE__));
         define('PERSIAN_ELEMENTOR_URL', plugin_dir_url(__FILE__));
+        define('PERSIAN_ELEMENTOR_VERSION', '2.8.2');
     }
 
     public function load_textdomain()
@@ -76,17 +77,17 @@ final class Persian_Elementor
 
         // Add form fields functionality if enabled (default to enabled if option doesn't exist)
         if ($options['efa-form-fields'] ?? true) {
-            $includes[] = 'includes/form-fields.php';
+            $includes[] = 'widget/form-fields/form-fields.php';
         }
 
         // Add Aparat video integration if enabled (default to enabled if option doesn't exist)
         if ($options['efa-aparat-video'] ?? true) {
-            $includes[] = 'widget/aparat-video.php';
+            $includes[] = 'widget/aparat/aparat-video.php';
         }
 
         // Add Neshan map widget if enabled (default to enabled if option doesn't exist)
         if ($options['efa-neshan-map'] ?? true) {
-            $includes[] = 'widget/neshan-map.php';
+            $includes[] = 'widget/neshan/neshan-map.php';
         }
 
         // Add typography control if enabled (default to enabled if option doesn't exist)

@@ -39,40 +39,82 @@ class ZarinPal_Ajax {
      */
     public function process_payment_request() {
         // Verify nonce
-        if (!isset($_POST['zarinpal_nonce']) || !wp_verify_nonce($_POST['zarinpal_nonce'], 'zarinpal_payment_request')) {
+        $nonce = isset($_POST['zarinpal_nonce']) ? sanitize_text_field(wp_unslash($_POST['zarinpal_nonce'])) : '';
+        if (!$nonce || !wp_verify_nonce($nonce, 'zarinpal_payment_request')) {
             wp_die('نشست منقضی شده است. لطفا صفحه را بارگذاری مجدد کنید.');
         }
         
         // Get form data
-        $merchant_id = isset($_POST['merchant_id']) ? sanitize_text_field($_POST['merchant_id']) : '';
-        $amount = isset($_POST['amount']) ? intval($_POST['amount'] / 10) : 0; // Divide by 10 to remove one zero
-        $description = isset($_POST['description']) ? sanitize_text_field($_POST['description']) : '';
+        $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+        $widget_id = isset($_POST['widget_id']) ? sanitize_text_field($_POST['widget_id']) : '';
         $callback_url = isset($_POST['callback_url']) ? esc_url_raw($_POST['callback_url']) : '';
         $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
         $mobile = isset($_POST['mobile']) ? sanitize_text_field($_POST['mobile']) : '';
         
-        // Validate required fields for ZarinPal
-        $errors = [];
-        
-        if (empty($merchant_id)) {
-            $errors[] = 'شناسه مرچنت زرین‌پال وارد نشده است.';
+        // Validate required fields
+        if (empty($post_id) || empty($widget_id)) {
+            wp_die('اطلاعات ابزارک یا صفحه نامعتبر است.');
         }
-        
-        if (empty($amount)) {
-            $errors[] = 'مبلغ پرداخت وارد نشده است.';
-        }
-        
-        if (empty($description)) {
-            $errors[] = 'توضیحات پرداخت وارد نشده است.';
-        }
-        
+
         if (empty($callback_url)) {
-            $errors[] = 'آدرس بازگشت وارد نشده است.';
+            wp_die('آدرس بازگشت وارد نشده است.');
         }
-        
-        if (!empty($errors)) {
-            wp_die('همه فیلدهای ضروری را پر کنید: ' . implode(' ', $errors));
+
+        // Validate callback URL host to prevent open redirect vulnerabilities
+        $home_host = wp_parse_url(home_url(), PHP_URL_HOST);
+        $callback_host = wp_parse_url($callback_url, PHP_URL_HOST);
+        if ($callback_host !== $home_host) {
+            $callback_url = get_permalink($post_id);
         }
+
+        // Load settings from Elementor database securely
+        if (!class_exists('\Elementor\Plugin') || !isset(\Elementor\Plugin::$instance->documents)) {
+            wp_die('افزونه المنتور فعال نیست.');
+        }
+
+        $document = \Elementor\Plugin::$instance->documents->get($post_id);
+        if (!$document) {
+            wp_die('سند المنتور یافت نشد.');
+        }
+
+        $elements_data = $document->get_elements_data();
+        if (empty($elements_data)) {
+            wp_die('داده‌های المنتور یافت نشد.');
+        }
+
+        $widget = $this->find_element_by_id($elements_data, $widget_id);
+        if (!$widget || !isset($widget['elType']) || $widget['elType'] !== 'widget' || !isset($widget['widgetType']) || $widget['widgetType'] !== 'zarinpal-button') {
+            wp_die('ابزارک زرین‌پال یافت نشد.');
+        }
+
+        // Extract settings
+        $settings = [];
+        $widget_instance = \Elementor\Plugin::$instance->elements_manager->create_element_instance($widget);
+        if ($widget_instance) {
+            $settings = $widget_instance->get_settings_for_display();
+        } else {
+            $settings = isset($widget['settings']) ? $widget['settings'] : [];
+        }
+
+        $merchant_id = isset($settings['merchant_id']) ? sanitize_text_field($settings['merchant_id']) : '';
+        $product_name = isset($settings['product_name']) ? sanitize_text_field($settings['product_name']) : 'محصول';
+        $unit_price = isset($settings['product_price']) ? intval($settings['product_price']) : 10;
+        $quantity = isset($settings['product_quantity']) ? max(1, intval($settings['product_quantity'])) : 1;
+
+        if (empty($merchant_id)) {
+            wp_die('شناسه مرچنت زرین‌پال وارد نشده است.');
+        }
+
+        // Calculate amount (convert thousands unit to absolute, then divide by 10 to keep internal zarinpal-ajax units)
+        $total_price_toman = $unit_price * $quantity * 1000;
+        $amount = intval($total_price_toman / 10);
+
+        if (empty($amount)) {
+            wp_die('مبلغ پرداخت وارد نشده است.');
+        }
+
+        // Construct description
+        $description = $product_name . ' (' . $quantity . ' ' . __('عدد', 'persian-elementor') . ')';
         
         // Store transaction data for later verification with unique prefix
         $transaction_id = 'pe_' . wp_generate_uuid4(); // PE = Persian Elementor
@@ -145,53 +187,91 @@ class ZarinPal_Ajax {
         // Store the message to show after the payment
         $zarinpal_message = '';
         $zarinpal_message_class = '';
-        $verification_success = false; // Add this variable to track actual verification success
-        
-        // Check if payment was successful according to ZarinPal status
-        if ($status === 'OK') {
-            // Verify payment with ZarinPal API
-            $result = $this->zarinpal_handler->verify_payment(
-                $transaction_data['merchant_id'],
-                $transaction_data['amount'],
-                $authority,
-                false // Assuming production mode
-            );
-            
-            if ($result['success']) {
-                // Payment verified successfully
-                $transaction_data['status'] = 'completed';
-                $transaction_data['ref_id'] = $result['ref_id'];
-                set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
-                
-                // Run action hook for successful payment with namespace
-                do_action('persian_elementor_zarinpal_payment_success', $transaction_data, $result);
-                
-                // Prepare the success message
-                $zarinpal_message = sprintf('پرداخت با موفقیت انجام شد. کد پیگیری: %s', '<strong>' . esc_html($result['ref_id']) . '</strong>');
-                $zarinpal_message_class = 'zarinpal-success-message';
-                $verification_success = true; // Verification was successful
-                
-            } else {
-                // Payment verification failed
-                $transaction_data['status'] = 'failed';
-                $transaction_data['error'] = $result['message'];
-                set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
-                
-                // Prepare the error message
-                $zarinpal_message = sprintf('تایید پرداخت ناموفق بود. پیام درگاه: %s (کد خطا: %s)', esc_html($result['message']), esc_html($result['status']));
-                $zarinpal_message_class = 'zarinpal-error-message';
-                $verification_success = false; // Verification failed
-            }
-        } else {
-            // Payment canceled or failed (Status != OK)
-            $transaction_data['status'] = 'canceled';
-            set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
-            
-            // Prepare the cancel message
-            $zarinpal_message = 'پرداخت توسط کاربر لغو شد یا در مرحله اولیه ناموفق بود.';
-            $zarinpal_message_class = 'zarinpal-cancel-message';
+        $verification_success = false;
+
+        /*
+         * Serialize verification per transaction with MySQL/MariaDB's advisory lock.
+         * GET_LOCK is connection-scoped, atomic and automatically released when the
+         * request's database connection closes. This prevents two simultaneous
+         * callbacks (including ZarinPal 100/101 responses) from firing the success
+         * hook more than once.
+         */
+        global $wpdb;
+        $lock_name = 'pe_zp_' . md5($transaction_id);
+        $lock_acquired = (int) $wpdb->get_var(
+            $wpdb->prepare('SELECT GET_LOCK(%s, %d)', $lock_name, 10)
+        ) === 1;
+
+        if (!$lock_acquired) {
+            wp_die('درخواست دیگری در حال پردازش این تراکنش است. لطفا چند لحظه دیگر صفحه را بارگذاری مجدد کنید.');
         }
-        
+
+        try {
+            // Always use the latest state after acquiring the lock.
+            $transaction_data = get_transient('zarinpal_transaction_' . $transaction_id);
+            if (!$transaction_data) {
+                wp_die('تراکنش یافت نشد یا منقضی شده است.');
+            }
+
+            /*
+             * Bind the gateway callback to the Authority received when this exact
+             * transaction was created. A valid Authority for a different payment
+             * must never complete this transaction.
+             */
+            $stored_authority = isset($transaction_data['authority']) ? (string) $transaction_data['authority'] : '';
+            if ($stored_authority === '' || !hash_equals($stored_authority, (string) $authority)) {
+                wp_die('شناسه پرداخت با تراکنش ثبت‌شده مطابقت ندارد.');
+            }
+
+            // A replay is informative only: never verify again and never fire the hook.
+            if (($transaction_data['status'] ?? '') === 'completed') {
+                $ref_id = isset($transaction_data['ref_id']) ? $transaction_data['ref_id'] : '';
+                $zarinpal_message = sprintf('این پرداخت قبلاً با موفقیت انجام شده است. کد پیگیری: %s', '<strong>' . esc_html($ref_id) . '</strong>');
+                $zarinpal_message_class = 'zarinpal-success-message';
+                $verification_success = true;
+            } elseif ($status === 'OK') {
+                $result = $this->zarinpal_handler->verify_payment(
+                    $transaction_data['merchant_id'],
+                    $transaction_data['amount'],
+                    $authority,
+                    false
+                );
+
+                if (!empty($result['success'])) {
+                    // Persist the terminal state before notifying listeners.
+                    $transaction_data['status'] = 'completed';
+                    $transaction_data['ref_id'] = $result['ref_id'] ?? '';
+                    set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
+
+                    // This runs exactly once per transaction because the lock is held.
+                    do_action('persian_elementor_zarinpal_payment_success', $transaction_data, $result);
+
+                    $zarinpal_message = sprintf('پرداخت با موفقیت انجام شد. کد پیگیری: %s', '<strong>' . esc_html($transaction_data['ref_id']) . '</strong>');
+                    $zarinpal_message_class = 'zarinpal-success-message';
+                    $verification_success = true;
+                } else {
+                    $transaction_data['status'] = 'failed';
+                    $transaction_data['error'] = $result['message'] ?? 'خطای نامشخص';
+                    set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
+
+                    $zarinpal_message = sprintf(
+                        'تایید پرداخت ناموفق بود. پیام درگاه: %s (کد خطا: %s)',
+                        esc_html($transaction_data['error']),
+                        esc_html($result['status'] ?? '')
+                    );
+                    $zarinpal_message_class = 'zarinpal-error-message';
+                }
+            } else {
+                $transaction_data['status'] = 'canceled';
+                set_transient('zarinpal_transaction_' . $transaction_id, $transaction_data, self::TRANSACTION_EXPIRY);
+                $zarinpal_message = 'پرداخت توسط کاربر لغو شد یا در مرحله اولیه ناموفق بود.';
+                $zarinpal_message_class = 'zarinpal-cancel-message';
+            }
+        } finally {
+            // Release only this request's advisory lock.
+            $wpdb->get_var($wpdb->prepare('SELECT RELEASE_LOCK(%s)', $lock_name));
+        }
+
         // Add the message to display it in the right location
         add_action('wp_footer', function() use ($zarinpal_message, $zarinpal_message_class, $status, $verification_success) { // Pass verification_success
             if (empty($zarinpal_message)) return;
@@ -366,6 +446,28 @@ class ZarinPal_Ajax {
         
         // Verify it's marked as our transaction
         return isset($transaction_data['source']) && $transaction_data['source'] === 'persian_elementor';
+    }
+
+    /**
+     * Recursively find an Elementor element by ID in elements data tree.
+     *
+     * @param array  $elements Elementor elements data.
+     * @param string $id       Widget instance ID.
+     * @return array|null Widget element array or null.
+     */
+    private function find_element_by_id(array $elements, string $id) {
+        foreach ($elements as $element) {
+            if (isset($element['id']) && $element['id'] === $id) {
+                return $element;
+            }
+            if (!empty($element['elements'])) {
+                $found = $this->find_element_by_id($element['elements'], $id);
+                if ($found) {
+                    return $found;
+                }
+            }
+        }
+        return null;
     }
 
     public function cleanup_expired_transactions() {

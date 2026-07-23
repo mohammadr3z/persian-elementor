@@ -172,14 +172,16 @@ class ZarinPal_Handler {
             'callback_url' => $callback_url,
         ];
 
-        // Add optional mobile (top-level parameter)
+        // Add optional metadata (mobile and email must be inside metadata in REST API v4)
+        $metadata = [];
         if (!empty($mobile)) {
-            $data['mobile'] = $mobile;
+            $metadata['mobile'] = $mobile;
         }
-
-        // Add optional email in metadata
         if (!empty($email)) {
-            $data['metadata'] = ['email' => $email];
+            $metadata['email'] = $email;
+        }
+        if (!empty($metadata)) {
+            $data['metadata'] = $metadata;
         }
 
         $result = $this->api_call('request.json', $data, $sandbox);

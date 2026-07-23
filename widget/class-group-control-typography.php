@@ -136,3 +136,28 @@ add_action('elementor/controls/register', function ($controls_manager) {
         new Persian_Elementor_Extended_Group_Control_Typography()
     );
 });
+
+// Support for Elementor v4 Atomic Widgets style schema
+add_filter('elementor/atomic-widgets/styles/schema', function (array $schema) {
+    if (class_exists('\Elementor\Modules\AtomicWidgets\PropTypes\Primitives\String_Prop_Type')) {
+        $schema['font-feature-settings'] = \Elementor\Modules\AtomicWidgets\PropTypes\Primitives\String_Prop_Type::make()
+            ->description('CSS font-feature-settings property');
+    }
+    return $schema;
+});
+
+
+// Enqueue script in Elementor Editor for V4 React control replacement
+add_action('elementor/editor/after_enqueue_scripts', function () {
+    if (class_exists('\Elementor\Modules\AtomicWidgets\Module') && \Elementor\Modules\AtomicWidgets\Module::is_active()) {
+        wp_enqueue_script(
+            'persian-elementor-atomic-typography',
+            PERSIAN_ELEMENTOR_URL . 'assets/js/atomic-typography.js',
+            ['elementor-editor'],
+            PERSIAN_ELEMENTOR_VERSION,
+            true
+        );
+    }
+});
+
+

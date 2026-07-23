@@ -29,17 +29,37 @@
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-        popup.style.top = (rect.bottom + scrollTop + 5) + 'px';
-        popup.style.left = (rect.left + scrollLeft) + 'px';
+        var targetTop = rect.bottom + scrollTop + 5;
+        var targetLeft = rect.left + scrollLeft;
+
+        // Adjust position relative to parent if inside a popup modal
+        var parent = popup.parentNode;
+        var parentRect = null;
+        if (parent && parent !== document.body) {
+            parentRect = parent.getBoundingClientRect();
+            targetTop -= (parentRect.top + scrollTop);
+            targetLeft -= (parentRect.left + scrollLeft);
+        }
+
+        popup.style.top = targetTop + 'px';
+        popup.style.left = targetLeft + 'px';
 
         // Check if popup goes off screen
         setTimeout(function () {
             var popupRect = popup.getBoundingClientRect();
             if (popupRect.right > window.innerWidth) {
-                popup.style.left = (window.innerWidth - popupRect.width - 10 + scrollLeft) + 'px';
+                var newLeft = window.innerWidth - popupRect.width - 10 + scrollLeft;
+                if (parentRect) {
+                    newLeft -= (parentRect.left + scrollLeft);
+                }
+                popup.style.left = newLeft + 'px';
             }
             if (popupRect.bottom > window.innerHeight) {
-                popup.style.top = (rect.top + scrollTop - popupRect.height - 5) + 'px';
+                var newTop = rect.top + scrollTop - popupRect.height - 5;
+                if (parentRect) {
+                    newTop -= (parentRect.top + scrollTop);
+                }
+                popup.style.top = newTop + 'px';
             }
         }, 0);
     }
@@ -72,6 +92,15 @@
         }
 
         var popup = getOrCreatePopup();
+        
+        // Find parent popup to avoid triggering click-outside close handlers
+        var parentPopup = input.closest('.elementor-popup-modal, .jet-popup, .dialog-widget, .jet-popup-container');
+        if (parentPopup) {
+            parentPopup.appendChild(popup);
+        } else if (popup.parentNode !== document.body) {
+            document.body.appendChild(popup);
+        }
+
         currentInput = input;
         lastOpenTime = Date.now();
 
@@ -129,19 +158,14 @@
 
         activeCalendars.set(popup, calendar);
 
-        // Read font from .elementor-field-group > label and apply to calendar
-        var labelElement = targetInput.closest('.elementor-field-group');
-        if (labelElement) {
-            var label = labelElement.querySelector('label');
-            if (label) {
-                var computedStyle = window.getComputedStyle(label);
-                popup.style.fontFamily = computedStyle.fontFamily;
-            }
-        }
+        // Set default font to Vazirmatn
+        popup.style.fontFamily = 'VazirMatn, Vazir, Vazirmatn, VazirmatnVF, sans-serif';
 
         // Prevent clicks inside popup from closing other popups
-        popup.addEventListener('click', function (e) {
-            e.stopPropagation();
+        ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointerup', 'touchstart', 'touchend'].forEach(function (event) {
+            popup.addEventListener(event, function (e) {
+                e.stopPropagation();
+            });
         });
 
         // Show popup
@@ -268,5 +292,21 @@
     window.initPersianDateField = initPersianDateField;
     window.initAllPersianDateFields = initAllDateFields;
     window.hidePersianCalendar = hideCalendar;
+
+    // Hook into Elementor and JetPopup events to re-initialize cloned inputs inside popups
+    if (typeof window !== 'undefined' && window.jQuery) {
+        window.jQuery(document).on('elementor/popup/show', function(event, id, instance) {
+            if (instance && instance.$element) {
+                instance.$element.find('[data-persian-date]').removeAttr('data-persian-date-initialized');
+                initAllDateFields();
+            }
+        });
+        window.jQuery(document).on('jet-popup/show-event', function(event, $popup) {
+            if ($popup) {
+                $popup.find('[data-persian-date]').removeAttr('data-persian-date-initialized');
+                initAllDateFields();
+            }
+        });
+    }
 
 })();
